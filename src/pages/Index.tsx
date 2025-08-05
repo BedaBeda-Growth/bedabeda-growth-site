@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import ClientLogos from "@/components/ClientLogos";
 import AntiCookieCutter from "@/components/AntiCookieCutter";
 import DisruptiveCROSection from "@/components/DisruptiveCROSection";
-import WhatMakesUsDifferent from "@/components/WhatMakesUsDifferent";
 import WhoWeWorkWith from "@/components/WhoWeWorkWith";
 import CaseStudyTeasers from "@/components/CaseStudyTeasers";
 import CaseStudyGallery from "@/components/CaseStudyGallery";
@@ -20,7 +19,6 @@ const Index = () => {
         <ClientLogos />
         <AntiCookieCutter />
         <DisruptiveCROSection />
-        <WhatMakesUsDifferent />
         <WhoWeWorkWith />
         <CaseStudyTeasers />
         <CaseStudyGallery />
