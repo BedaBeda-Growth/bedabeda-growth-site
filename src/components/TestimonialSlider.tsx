@@ -29,7 +29,7 @@ const TestimonialSlider = () => {
       setCurrentSlide((prev) => (prev + 1) % testimonials.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [testimonials.length]);
 
   return (
     <div className="bg-secondary/20 rounded-2xl p-8 mb-8">
