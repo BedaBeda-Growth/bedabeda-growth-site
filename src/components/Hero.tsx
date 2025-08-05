@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import heroIllustration from "@/assets/hero-cro-illustration.png";
 
@@ -37,7 +38,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Column - Visual */}
+          {/* Right Column - Visual with Labels */}
           <div className="relative">
             <div className="bg-secondary/20 rounded-2xl p-8 backdrop-blur-sm">
               <img 
@@ -46,7 +47,40 @@ const Hero = () => {
                 className="w-full h-auto rounded-xl shadow-2xl hover-scale transition-smooth"
               />
             </div>
-            {/* Floating elements for depth */}
+            
+            {/* Floating methodology labels */}
+            <div className="absolute -top-2 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
+              Customer Research
+            </div>
+            <div className="absolute top-16 -left-8 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
+              Session Recordings
+            </div>
+            <div className="absolute top-8 -right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
+              Quantitative Data
+            </div>
+            <div className="absolute top-32 -right-12 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
+              Drop-off Points
+            </div>
+            <div className="absolute bottom-32 -left-6 bg-primary/10 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-primary shadow-md border border-primary/20">
+              Strategy
+            </div>
+            <div className="absolute bottom-16 left-8 bg-primary/10 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-primary shadow-md border border-primary/20">
+              Test Design
+            </div>
+            <div className="absolute bottom-4 -right-2 bg-primary/10 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-primary shadow-md border border-primary/20">
+              Active Analysis
+            </div>
+            <div className="absolute bottom-20 right-12 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
+              Reporting
+            </div>
+            <div className="absolute top-24 left-16 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
+              Deep Research
+            </div>
+            <div className="absolute bottom-8 left-20 bg-primary/10 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-primary shadow-md border border-primary/20">
+              Roadmapping
+            </div>
+            
+            {/* Background floating elements for depth */}
             <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-xl"></div>
             <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary/30 rounded-full blur-2xl"></div>
           </div>
