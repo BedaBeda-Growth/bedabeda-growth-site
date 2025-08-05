@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import heroMockup from "@/assets/hero-mockup.jpg";
+import heroIllustration from "@/assets/hero-illustration.svg";
 
 const Hero = () => {
   return (
@@ -41,8 +41,8 @@ const Hero = () => {
           <div className="relative">
             <div className="bg-secondary/20 rounded-2xl p-8 backdrop-blur-sm">
               <img 
-                src={heroMockup}
-                alt="CRO Dashboard Mockup"
+                src={heroIllustration}
+                alt="BedaBeda Growth CRO Methodology Illustration"
                 className="w-full h-auto rounded-xl shadow-2xl hover-scale transition-smooth"
               />
             </div>
