@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import bedabedaLogo from "@/assets/bedabeda-logo.png";
 
 const Header = () => {
   return (
@@ -7,9 +8,11 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <span className="text-2xl font-bold text-foreground">
-              BedaBeda <span className="text-primary">Growth</span>
-            </span>
+            <img 
+              src={bedabedaLogo} 
+              alt="BedaBeda Growth" 
+              className="h-8 w-auto"
+            />
           </div>
 
           {/* Navigation */}

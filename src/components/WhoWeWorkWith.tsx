@@ -1,3 +1,5 @@
+import TestimonialSlider from "./TestimonialSlider";
+
 const WhoWeWorkWith = () => {
   const clientTypes = [
     {
@@ -32,8 +34,22 @@ const WhoWeWorkWith = () => {
             {clientTypes.map((client, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-smooth hover-lift"
+                className="bg-white rounded-xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-smooth hover-lift relative"
               >
+                {/* Logo clusters */}
+                <div className="absolute -top-3 -right-3 flex">
+                  {[1, 2, 3].map((logoIndex) => (
+                    <div
+                      key={logoIndex}
+                      className={`w-8 h-8 bg-gray-300 rounded-full border-2 border-white flex items-center justify-center text-xs font-medium text-gray-600 ${
+                        logoIndex === 1 ? 'z-30' : logoIndex === 2 ? 'z-20 -ml-2' : 'z-10 -ml-2'
+                      }`}
+                    >
+                      {logoIndex}
+                    </div>
+                  ))}
+                </div>
+                
                 <h3 className="text-xl font-semibold text-foreground mb-4 leading-tight">
                   {client.title}
                 </h3>
@@ -44,6 +60,8 @@ const WhoWeWorkWith = () => {
             ))}
           </div>
 
+          <TestimonialSlider />
+          
           <div className="bg-secondary/30 rounded-2xl p-8 text-center">
             <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
               <strong>What ties them together?</strong> They're past the DTC playbook stage. They're ready for depth, not fluff. And they're tired of CRO that doesn't move the needle or leaves their site looking like Frankenstein's love child.

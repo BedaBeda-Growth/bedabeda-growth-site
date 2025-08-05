@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import SlackMessages from "./SlackMessages";
 
 const AntiCookieCutter = () => {
   return (
@@ -9,6 +10,8 @@ const AntiCookieCutter = () => {
             Traditional CRO is broken. <br />
             <span className="text-primary">We're rebuilding it.</span>
           </h2>
+          
+          <SlackMessages />
           
           <div className="max-w-3xl mx-auto space-y-6 text-lg text-gray-600 leading-relaxed">
             <p>

@@ -1,9 +1,11 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import ClientLogos from "@/components/ClientLogos";
 import AntiCookieCutter from "@/components/AntiCookieCutter";
+import DisruptiveCROSection from "@/components/DisruptiveCROSection";
 import WhoWeWorkWith from "@/components/WhoWeWorkWith";
-import WhatMakesUsDifferent from "@/components/WhatMakesUsDifferent";
 import CaseStudyTeasers from "@/components/CaseStudyTeasers";
+import CaseStudyGallery from "@/components/CaseStudyGallery";
 import WhoYoullWorkWith from "@/components/WhoYoullWorkWith";
 import ConversionBlock from "@/components/ConversionBlock";
 import Footer from "@/components/Footer";
@@ -14,10 +16,12 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
+        <ClientLogos />
         <AntiCookieCutter />
+        <DisruptiveCROSection />
         <WhoWeWorkWith />
-        <WhatMakesUsDifferent />
         <CaseStudyTeasers />
+        <CaseStudyGallery />
         <WhoYoullWorkWith />
         <ConversionBlock />
       </main>
