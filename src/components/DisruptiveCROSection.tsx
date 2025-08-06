@@ -36,15 +36,15 @@ const DisruptiveCROSection = () => {
 
   // Staggered positioning for boxes (in rem units for responsiveness)
   const weBoxPositions = [
-    { top: '0rem' },     // First box - highest
-    { top: '10rem' },    // Second box - middle offset
-    { top: '20rem' }     // Third box - lowest
+    { top: '0rem', left: '0px' },      // First box - highest, aligned left
+    { top: '12rem', left: '-50px' },   // Second box - middle, staggered left
+    { top: '24rem', left: '0px' }      // Third box - lowest, aligned left
   ];
 
   const theyBoxPositions = [
-    { top: '5rem' },     // First box - offset from WE top
-    { top: '15rem' },    // Second box - middle stagger
-    { top: '25rem' }     // Third box - bottom stagger
+    { top: '5rem', right: '0px' },     // First box - offset from WE top, aligned right  
+    { top: '17rem', right: '-50px' },  // Second box - middle, staggered right
+    { top: '29rem', right: '0px' }     // Third box - bottom, aligned right
   ];
 
   const nextPage = () => {
@@ -82,11 +82,14 @@ const DisruptiveCROSection = () => {
                 {wePoints.map((point, index) => (
                   <div 
                     key={index} 
-                    className="absolute w-full"
-                    style={{ top: weBoxPositions[index].top }}
+                    className="absolute w-[300px]"
+                    style={{ 
+                      top: weBoxPositions[index].top,
+                      left: weBoxPositions[index].left
+                    }}
                   >
                     <div 
-                      className="rounded-xl p-6 text-white relative w-full h-[180px]"
+                      className="rounded-xl p-6 text-white relative w-full h-[180px] mb-6"
                       style={{ backgroundColor: '#181B21' }}
                     >
                       <h4 className="text-lg font-bold mb-3 text-white">
@@ -230,11 +233,14 @@ const DisruptiveCROSection = () => {
                 {theyPoints.map((point, index) => (
                   <div 
                     key={index} 
-                    className="absolute w-full"
-                    style={{ top: theyBoxPositions[index].top }}
+                    className="absolute w-[300px]"
+                    style={{ 
+                      top: theyBoxPositions[index].top,
+                      right: theyBoxPositions[index].right
+                    }}
                   >
                     <div 
-                      className="rounded-xl p-6 relative w-full h-[180px]"
+                      className="rounded-xl p-6 relative w-full h-[180px] mb-6"
                       style={{ backgroundColor: '#EEFAF8' }}
                     >
                       <h4 className="text-lg font-bold mb-3" style={{ color: '#2E3242' }}>
