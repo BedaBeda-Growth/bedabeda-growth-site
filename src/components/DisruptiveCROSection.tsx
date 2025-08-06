@@ -42,9 +42,9 @@ const DisruptiveCROSection = () => {
   ];
 
   const theyBoxPositions = [
-    { top: '5rem', right: '0px' },     // First box - offset from WE top, aligned right  
-    { top: '17rem', right: '-50px' },  // Second box - middle, staggered right
-    { top: '29rem', right: '0px' }     // Third box - bottom, aligned right
+    { top: '0rem', right: '0px' },     // First box - same height as WE top, aligned right  
+    { top: '12rem', right: '-50px' },  // Second box - same height as WE middle, staggered right
+    { top: '24rem', right: '0px' }     // Third box - same height as WE bottom, aligned right
   ];
 
   const nextPage = () => {
