@@ -36,15 +36,15 @@ const DisruptiveCROSection = () => {
 
   // Staggered positioning for boxes (in rem units for responsiveness)
   const weBoxPositions = [
-    { top: '0rem' },     // First box
-    { top: '8rem' },     // Second box offset down
-    { top: '16rem' }     // Third box offset further down
+    { top: '0rem' },     // First box - highest
+    { top: '10rem' },    // Second box - middle offset
+    { top: '20rem' }     // Third box - lowest
   ];
 
   const theyBoxPositions = [
-    { top: '4rem' },     // First box offset down
-    { top: '12rem' },    // Second box offset further
-    { top: '20rem' }     // Third box offset most
+    { top: '5rem' },     // First box - offset from WE top
+    { top: '15rem' },    // Second box - middle stagger
+    { top: '25rem' }     // Third box - bottom stagger
   ];
 
   const nextPage = () => {
