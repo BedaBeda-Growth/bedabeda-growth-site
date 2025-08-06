@@ -76,17 +76,17 @@ const DisruptiveCROSection = () => {
 
           {/* Desktop & Tablet Layout */}
           <div className="hidden md:block">
-            <div className="relative min-h-[600px]">
-              {/* WE Section */}
-              <div className="absolute left-0 w-[405px]">
+            <div className="relative min-h-[700px]">
+              {/* WE Section - 3 separate staggered boxes */}
+              <div className="absolute left-0">
                 {wePoints.map((point, index) => (
                   <div 
                     key={index} 
-                    className="absolute w-full"
+                    className="absolute"
                     style={{ top: weBoxPositions[index].top }}
                   >
                     <div 
-                      className="rounded-2xl p-6 text-white relative"
+                      className="rounded-xl p-6 text-white relative"
                       style={{ 
                         backgroundColor: '#181B21',
                         width: '405px',
@@ -99,22 +99,6 @@ const DisruptiveCROSection = () => {
                       <p className="text-sm text-gray-300 leading-relaxed">
                         {point.description}
                       </p>
-                      
-                      {/* Connecting line and node */}
-                      <div className="absolute -right-8 top-1/2 transform -translate-y-1/2">
-                        <svg width="120" height="4" className="overflow-visible">
-                          <line 
-                            x1="0" 
-                            y1="2" 
-                            x2="100" 
-                            y2="2" 
-                            stroke="#666" 
-                            strokeWidth="2" 
-                            strokeDasharray="5,5"
-                          />
-                          <circle cx="110" cy="2" r="4" fill="#666" />
-                        </svg>
-                      </div>
                     </div>
                   </div>
                 ))}
@@ -124,7 +108,7 @@ const DisruptiveCROSection = () => {
               <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex gap-4">
                 {/* WE Circle */}
                 <div 
-                  className="rounded-full flex items-center justify-center"
+                  className="rounded-full flex items-center justify-center relative"
                   style={{ 
                     backgroundColor: '#2E3242',
                     width: '180px',
@@ -132,11 +116,60 @@ const DisruptiveCROSection = () => {
                   }}
                 >
                   <span className="text-2xl font-bold text-white">WE</span>
+                  
+                  {/* Connection lines from WE circle to WE boxes */}
+                  {wePoints.map((_, index) => {
+                    const isMiddle = index === 1;
+                    const isTop = index === 0;
+                    const isBottom = index === 2;
+                    
+                    return (
+                      <div key={index} className="absolute">
+                        <svg 
+                          width="300" 
+                          height="400" 
+                          className="overflow-visible absolute"
+                          style={{
+                            left: '-220px',
+                            top: '-200px'
+                          }}
+                        >
+                          {isMiddle ? (
+                            // Straight line to middle box
+                            <>
+                              <line 
+                                x1="130" 
+                                y1="200" 
+                                x2="190" 
+                                y2="200" 
+                                stroke="#666" 
+                                strokeWidth="2" 
+                                strokeDasharray="5,5"
+                              />
+                              <circle cx="195" cy="200" r="4" fill="#666" />
+                            </>
+                          ) : (
+                            // Curved lines to top and bottom boxes
+                            <>
+                              <path 
+                                d={`M 130 200 Q 160 ${isTop ? 120 : 280} 190 ${isTop ? 100 : 300}`}
+                                stroke="#666" 
+                                strokeWidth="2" 
+                                fill="none"
+                                strokeDasharray="5,5"
+                              />
+                              <circle cx="190" cy={isTop ? 100 : 300} r="4" fill="#666" />
+                            </>
+                          )}
+                        </svg>
+                      </div>
+                    );
+                  })}
                 </div>
                 
                 {/* THEY Circle */}
                 <div 
-                  className="rounded-full flex items-center justify-center"
+                  className="rounded-full flex items-center justify-center relative"
                   style={{ 
                     backgroundColor: '#EEFAF8',
                     width: '180px',
@@ -144,19 +177,68 @@ const DisruptiveCROSection = () => {
                   }}
                 >
                   <span className="text-2xl font-bold" style={{ color: '#92B5AF' }}>THEY</span>
+                  
+                  {/* Connection lines from THEY circle to THEY boxes */}
+                  {theyPoints.map((_, index) => {
+                    const isMiddle = index === 1;
+                    const isTop = index === 0;
+                    const isBottom = index === 2;
+                    
+                    return (
+                      <div key={index} className="absolute">
+                        <svg 
+                          width="300" 
+                          height="400" 
+                          className="overflow-visible absolute"
+                          style={{
+                            left: '90px',
+                            top: '-200px'
+                          }}
+                        >
+                          {isMiddle ? (
+                            // Straight line to middle box
+                            <>
+                              <line 
+                                x1="90" 
+                                y1="200" 
+                                x2="150" 
+                                y2="200" 
+                                stroke="#666" 
+                                strokeWidth="2" 
+                                strokeDasharray="5,5"
+                              />
+                              <circle cx="155" cy="200" r="4" fill="#666" />
+                            </>
+                          ) : (
+                            // Curved lines to top and bottom boxes
+                            <>
+                              <path 
+                                d={`M 90 200 Q 120 ${isTop ? 120 : 280} 150 ${isTop ? 100 : 300}`}
+                                stroke="#666" 
+                                strokeWidth="2" 
+                                fill="none"
+                                strokeDasharray="5,5"
+                              />
+                              <circle cx="150" cy={isTop ? 100 : 300} r="4" fill="#666" />
+                            </>
+                          )}
+                        </svg>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
-              {/* THEY Section */}
-              <div className="absolute right-0 w-[405px]">
+              {/* THEY Section - 3 separate staggered boxes */}
+              <div className="absolute right-0">
                 {theyPoints.map((point, index) => (
                   <div 
                     key={index} 
-                    className="absolute w-full"
+                    className="absolute"
                     style={{ top: theyBoxPositions[index].top }}
                   >
                     <div 
-                      className="rounded-2xl p-6 relative"
+                      className="rounded-xl p-6 relative"
                       style={{ 
                         backgroundColor: '#EEFAF8',
                         width: '405px',
@@ -166,25 +248,9 @@ const DisruptiveCROSection = () => {
                       <h4 className="text-lg font-bold mb-3" style={{ color: '#2E3242' }}>
                         {point.title}
                       </h4>
-                      <p className="text-sm text-gray-600 leading-relaxed">
+                      <p className="text-sm leading-relaxed" style={{ color: '#3D3D3D' }}>
                         {point.description}
                       </p>
-                      
-                      {/* Connecting line and node */}
-                      <div className="absolute -left-8 top-1/2 transform -translate-y-1/2">
-                        <svg width="120" height="4" className="overflow-visible">
-                          <circle cx="10" cy="2" r="4" fill="#666" />
-                          <line 
-                            x1="20" 
-                            y1="2" 
-                            x2="120" 
-                            y2="2" 
-                            stroke="#666" 
-                            strokeWidth="2" 
-                            strokeDasharray="5,5"
-                          />
-                        </svg>
-                      </div>
                     </div>
                   </div>
                 ))}
