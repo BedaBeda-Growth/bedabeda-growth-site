@@ -76,22 +76,18 @@ const DisruptiveCROSection = () => {
 
           {/* Desktop & Tablet Layout */}
           <div className="hidden md:block">
-            <div className="relative min-h-[700px]">
-              {/* WE Section - 3 separate staggered boxes */}
-              <div className="absolute left-0">
+            <div className="relative min-h-[600px]">
+              {/* WE Section - 3 separate boxes */}
+              <div className="absolute left-0 w-[320px]">
                 {wePoints.map((point, index) => (
                   <div 
                     key={index} 
-                    className="absolute"
+                    className="absolute w-full"
                     style={{ top: weBoxPositions[index].top }}
                   >
                     <div 
-                      className="rounded-xl p-6 text-white relative"
-                      style={{ 
-                        backgroundColor: '#181B21',
-                        width: '405px',
-                        height: '210px'
-                      }}
+                      className="rounded-xl p-6 text-white relative w-full h-[180px]"
+                      style={{ backgroundColor: '#181B21' }}
                     >
                       <h4 className="text-lg font-bold mb-3 text-white">
                         {point.title}
@@ -117,52 +113,52 @@ const DisruptiveCROSection = () => {
                 >
                   <span className="text-2xl font-bold text-white">WE</span>
                   
-                  {/* Connection lines from WE circle to WE boxes */}
+                  {/* Connection lines from left edge of WE circle to WE boxes */}
                   {wePoints.map((_, index) => {
+                    const boxTop = parseInt(weBoxPositions[index].top);
+                    const circleY = 0; // Center of circle
+                    const targetY = boxTop - 200; // Adjust for circle position
                     const isMiddle = index === 1;
-                    const isTop = index === 0;
-                    const isBottom = index === 2;
                     
                     return (
-                      <div key={index} className="absolute">
-                        <svg 
-                          width="300" 
-                          height="400" 
-                          className="overflow-visible absolute"
-                          style={{
-                            left: '-220px',
-                            top: '-200px'
-                          }}
-                        >
-                          {isMiddle ? (
-                            // Straight line to middle box
-                            <>
-                              <line 
-                                x1="130" 
-                                y1="200" 
-                                x2="190" 
-                                y2="200" 
-                                stroke="#666" 
-                                strokeWidth="2" 
-                                strokeDasharray="5,5"
-                              />
-                              <circle cx="195" cy="200" r="4" fill="#666" />
-                            </>
-                          ) : (
-                            // Curved lines to top and bottom boxes
-                            <>
-                              <path 
-                                d={`M 130 200 Q 160 ${isTop ? 120 : 280} 190 ${isTop ? 100 : 300}`}
-                                stroke="#666" 
-                                strokeWidth="2" 
-                                fill="none"
-                                strokeDasharray="5,5"
-                              />
-                              <circle cx="190" cy={isTop ? 100 : 300} r="4" fill="#666" />
-                            </>
-                          )}
-                        </svg>
-                      </div>
+                      <svg 
+                        key={index}
+                        width="200" 
+                        height="400" 
+                        className="absolute overflow-visible"
+                        style={{
+                          left: '-200px',
+                          top: '-200px'
+                        }}
+                      >
+                        {isMiddle ? (
+                          // Straight line to middle box
+                          <>
+                            <line 
+                              x1="110" 
+                              y1="200" 
+                              x2="180" 
+                              y2="200" 
+                              stroke="#666" 
+                              strokeWidth="2" 
+                              strokeDasharray="5,5"
+                            />
+                            <circle cx="185" cy="200" r="4" fill="#666" />
+                          </>
+                        ) : (
+                          // Curved lines to top and bottom boxes
+                          <>
+                            <path 
+                              d={`M 110 200 Q 140 ${200 + targetY/2} 180 ${200 + targetY}`}
+                              stroke="#666" 
+                              strokeWidth="2" 
+                              fill="none"
+                              strokeDasharray="5,5"
+                            />
+                            <circle cx="180" cy={200 + targetY} r="4" fill="#666" />
+                          </>
+                        )}
+                      </svg>
                     );
                   })}
                 </div>
@@ -178,72 +174,68 @@ const DisruptiveCROSection = () => {
                 >
                   <span className="text-2xl font-bold" style={{ color: '#92B5AF' }}>THEY</span>
                   
-                  {/* Connection lines from THEY circle to THEY boxes */}
+                  {/* Connection lines from right edge of THEY circle to THEY boxes */}
                   {theyPoints.map((_, index) => {
+                    const boxTop = parseInt(theyBoxPositions[index].top);
+                    const circleY = 0; // Center of circle
+                    const targetY = boxTop - 200; // Adjust for circle position
                     const isMiddle = index === 1;
-                    const isTop = index === 0;
-                    const isBottom = index === 2;
                     
                     return (
-                      <div key={index} className="absolute">
-                        <svg 
-                          width="300" 
-                          height="400" 
-                          className="overflow-visible absolute"
-                          style={{
-                            left: '90px',
-                            top: '-200px'
-                          }}
-                        >
-                          {isMiddle ? (
-                            // Straight line to middle box
-                            <>
-                              <line 
-                                x1="90" 
-                                y1="200" 
-                                x2="150" 
-                                y2="200" 
-                                stroke="#666" 
-                                strokeWidth="2" 
-                                strokeDasharray="5,5"
-                              />
-                              <circle cx="155" cy="200" r="4" fill="#666" />
-                            </>
-                          ) : (
-                            // Curved lines to top and bottom boxes
-                            <>
-                              <path 
-                                d={`M 90 200 Q 120 ${isTop ? 120 : 280} 150 ${isTop ? 100 : 300}`}
-                                stroke="#666" 
-                                strokeWidth="2" 
-                                fill="none"
-                                strokeDasharray="5,5"
-                              />
-                              <circle cx="150" cy={isTop ? 100 : 300} r="4" fill="#666" />
-                            </>
-                          )}
-                        </svg>
-                      </div>
+                      <svg 
+                        key={index}
+                        width="200" 
+                        height="400" 
+                        className="absolute overflow-visible"
+                        style={{
+                          left: '90px',
+                          top: '-200px'
+                        }}
+                      >
+                        {isMiddle ? (
+                          // Straight line to middle box
+                          <>
+                            <line 
+                              x1="90" 
+                              y1="200" 
+                              x2="160" 
+                              y2="200" 
+                              stroke="#666" 
+                              strokeWidth="2" 
+                              strokeDasharray="5,5"
+                            />
+                            <circle cx="165" cy="200" r="4" fill="#666" />
+                          </>
+                        ) : (
+                          // Curved lines to top and bottom boxes
+                          <>
+                            <path 
+                              d={`M 90 200 Q 120 ${200 + targetY/2} 160 ${200 + targetY}`}
+                              stroke="#666" 
+                              strokeWidth="2" 
+                              fill="none"
+                              strokeDasharray="5,5"
+                            />
+                            <circle cx="160" cy={200 + targetY} r="4" fill="#666" />
+                          </>
+                        )}
+                      </svg>
                     );
                   })}
                 </div>
               </div>
 
-              {/* THEY Section - 3 separate staggered boxes */}
-              <div className="absolute right-0">
+              {/* THEY Section - 3 separate boxes */}
+              <div className="absolute right-0 w-[320px]">
                 {theyPoints.map((point, index) => (
                   <div 
                     key={index} 
-                    className="absolute"
+                    className="absolute w-full"
                     style={{ top: theyBoxPositions[index].top }}
                   >
                     <div 
-                      className="rounded-xl p-6 relative"
-                      style={{ 
-                        backgroundColor: '#EEFAF8',
-                        width: '405px',
-                        height: '210px'
-                      }}
+                      className="rounded-xl p-6 relative w-full h-[180px]"
+                      style={{ backgroundColor: '#EEFAF8' }}
                     >
                       <h4 className="text-lg font-bold mb-3" style={{ color: '#2E3242' }}>
                         {point.title}
