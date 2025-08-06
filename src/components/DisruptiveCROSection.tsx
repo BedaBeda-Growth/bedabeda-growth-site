@@ -89,13 +89,13 @@ const DisruptiveCROSection = () => {
                     }}
                   >
                     <div 
-                      className="rounded-xl p-6 text-white relative w-full h-[180px] mb-6"
+                      className="rounded-xl p-6 text-white relative w-full h-[180px] mb-6 flex flex-col"
                       style={{ backgroundColor: '#181B21' }}
                     >
                       <h4 className="text-lg font-bold mb-3 text-white">
                         {point.title}
                       </h4>
-                      <p className="text-sm text-gray-300 leading-relaxed">
+                      <p className="text-sm text-gray-300 leading-relaxed flex-1 flex items-center">
                         {point.description}
                       </p>
                     </div>
@@ -118,49 +118,32 @@ const DisruptiveCROSection = () => {
                   
                   {/* Connection lines from left edge of WE circle to WE boxes */}
                   {wePoints.map((_, index) => {
-                    const boxTop = parseInt(weBoxPositions[index].top);
-                    const circleY = 0; // Center of circle
-                    const targetY = boxTop - 200; // Adjust for circle position
-                    const isMiddle = index === 1;
+                    const boxTop = parseInt(weBoxPositions[index].top) * 16; // Convert rem to px (16px per rem)
+                    const boxLeft = parseInt(weBoxPositions[index].left || '0');
+                    const boxCenterY = boxTop + 90; // Middle of 180px tall box
+                    const circleCenterY = 300; // Center of 600px container
+                    const circleLeftEdge = 90; // Left edge of circle (180px diameter / 2)
+                    const boxRightEdge = 300 + boxLeft; // Right edge of box to connect to
                     
                     return (
                       <svg 
                         key={index}
-                        width="200" 
-                        height="400" 
+                        width="400" 
+                        height="600" 
                         className="absolute overflow-visible"
                         style={{
                           left: '-200px',
-                          top: '-200px'
+                          top: '-300px'
                         }}
                       >
-                        {isMiddle ? (
-                          // Straight line to middle box
-                          <>
-                            <line 
-                              x1="110" 
-                              y1="200" 
-                              x2="180" 
-                              y2="200" 
-                              stroke="#666" 
-                              strokeWidth="2" 
-                              strokeDasharray="5,5"
-                            />
-                            <circle cx="185" cy="200" r="4" fill="#666" />
-                          </>
-                        ) : (
-                          // Curved lines to top and bottom boxes
-                          <>
-                            <path 
-                              d={`M 110 200 Q 140 ${200 + targetY/2} 180 ${200 + targetY}`}
-                              stroke="#666" 
-                              strokeWidth="2" 
-                              fill="none"
-                              strokeDasharray="5,5"
-                            />
-                            <circle cx="180" cy={200 + targetY} r="4" fill="#666" />
-                          </>
-                        )}
+                        <path 
+                          d={`M ${circleLeftEdge} ${circleCenterY} Q ${(circleLeftEdge + boxRightEdge) / 2} ${(circleCenterY + boxCenterY) / 2} ${boxRightEdge} ${boxCenterY}`}
+                          stroke="#666" 
+                          strokeWidth="2" 
+                          fill="none"
+                          strokeDasharray="5,5"
+                        />
+                        <circle cx={boxRightEdge} cy={boxCenterY} r="4" fill="#666" />
                       </svg>
                     );
                   })}
@@ -179,49 +162,32 @@ const DisruptiveCROSection = () => {
                   
                   {/* Connection lines from right edge of THEY circle to THEY boxes */}
                   {theyPoints.map((_, index) => {
-                    const boxTop = parseInt(theyBoxPositions[index].top);
-                    const circleY = 0; // Center of circle
-                    const targetY = boxTop - 200; // Adjust for circle position
-                    const isMiddle = index === 1;
+                    const boxTop = parseInt(theyBoxPositions[index].top) * 16; // Convert rem to px (16px per rem)
+                    const boxRight = parseInt(theyBoxPositions[index].right || '0');
+                    const boxCenterY = boxTop + 90; // Middle of 180px tall box
+                    const circleCenterY = 300; // Center of 600px container
+                    const circleRightEdge = 90; // Right edge of circle (from center - 180px diameter / 2)
+                    const boxLeftEdge = 0 - boxRight; // Left edge of box to connect to
                     
                     return (
                       <svg 
                         key={index}
-                        width="200" 
-                        height="400" 
+                        width="400" 
+                        height="600" 
                         className="absolute overflow-visible"
                         style={{
                           left: '90px',
-                          top: '-200px'
+                          top: '-300px'
                         }}
                       >
-                        {isMiddle ? (
-                          // Straight line to middle box
-                          <>
-                            <line 
-                              x1="90" 
-                              y1="200" 
-                              x2="160" 
-                              y2="200" 
-                              stroke="#666" 
-                              strokeWidth="2" 
-                              strokeDasharray="5,5"
-                            />
-                            <circle cx="165" cy="200" r="4" fill="#666" />
-                          </>
-                        ) : (
-                          // Curved lines to top and bottom boxes
-                          <>
-                            <path 
-                              d={`M 90 200 Q 120 ${200 + targetY/2} 160 ${200 + targetY}`}
-                              stroke="#666" 
-                              strokeWidth="2" 
-                              fill="none"
-                              strokeDasharray="5,5"
-                            />
-                            <circle cx="160" cy={200 + targetY} r="4" fill="#666" />
-                          </>
-                        )}
+                        <path 
+                          d={`M ${circleRightEdge} ${circleCenterY} Q ${(circleRightEdge + boxLeftEdge) / 2} ${(circleCenterY + boxCenterY) / 2} ${boxLeftEdge} ${boxCenterY}`}
+                          stroke="#666" 
+                          strokeWidth="2" 
+                          fill="none"
+                          strokeDasharray="5,5"
+                        />
+                        <circle cx={boxLeftEdge} cy={boxCenterY} r="4" fill="#666" />
                       </svg>
                     );
                   })}
@@ -240,13 +206,13 @@ const DisruptiveCROSection = () => {
                     }}
                   >
                     <div 
-                      className="rounded-xl p-6 relative w-full h-[180px] mb-6"
+                      className="rounded-xl p-6 relative w-full h-[180px] mb-6 flex flex-col"
                       style={{ backgroundColor: '#EEFAF8' }}
                     >
                       <h4 className="text-lg font-bold mb-3" style={{ color: '#2E3242' }}>
                         {point.title}
                       </h4>
-                      <p className="text-sm leading-relaxed" style={{ color: '#3D3D3D' }}>
+                      <p className="text-sm leading-relaxed flex-1 flex items-center" style={{ color: '#3D3D3D' }}>
                         {point.description}
                       </p>
                     </div>
