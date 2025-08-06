@@ -34,6 +34,19 @@ const DisruptiveCROSection = () => {
     }
   ];
 
+  // Staggered positioning for boxes (in rem units for responsiveness)
+  const weBoxPositions = [
+    { top: '0rem' },     // First box
+    { top: '8rem' },     // Second box offset down
+    { top: '16rem' }     // Third box offset further down
+  ];
+
+  const theyBoxPositions = [
+    { top: '4rem' },     // First box offset down
+    { top: '12rem' },    // Second box offset further
+    { top: '20rem' }     // Third box offset most
+  ];
+
   const nextPage = () => {
     setActivePage((prev) => (prev + 1) % 2);
   };
@@ -61,52 +74,116 @@ const DisruptiveCROSection = () => {
             </p>
           </div>
 
-          {/* Desktop Layout */}
-          <div className="hidden lg:block">
-            <div className="grid grid-cols-12 gap-8 items-start">
+          {/* Desktop & Tablet Layout */}
+          <div className="hidden md:block">
+            <div className="relative min-h-[600px]">
               {/* WE Section */}
-              <div className="col-span-5 space-y-6">
+              <div className="absolute left-0 w-[405px]">
                 {wePoints.map((point, index) => (
-                  <div key={index} className="relative">
-                    <div className="bg-black rounded-2xl p-6 text-white relative">
+                  <div 
+                    key={index} 
+                    className="absolute w-full"
+                    style={{ top: weBoxPositions[index].top }}
+                  >
+                    <div 
+                      className="rounded-2xl p-6 text-white relative"
+                      style={{ 
+                        backgroundColor: '#181B21',
+                        width: '405px',
+                        height: '210px'
+                      }}
+                    >
                       <h4 className="text-lg font-bold mb-3 text-white">
                         {point.title}
                       </h4>
                       <p className="text-sm text-gray-300 leading-relaxed">
                         {point.description}
                       </p>
-                      {/* Dashed line to center */}
-                      <div className="absolute -right-6 top-1/2 transform -translate-y-1/2">
-                        <div className="w-12 h-0.5 border-t-2 border-dashed border-gray-400"></div>
+                      
+                      {/* Connecting line and node */}
+                      <div className="absolute -right-8 top-1/2 transform -translate-y-1/2">
+                        <svg width="120" height="4" className="overflow-visible">
+                          <line 
+                            x1="0" 
+                            y1="2" 
+                            x2="100" 
+                            y2="2" 
+                            stroke="#666" 
+                            strokeWidth="2" 
+                            strokeDasharray="5,5"
+                          />
+                          <circle cx="110" cy="2" r="4" fill="#666" />
+                        </svg>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
 
-              {/* Center Node */}
-              <div className="col-span-2 flex justify-center">
-                <div className="sticky top-1/2">
-                  <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center">
-                    <span className="text-xl font-bold text-white">WE</span>
-                  </div>
+              {/* Center Circles */}
+              <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex gap-4">
+                {/* WE Circle */}
+                <div 
+                  className="rounded-full flex items-center justify-center"
+                  style={{ 
+                    backgroundColor: '#2E3242',
+                    width: '180px',
+                    height: '180px'
+                  }}
+                >
+                  <span className="text-2xl font-bold text-white">WE</span>
+                </div>
+                
+                {/* THEY Circle */}
+                <div 
+                  className="rounded-full flex items-center justify-center"
+                  style={{ 
+                    backgroundColor: '#EEFAF8',
+                    width: '180px',
+                    height: '180px'
+                  }}
+                >
+                  <span className="text-2xl font-bold" style={{ color: '#92B5AF' }}>THEY</span>
                 </div>
               </div>
 
               {/* THEY Section */}
-              <div className="col-span-5 space-y-6">
+              <div className="absolute right-0 w-[405px]">
                 {theyPoints.map((point, index) => (
-                  <div key={index} className="relative">
-                    <div className="bg-green-50 rounded-2xl p-6 border border-green-100 relative">
-                      <h4 className="text-lg font-bold mb-3 text-gray-900">
+                  <div 
+                    key={index} 
+                    className="absolute w-full"
+                    style={{ top: theyBoxPositions[index].top }}
+                  >
+                    <div 
+                      className="rounded-2xl p-6 relative"
+                      style={{ 
+                        backgroundColor: '#EEFAF8',
+                        width: '405px',
+                        height: '210px'
+                      }}
+                    >
+                      <h4 className="text-lg font-bold mb-3" style={{ color: '#2E3242' }}>
                         {point.title}
                       </h4>
                       <p className="text-sm text-gray-600 leading-relaxed">
                         {point.description}
                       </p>
-                      {/* Dashed line to center */}
-                      <div className="absolute -left-6 top-1/2 transform -translate-y-1/2">
-                        <div className="w-12 h-0.5 border-t-2 border-dashed border-gray-400"></div>
+                      
+                      {/* Connecting line and node */}
+                      <div className="absolute -left-8 top-1/2 transform -translate-y-1/2">
+                        <svg width="120" height="4" className="overflow-visible">
+                          <circle cx="10" cy="2" r="4" fill="#666" />
+                          <line 
+                            x1="20" 
+                            y1="2" 
+                            x2="120" 
+                            y2="2" 
+                            stroke="#666" 
+                            strokeWidth="2" 
+                            strokeDasharray="5,5"
+                          />
+                        </svg>
                       </div>
                     </div>
                   </div>
@@ -116,7 +193,7 @@ const DisruptiveCROSection = () => {
           </div>
 
           {/* Mobile Slider */}
-          <div className="lg:hidden">
+          <div className="md:hidden">
             <div className="relative bg-white rounded-2xl shadow-lg border border-border overflow-hidden">
               {/* Page Indicators */}
               <div className="bg-muted/50 p-4 text-center border-b border-border">
@@ -132,12 +209,23 @@ const DisruptiveCROSection = () => {
                   /* WE Page */
                   <div className="space-y-6">
                     <div className="text-center mb-6">
-                      <h3 className="text-2xl font-bold text-white bg-black rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
-                        WE
-                      </h3>
+                      <div 
+                        className="rounded-full flex items-center justify-center mx-auto mb-3"
+                        style={{ 
+                          backgroundColor: '#2E3242',
+                          width: '64px',
+                          height: '64px'
+                        }}
+                      >
+                        <span className="text-xl font-bold text-white">WE</span>
+                      </div>
                     </div>
                     {wePoints.map((point, index) => (
-                      <div key={index} className="bg-black rounded-xl p-4 text-white">
+                      <div 
+                        key={index} 
+                        className="rounded-xl p-4 text-white"
+                        style={{ backgroundColor: '#181B21' }}
+                      >
                         <h4 className="text-base font-bold mb-2 text-white">
                           {point.title}
                         </h4>
@@ -151,13 +239,24 @@ const DisruptiveCROSection = () => {
                   /* THEY Page */
                   <div className="space-y-6">
                     <div className="text-center mb-6">
-                      <h3 className="text-2xl font-bold text-gray-900 bg-green-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3 border border-green-200">
-                        THEY
-                      </h3>
+                      <div 
+                        className="rounded-full flex items-center justify-center mx-auto mb-3"
+                        style={{ 
+                          backgroundColor: '#EEFAF8',
+                          width: '64px',
+                          height: '64px'
+                        }}
+                      >
+                        <span className="text-xl font-bold" style={{ color: '#92B5AF' }}>THEY</span>
+                      </div>
                     </div>
                     {theyPoints.map((point, index) => (
-                      <div key={index} className="bg-green-50 rounded-xl p-4 border border-green-100">
-                        <h4 className="text-base font-bold mb-2 text-gray-900">
+                      <div 
+                        key={index} 
+                        className="rounded-xl p-4"
+                        style={{ backgroundColor: '#EEFAF8' }}
+                      >
+                        <h4 className="text-base font-bold mb-2" style={{ color: '#2E3242' }}>
                           {point.title}
                         </h4>
                         <p className="text-sm text-gray-600 leading-relaxed">
