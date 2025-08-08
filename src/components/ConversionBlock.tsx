@@ -11,7 +11,7 @@ const ConversionBlock = () => {
               Ready to Scale Beyond <br />
               <span className="text-primary">Cookie-Cutter CRO?</span>
             </h2>
-            <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto text-left">
               Let's discuss your growth bottlenecks and design experiments that actually move the needle.
             </p>
           </div>
@@ -22,7 +22,7 @@ const ConversionBlock = () => {
                 <h3 className="text-2xl font-bold text-foreground">
                   Book Your Discovery Call
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 text-left">
                   30-minute strategic session to identify your biggest conversion opportunities.
                 </p>
                 <ul className="text-left space-y-2 text-gray-600">
@@ -58,7 +58,7 @@ const ConversionBlock = () => {
                 >
                   Schedule Discovery Call
                 </Button>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 text-left">
                   No commitment. No pitch. Just strategic insights.
                 </p>
               </div>
@@ -71,7 +71,7 @@ const ConversionBlock = () => {
               <h3 className="text-2xl font-bold text-foreground">
                 Strategic Insights, No Fluff
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-left">
                 Our best strategic insights — no fluff, no spam.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">

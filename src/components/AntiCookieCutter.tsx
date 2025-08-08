@@ -13,14 +13,14 @@ const AntiCookieCutter = () => {
           
           <SlackMessages />
           
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-gray-600 leading-relaxed">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-gray-600 leading-relaxed text-left">
             <p>
               Most CRO agencies focus on running fast tests for the sake of volume. The problem? That rarely compounds into meaningful growth.
             </p>
             <p>
               At BedaBeda Growth, we take a hybrid approach: blending the best of traditional CRO, deep strategic insight, and "big swing" psychological & storytelling experimentation. The result? Bigger wins, clearer signals, and long-term upside you can actually build on.
             </p>
-            <p className="text-xl font-semibold text-primary">
+            <p className="text-xl font-semibold text-primary text-center">
               We're not chasing speed. We're chasing signal.
             </p>
           </div>

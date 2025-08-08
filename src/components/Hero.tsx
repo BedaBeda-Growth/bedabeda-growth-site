@@ -15,7 +15,7 @@ const Hero = () => {
                 <span className="text-primary">Performance-Obsessed</span>{" "}
                 Teams
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed max-w-2xl">
+              <p className="text-xl text-gray-600 leading-relaxed max-w-2xl text-left">
                 We don't run shallow tests just to say we tested.<br />
                 We design high-leverage, hybrid experiments that combine deep strategic insight with standout execution — so you get conversion lifts that actually last.
               </p>

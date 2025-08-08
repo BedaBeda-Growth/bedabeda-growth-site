@@ -10,7 +10,7 @@ const WhoYoullWorkWith = () => {
             </h2>
             
             <div className="max-w-3xl mx-auto">
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-xl text-gray-600 leading-relaxed text-left">
                 We're small by design. You'll work directly with the people who think critically, synthesize qualitative and quantitative insights, and design experiments that actually teach you something.
               </p>
             </div>
@@ -22,7 +22,7 @@ const WhoYoullWorkWith = () => {
               <h3 className="text-xl font-semibold text-foreground mb-3">
                 Strategic Thinking
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-left">
                 Deep analysis that uncovers the real conversion barriers hidden in your customer journey.
               </p>
             </div>
@@ -32,7 +32,7 @@ const WhoYoullWorkWith = () => {
               <h3 className="text-xl font-semibold text-foreground mb-3">
                 Flawless Execution
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-left">
                 End-to-end test implementation that maintains your brand integrity while maximizing impact.
               </p>
             </div>

@@ -25,7 +25,7 @@ const WhoWeWorkWith = () => {
               Ecommerce + High-Volume B2C = <br />
               <span className="text-primary">Our Sweet Spot</span>
             </h2>
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-gray-600 leading-relaxed text-left">
               We've driven powerful, measurable lifts for:
             </p>
           </div>
@@ -53,7 +53,7 @@ const WhoWeWorkWith = () => {
                 <h3 className="text-xl font-semibold text-foreground mb-4 leading-tight">
                   {client.title}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 text-left">
                   {client.description}
                 </p>
               </div>
@@ -62,7 +62,7 @@ const WhoWeWorkWith = () => {
 
           <TestimonialSlider />
           
-          <div className="bg-secondary/30 rounded-2xl p-8 text-center">
+          <div className="bg-secondary/30 rounded-2xl p-8 text-left">
             <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
               <strong>What ties them together?</strong> They're past the DTC playbook stage. They're ready for depth, not fluff. And they're tired of CRO that doesn't move the needle or leaves their site looking like Frankenstein's love child.
             </p>
