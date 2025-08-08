@@ -24,7 +24,7 @@ const ClientLogos = () => {
     {
       name: "The Earthling Co.",
       image: "/lovable-uploads/598c47df-1223-41ea-9a54-7d682d54e442.png",
-      backgroundColor: "#DEE2D8",
+      backgroundColor: "#EBEEE9",
       metric: "+46.01%",
       description: "increase in revenue per visitor"
     },
@@ -49,7 +49,7 @@ const ClientLogos = () => {
           {logos.map((logo, index) => (
             <div key={index} className="flex flex-col items-center">
               <div 
-                className="w-[230px] h-[140px] rounded-lg flex items-center justify-center mb-4"
+                className={`w-[230px] h-[140px] rounded-lg flex items-center justify-center mb-4 ${logo.backgroundColor === "#FFFFFF" ? "border border-gray-200" : ""}`}
                 style={{ backgroundColor: logo.backgroundColor }}
               >
                 <img
@@ -75,7 +75,7 @@ const ClientLogos = () => {
           {logos.map((logo, index) => (
             <div key={index} className="flex flex-col items-center">
               <div 
-                className="w-[200px] h-[120px] rounded-lg flex items-center justify-center mb-3"
+                className={`w-[200px] h-[120px] rounded-lg flex items-center justify-center mb-3 ${logo.backgroundColor === "#FFFFFF" ? "border border-gray-200" : ""}`}
                 style={{ backgroundColor: logo.backgroundColor }}
               >
                 <img
