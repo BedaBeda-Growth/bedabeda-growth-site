@@ -50,26 +50,20 @@ const ConversionBlock = () => {
 
           {/* Newsletter signup */}
           <div className="border-t border-gray-200 pt-12">
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-foreground">
-                Strategic Insights, No Fluff
-              </h3>
-              <p className="text-gray-600 text-left">
-                Our best strategic insights — no fluff, no spam.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <Input 
-                  placeholder="Enter your email"
-                  className="border-gray-300 rounded-lg flex-1"
-                />
-                <Button 
-                  variant="outline"
-                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-6 rounded-lg transition-smooth"
-                >
-                  Subscribe
-                </Button>
-              </div>
-            </div>
+            <iframe 
+              src="https://embeds.beehiiv.com/9cfbbe46-9ae1-495b-a2ef-d8b15e1af9c1" 
+              data-test-id="beehiiv-embed" 
+              width="100%" 
+              height="320" 
+              frameBorder="0" 
+              scrolling="no" 
+              style={{
+                borderRadius: '4px',
+                border: '2px solid #e5e7eb',
+                margin: '0',
+                backgroundColor: 'transparent'
+              }}
+            />
           </div>
         </div>
       </div>
