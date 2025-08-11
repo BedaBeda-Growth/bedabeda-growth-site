@@ -51,7 +51,7 @@ const Hero = () => {
             </div>
 
             {/* Clutch Widget */}
-            <div className="mt-6">
+            <div className="mt-6 flex justify-center sm:justify-start">
               <div 
                 className="clutch-widget" 
                 data-url="https://widget.clutch.co" 
