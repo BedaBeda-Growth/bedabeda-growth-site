@@ -122,8 +122,8 @@ const CaseStudyGallery = () => {
             </CarouselContent>
             <CarouselPrevious className="hidden md:flex text-black hover:text-white" />
             <CarouselNext className="hidden md:flex text-black hover:text-white" />
-            <CarouselPrevious className="md:hidden flex text-black hover:text-white h-16 w-16 -left-4 z-10" />
-            <CarouselNext className="md:hidden flex text-black hover:text-white h-16 w-16 -right-4 z-10" />
+            <CarouselPrevious className="md:hidden flex" />
+            <CarouselNext className="md:hidden flex" />
           </Carousel>
 
           <div className="text-center mt-12">
