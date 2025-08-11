@@ -52,28 +52,12 @@ const CaseStudyGallery = () => {
     <section className="py-20 bg-gray-900 text-white">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-12">
+          <div className="mb-12">
             <div>
               <p className="text-primary text-sm font-medium mb-2">Case Studies & Portfolio</p>
               <h2 className="text-4xl lg:text-5xl font-bold tracking-tight">
                 Browse Some of Our Wins
               </h2>
-            </div>
-            <div className="hidden md:flex space-x-2">
-              <Button
-                variant="outline"
-                size="icon"
-                className="border-gray-600 text-gray-400 hover:bg-gray-800"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                className="border-gray-600 text-gray-400 hover:bg-gray-800"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </Button>
             </div>
           </div>
 
@@ -136,8 +120,10 @@ const CaseStudyGallery = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex" />
-            <CarouselNext className="hidden md:flex" />
+            <CarouselPrevious className="hidden md:flex text-black hover:text-white" />
+            <CarouselNext className="hidden md:flex text-black hover:text-white" />
+            <CarouselPrevious className="md:hidden flex" />
+            <CarouselNext className="md:hidden flex" />
           </Carousel>
 
           <div className="text-center mt-12">
