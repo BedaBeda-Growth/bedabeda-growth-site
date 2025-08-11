@@ -1,9 +1,9 @@
 const SlackMessages = () => {
   const messages = [
-    "My site feels like it's taped together with random widgets.",
-    "We don't have a cohesive story throughout our site.",
-    "I'm not 'feeling' any of our wins.",
-    "The testing ideas feel uncreative."
+    { text: "My site feels like it's taped together with random widgets.", title: "VP of Growth" },
+    { text: "We don't have a cohesive story throughout our site.", title: "Head of eCommerce" },
+    { text: "I'm not 'feeling' any of our wins.", title: "Director of Marketing" },
+    { text: "The testing ideas feel uncreative.", title: "CEO & Co-Founder" }
   ];
 
   return (
@@ -12,19 +12,13 @@ const SlackMessages = () => {
         {messages.map((message, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 relative"
+            className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 relative text-center"
           >
-            <div className="flex items-start space-x-3">
-              <div className="w-8 h-8 bg-gray-300 rounded-full flex-shrink-0"></div>
-              <div className="flex-1">
-                <div className="flex items-center space-x-2 mb-1">
-                  <span className="text-sm font-semibold text-gray-900">Anonymous User</span>
-                  <span className="text-xs text-gray-500">Today at 12:34 PM</span>
-                </div>
-                <p className="text-gray-700 text-sm leading-relaxed italic">
-                  "{message}"
-                </p>
-              </div>
+            <div className="space-y-3">
+              <span className="text-sm font-semibold text-gray-900 block">{message.title}</span>
+              <p className="text-gray-700 text-sm leading-relaxed italic">
+                "{message.text}"
+              </p>
             </div>
           </div>
         ))}
