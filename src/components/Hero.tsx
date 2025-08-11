@@ -48,36 +48,36 @@ const Hero = () => {
               />
             </div>
             
-            {/* Floating methodology labels */}
-            <div className="absolute top-12 left-1/4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
+            {/* Floating methodology labels arranged in W wave pattern */}
+            <div className="absolute top-16 left-8 bg-white px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
               Customer Research
             </div>
-            <div className="absolute top-8 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
+            <div className="absolute top-8 left-1/4 bg-white px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
               Session Recordings
             </div>
-            <div className="absolute top-16 right-1/4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
-              Quantitative Data
-            </div>
-            <div className="absolute top-1/4 right-12 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
-              Drop-off Points
-            </div>
-            <div className="absolute top-1/3 left-16 bg-primary/10 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-primary shadow-md border border-primary/20">
+            <div className="absolute top-20 left-2/5 bg-white px-3 py-1 rounded-full text-sm font-medium text-primary shadow-md border border-gray-200">
               Strategy
             </div>
-            <div className="absolute top-1/2 left-1/3 transform -translate-x-1/2 bg-primary/10 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-primary shadow-md border border-primary/20">
-              Test Design
-            </div>
-            <div className="absolute top-1/2 right-1/3 bg-primary/10 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-primary shadow-md border border-primary/20">
-              Active Analysis
-            </div>
-            <div className="absolute bottom-1/4 right-16 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
-              Reporting
-            </div>
-            <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
+            <div className="absolute top-12 left-1/2 bg-white px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
               Deep Research
             </div>
-            <div className="absolute bottom-1/3 left-1/4 bg-primary/10 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-primary shadow-md border border-primary/20">
+            <div className="absolute top-24 left-3/5 bg-white px-3 py-1 rounded-full text-sm font-medium text-primary shadow-md border border-gray-200">
+              Test Design
+            </div>
+            <div className="absolute top-6 right-1/4 bg-white px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
+              Quantitative Data
+            </div>
+            <div className="absolute top-18 right-8 bg-white px-3 py-1 rounded-full text-sm font-medium text-primary shadow-md border border-gray-200">
+              Active Analysis
+            </div>
+            <div className="absolute bottom-20 left-12 bg-white px-3 py-1 rounded-full text-sm font-medium text-primary shadow-md border border-gray-200">
               Roadmapping
+            </div>
+            <div className="absolute bottom-8 left-1/3 bg-white px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
+              Drop-off Points
+            </div>
+            <div className="absolute bottom-16 right-1/3 bg-white px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-md border border-gray-200">
+              Reporting
             </div>
             
             {/* Background floating elements for depth */}
