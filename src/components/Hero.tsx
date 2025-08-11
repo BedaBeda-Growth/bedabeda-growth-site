@@ -1,8 +1,21 @@
 
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
 import heroIllustration from "@/assets/hero-cro-illustration.png";
 
 const Hero = () => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://widget.clutch.co/static/js/widget.js';
+    script.async = true;
+    document.head.appendChild(script);
+    
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-background">
       <div className="container mx-auto px-6 py-20">
@@ -35,6 +48,19 @@ const Hero = () => {
               >
                 View Our Approach
               </Button>
+            </div>
+
+            {/* Clutch Widget */}
+            <div className="mt-6">
+              <div 
+                className="clutch-widget" 
+                data-url="https://widget.clutch.co" 
+                data-widget-type="14" 
+                data-height="50" 
+                data-nofollow="true" 
+                data-expandifr="true" 
+                data-clutchcompany-id="1896447"
+              ></div>
             </div>
           </div>
 
