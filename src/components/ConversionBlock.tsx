@@ -25,39 +25,22 @@ const ConversionBlock = () => {
                 <p className="text-gray-600 text-left">
                   30-minute strategic session to identify your biggest conversion opportunities.
                 </p>
-                <ul className="text-left space-y-2 text-gray-600">
-                  <li className="flex items-center">
-                    <span className="text-primary mr-2">✓</span>
-                    Conversion audit & opportunity assessment
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary mr-2">✓</span>
-                    Strategic experiment roadmap
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary mr-2">✓</span>
-                    Custom approach for your business
-                  </li>
-                </ul>
               </div>
 
               <div className="space-y-4">
-                <div className="space-y-4">
-                  <Input 
-                    placeholder="Your work email"
-                    className="border-gray-300 rounded-lg py-3 px-4"
-                  />
-                  <Input 
-                    placeholder="Company website"
-                    className="border-gray-300 rounded-lg py-3 px-4"
-                  />
-                </div>
-                <Button 
-                  size="lg"
-                  className="w-full bg-primary hover:bg-primary-muted text-primary-foreground font-semibold py-4 rounded-lg transition-smooth"
+                <a 
+                  href="https://calendly.com/kanika-misra"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
                 >
-                  Schedule Discovery Call
-                </Button>
+                  <Button 
+                    size="lg"
+                    className="w-full bg-primary hover:bg-primary-muted text-primary-foreground font-semibold py-4 rounded-lg transition-smooth"
+                  >
+                    Schedule Discovery Call
+                  </Button>
+                </a>
                 <p className="text-sm text-gray-500 text-left">
                   No commitment. No pitch. Just strategic insights.
                 </p>
