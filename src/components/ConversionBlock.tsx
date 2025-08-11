@@ -19,7 +19,7 @@ const ConversionBlock = () => {
           <div className="bg-gray-50 rounded-2xl p-8 md:p-12">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-foreground">
+                <h3 className="text-xl md:text-2xl font-bold text-foreground text-left">
                   Book Your Discovery Call
                 </h3>
                 <p className="text-gray-600 text-left">
@@ -41,7 +41,7 @@ const ConversionBlock = () => {
                     Schedule Discovery Call
                   </Button>
                 </a>
-                <p className="text-sm text-gray-500 text-left">
+                <p className="text-sm text-gray-500 text-center">
                   No commitment. No pitch. Just strategic insights.
                 </p>
               </div>
