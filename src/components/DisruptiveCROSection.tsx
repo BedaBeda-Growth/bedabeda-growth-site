@@ -78,11 +78,11 @@ const DisruptiveCROSection = () => {
           <div className="hidden md:block">
             <div className="relative min-h-[600px]">
               {/* WE Section - 3 separate boxes */}
-              <div className="absolute left-0 w-[320px]">
+              <div className="absolute left-0 w-[400px]">
                 {wePoints.map((point, index) => (
                   <div 
                     key={index} 
-                    className="absolute w-[300px]"
+                    className="absolute w-[375px]"
                     style={{ 
                       top: weBoxPositions[index].top,
                       left: weBoxPositions[index].left
@@ -123,7 +123,7 @@ const DisruptiveCROSection = () => {
                     const boxCenterY = boxTop + 90; // Middle of 180px tall box
                     const circleCenterY = 300; // Center of 600px container
                     const circleLeftEdge = 90; // Left edge of circle (180px diameter / 2)
-                    const boxRightEdge = 300 + boxLeft; // Right edge of box to connect to
+                    const boxRightEdge = 375 + boxLeft; // Right edge of box to connect to
                     
                     return (
                       <svg 
@@ -195,11 +195,11 @@ const DisruptiveCROSection = () => {
               </div>
 
               {/* THEY Section - 3 separate boxes */}
-              <div className="absolute right-0 w-[320px]">
+              <div className="absolute right-0 w-[400px]">
                 {theyPoints.map((point, index) => (
                   <div 
                     key={index} 
-                    className="absolute w-[300px]"
+                    className="absolute w-[375px]"
                     style={{ 
                       top: theyBoxPositions[index].top,
                       right: theyBoxPositions[index].right
