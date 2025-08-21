@@ -65,9 +65,9 @@ const WhoWeWorkWith = () => {
                         />
                       ) : index === 0 && logoIndex === 3 ? (
                         <img 
-                          src="/lovable-uploads/58d184f8-8f23-4e56-9c6c-2dc7b605cca2.png" 
-                          alt="MiracleSuit Logo" 
-                          className="w-full h-full object-cover rounded-full"
+                          src="/lovable-uploads/5551cc33-4b99-400c-af3d-a9edc2da688b.png" 
+                          alt="Logo" 
+                          className="w-full h-full object-contain rounded-full p-1"
                         />
                       ) : index === 1 && logoIndex === 3 ? (
                         <img 
