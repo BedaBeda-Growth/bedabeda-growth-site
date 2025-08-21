@@ -41,7 +41,7 @@ const WhoWeWorkWith = () => {
                   {[1, 2, 3].map((logoIndex) => (
                     <div
                       key={logoIndex}
-                      className={`w-8 h-8 ${(index === 0 && logoIndex === 1) || (index === 0 && logoIndex === 2) || (index === 0 && logoIndex === 3) || (index === 2 && logoIndex === 1) || (index === 2 && logoIndex === 2) ? 'bg-white border border-gray-300' : 'bg-gray-300 border-2 border-white'} rounded-full flex items-center justify-center text-xs font-medium text-gray-600 ${
+                      className={`w-8 h-8 ${(index === 0 && logoIndex === 1) || (index === 0 && logoIndex === 2) || (index === 0 && logoIndex === 3) || (index === 1 && logoIndex === 3) || (index === 2 && logoIndex === 1) || (index === 2 && logoIndex === 2) ? 'bg-white border border-gray-300' : 'bg-gray-300 border-2 border-white'} rounded-full flex items-center justify-center text-xs font-medium text-gray-600 ${
                         logoIndex === 1 ? 'z-30' : logoIndex === 2 ? 'z-20 -ml-2' : 'z-10 -ml-2'
                       }`}
                     >
@@ -67,6 +67,12 @@ const WhoWeWorkWith = () => {
                         <img 
                           src="/lovable-uploads/60231b33-eea7-4215-96ad-6d5bb7230cc1.png" 
                           alt="Hooked on Phonics Logo" 
+                          className="w-full h-full object-contain rounded-full p-1"
+                        />
+                      ) : index === 1 && logoIndex === 3 ? (
+                        <img 
+                          src="/lovable-uploads/55e2678b-21da-4195-b9a1-edcf54f1ccd4.png" 
+                          alt="Logo" 
                           className="w-full h-full object-contain rounded-full p-1"
                         />
                       ) : index === 2 && logoIndex === 2 ? (
