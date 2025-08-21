@@ -41,7 +41,7 @@ const WhoWeWorkWith = () => {
                   {[1, 2, 3].map((logoIndex) => (
                     <div
                       key={logoIndex}
-                      className={`w-8 h-8 ${index === 0 && logoIndex === 1 ? 'bg-white border border-gray-300' : 'bg-gray-300 border-2 border-white'} rounded-full flex items-center justify-center text-xs font-medium text-gray-600 ${
+                      className={`w-8 h-8 ${(index === 0 && logoIndex === 1) || (index === 0 && logoIndex === 2) ? 'bg-white border border-gray-300' : 'bg-gray-300 border-2 border-white'} rounded-full flex items-center justify-center text-xs font-medium text-gray-600 ${
                         logoIndex === 1 ? 'z-30' : logoIndex === 2 ? 'z-20 -ml-2' : 'z-10 -ml-2'
                       }`}
                     >
@@ -55,6 +55,12 @@ const WhoWeWorkWith = () => {
                         <img 
                           src="/lovable-uploads/5e63431b-7188-49a5-9743-83d62299c3c7.png" 
                           alt="Logo" 
+                          className="w-full h-full object-contain rounded-full p-1"
+                        />
+                      ) : index === 0 && logoIndex === 2 ? (
+                        <img 
+                          src="/lovable-uploads/70c758c5-8756-4182-ab11-330e17ab8529.png" 
+                          alt="Uptime Logo" 
                           className="w-full h-full object-contain rounded-full p-1"
                         />
                       ) : (
