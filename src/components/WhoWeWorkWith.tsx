@@ -65,9 +65,9 @@ const WhoWeWorkWith = () => {
                         />
                       ) : index === 0 && logoIndex === 3 ? (
                         <img 
-                          src="/lovable-uploads/60231b33-eea7-4215-96ad-6d5bb7230cc1.png" 
-                          alt="Hooked on Phonics Logo" 
-                          className="w-full h-full object-contain rounded-full p-1"
+                          src="/lovable-uploads/58d184f8-8f23-4e56-9c6c-2dc7b605cca2.png" 
+                          alt="MiracleSuit Logo" 
+                          className="w-full h-full object-cover rounded-full"
                         />
                       ) : index === 1 && logoIndex === 3 ? (
                         <img 
