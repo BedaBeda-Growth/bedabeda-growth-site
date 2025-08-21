@@ -41,14 +41,14 @@ const WhoWeWorkWith = () => {
                   {[1, 2, 3].map((logoIndex) => (
                     <div
                       key={logoIndex}
-                      className={`w-8 h-8 ${(index === 0 && logoIndex === 1) || (index === 0 && logoIndex === 2) || (index === 0 && logoIndex === 3) || (index === 1 && logoIndex === 1) || (index === 1 && logoIndex === 3) || (index === 2 && logoIndex === 1) || (index === 2 && logoIndex === 2) ? 'bg-white border border-gray-300' : 'bg-gray-300 border-2 border-white'} rounded-full flex items-center justify-center text-xs font-medium text-gray-600 ${
+                      className={`w-8 h-8 ${(index === 0 && logoIndex === 1) || (index === 0 && logoIndex === 2) || (index === 0 && logoIndex === 3) || (index === 1 && logoIndex === 1) || (index === 1 && logoIndex === 3) || (index === 2 && logoIndex === 1) || (index === 2 && logoIndex === 2) || (index === 2 && logoIndex === 3) ? 'bg-white border border-gray-300' : 'bg-gray-300 border-2 border-white'} rounded-full flex items-center justify-center text-xs font-medium text-gray-600 ${
                         logoIndex === 1 ? 'z-30' : logoIndex === 2 ? 'z-20 -ml-2' : 'z-10 -ml-2'
                       }`}
                     >
                       {index === 2 && logoIndex === 1 ? (
                         <img 
-                          src="/lovable-uploads/f94c354e-f540-4220-8e15-a296078bb8a1.png" 
-                          alt="Logo" 
+                          src="/lovable-uploads/0fd97cf8-629d-4ab3-a445-94b71b5117c7.png" 
+                          alt="Inspired Logo" 
                           className="w-full h-full object-cover rounded-full"
                         />
                       ) : index === 0 && logoIndex === 1 ? (
@@ -83,9 +83,15 @@ const WhoWeWorkWith = () => {
                         />
                       ) : index === 2 && logoIndex === 2 ? (
                         <img 
-                          src="/lovable-uploads/0fd97cf8-629d-4ab3-a445-94b71b5117c7.png" 
-                          alt="Inspired Logo" 
+                          src="/lovable-uploads/f94c354e-f540-4220-8e15-a296078bb8a1.png" 
+                          alt="RallyPoint Logo" 
                           className="w-full h-full object-cover rounded-full"
+                        />
+                      ) : index === 2 && logoIndex === 3 ? (
+                        <img 
+                          src="/lovable-uploads/c55d7685-d838-4e6c-888f-02e7e8361e76.png" 
+                          alt="Logo" 
+                          className="w-full h-full object-contain rounded-full p-1"
                         />
                       ) : (
                         logoIndex
