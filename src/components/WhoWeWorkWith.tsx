@@ -91,7 +91,7 @@ const WhoWeWorkWith = () => {
                         <img 
                           src="/lovable-uploads/c55d7685-d838-4e6c-888f-02e7e8361e76.png" 
                           alt="Logo" 
-                          className="w-full h-full object-contain rounded-full p-1"
+                          className="w-full h-full object-cover rounded-full"
                         />
                       ) : (
                         logoIndex
