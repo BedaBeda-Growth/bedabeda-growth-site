@@ -25,7 +25,7 @@ const WhoWeWorkWith = () => {
               Ecommerce + High-Volume B2C = <br />
               <span className="text-primary">Our Sweet Spot</span>
             </h2>
-            <p className="text-xl text-gray-600 leading-relaxed text-left">
+            <p className="text-xl text-gray-600 leading-relaxed text-center">
               We've driven powerful, measurable lifts for:
             </p>
           </div>
