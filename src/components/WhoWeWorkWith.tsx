@@ -73,7 +73,7 @@ const WhoWeWorkWith = () => {
                         <img 
                           src="/lovable-uploads/0fd97cf8-629d-4ab3-a445-94b71b5117c7.png" 
                           alt="Inspired Logo" 
-                          className="w-full h-full object-contain rounded-full p-1"
+                          className="w-full h-full object-cover rounded-full"
                         />
                       ) : (
                         logoIndex
