@@ -41,7 +41,7 @@ const WhoWeWorkWith = () => {
                   {[1, 2, 3].map((logoIndex) => (
                     <div
                       key={logoIndex}
-                      className={`w-8 h-8 ${(index === 0 && logoIndex === 1) || (index === 0 && logoIndex === 2) || (index === 0 && logoIndex === 3) || (index === 1 && logoIndex === 1) || (index === 1 && logoIndex === 3) || (index === 2 && logoIndex === 1) || (index === 2 && logoIndex === 2) || (index === 2 && logoIndex === 3) ? 'bg-white border border-gray-300' : 'bg-gray-300 border-2 border-white'} rounded-full flex items-center justify-center text-xs font-medium text-gray-600 ${
+                      className={`w-8 h-8 ${(index === 0 && logoIndex === 1) || (index === 0 && logoIndex === 2) || (index === 0 && logoIndex === 3) || (index === 1 && logoIndex === 1) || (index === 1 && logoIndex === 2) || (index === 1 && logoIndex === 3) || (index === 2 && logoIndex === 1) || (index === 2 && logoIndex === 2) || (index === 2 && logoIndex === 3) ? 'bg-white border border-gray-300' : 'bg-gray-300 border-2 border-white'} rounded-full flex items-center justify-center text-xs font-medium text-gray-600 ${
                         logoIndex === 1 ? 'z-30' : logoIndex === 2 ? 'z-20 -ml-2' : 'z-10 -ml-2'
                       }`}
                     >
@@ -73,6 +73,12 @@ const WhoWeWorkWith = () => {
                         <img 
                           src="/lovable-uploads/539f99f7-e4aa-4a6b-a440-8292d128ab0f.png" 
                           alt="Roda Logo" 
+                          className="w-full h-full object-contain rounded-full p-1"
+                        />
+                      ) : index === 1 && logoIndex === 2 ? (
+                        <img 
+                          src="/lovable-uploads/8b38bd27-22c6-4a08-a969-52d6e6e18a5c.png" 
+                          alt="Logo" 
                           className="w-full h-full object-contain rounded-full p-1"
                         />
                       ) : index === 1 && logoIndex === 3 ? (
