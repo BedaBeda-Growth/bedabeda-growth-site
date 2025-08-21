@@ -45,7 +45,15 @@ const WhoWeWorkWith = () => {
                         logoIndex === 1 ? 'z-30' : logoIndex === 2 ? 'z-20 -ml-2' : 'z-10 -ml-2'
                       }`}
                     >
-                      {logoIndex}
+                      {index === 2 && logoIndex === 1 ? (
+                        <img 
+                          src="/lovable-uploads/f94c354e-f540-4220-8e15-a296078bb8a1.png" 
+                          alt="Logo" 
+                          className="w-full h-full object-cover rounded-full"
+                        />
+                      ) : (
+                        logoIndex
+                      )}
                     </div>
                   ))}
                 </div>
