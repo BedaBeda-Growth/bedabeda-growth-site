@@ -55,7 +55,7 @@ const WhoWeWorkWith = () => {
                         <img 
                           src="/lovable-uploads/5e63431b-7188-49a5-9743-83d62299c3c7.png" 
                           alt="Logo" 
-                          className="w-full h-full object-cover rounded-full"
+                          className="w-full h-full object-contain rounded-full p-1"
                         />
                       ) : (
                         logoIndex
