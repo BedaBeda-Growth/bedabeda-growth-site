@@ -59,8 +59,8 @@ const WhoWeWorkWith = () => {
                         />
                       ) : index === 0 && logoIndex === 2 ? (
                         <img 
-                          src="/lovable-uploads/70c758c5-8756-4182-ab11-330e17ab8529.png" 
-                          alt="Uptime Logo" 
+                          src="/lovable-uploads/ad14011f-b94a-4411-a169-04cb1e19dac5.png" 
+                          alt="Hush Logo" 
                           className="w-full h-full object-contain rounded-full p-1"
                         />
                       ) : (
