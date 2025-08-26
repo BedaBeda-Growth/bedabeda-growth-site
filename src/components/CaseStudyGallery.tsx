@@ -128,11 +128,17 @@ const CaseStudyGallery = () => {
                           <div>
                             <h3 className="font-semibold mb-2">Challenge</h3>
                             <p className="text-gray-600 mb-4">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                              {study.id === 1 
+                                ? "Allegiance Flag Supply was growing quickly and wanted to ensure effiency as they scaled, especially knowing their product was more expensive than others in the market."
+                                : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                              }
                             </p>
                             <h3 className="font-semibold mb-2">Solution</h3>
                             <p className="text-gray-600">
-                              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                              {study.id === 1 
+                                ? "We used a combination of user research, custom conversion & behavioral reports, and an updated page journey to showcase the right information at the right time to build trust & perceived value."
+                                : "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                              }
                             </p>
                           </div>
                           <div>
