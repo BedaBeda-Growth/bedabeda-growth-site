@@ -8,10 +8,10 @@ const CaseStudyGallery = () => {
   const caseStudies = [
     {
       id: 1,
-      title: "E-commerce Redesign",
-      metric: "+39% CVR",
-      description: "Complete PDP overhaul for beauty brand",
-      image: "/placeholder.svg",
+      title: "Product Page Optimization",
+      metric: "+15.8% RPS",
+      description: "Data-driven PDP overhaul for niche home goods",
+      image: "/lovable-uploads/073035e6-0b23-493f-b261-b59c55a82d2b.png",
       category: "E-commerce"
     },
     {
@@ -89,12 +89,22 @@ const CaseStudyGallery = () => {
                     </DialogTrigger>
                     <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
                       <div className="p-6">
-                        <div className="aspect-[4/3] bg-gray-100 rounded-lg mb-6">
-                          <div className="w-full h-full flex items-center justify-center text-gray-500">
-                            Full Case Study View - {study.title}
-                          </div>
+                        <div className="aspect-[4/3] bg-gray-100 rounded-lg mb-6 overflow-hidden">
+                          {study.id === 1 ? (
+                            <img 
+                              src="/lovable-uploads/073035e6-0b23-493f-b261-b59c55a82d2b.png" 
+                              alt="Product Page Optimization Case Study"
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-gray-500">
+                              Full Case Study View - {study.title}
+                            </div>
+                          )}
                         </div>
-                        <h2 className="text-2xl font-bold mb-4">{study.title}</h2>
+                        <h2 className="text-2xl font-bold mb-4">
+                          {study.id === 1 ? "Product Page Optimization" : study.title}
+                        </h2>
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
                             <h3 className="font-semibold mb-2">Challenge</h3>
