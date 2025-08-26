@@ -79,6 +79,16 @@ const CaseStudyGallery = () => {
                               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
                             </>
+                          ) : study.id === 2 ? (
+                            <>
+                              <img 
+                                src="/lovable-uploads/65bfccf9-b541-42fb-b0d7-0cd49a416900.png" 
+                                alt="Paperlike Landing Page Background"
+                                className="absolute inset-0 w-full h-full object-cover object-top"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
+                            </>
                           ) : (
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
                           )}
