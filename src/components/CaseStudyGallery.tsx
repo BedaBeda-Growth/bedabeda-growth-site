@@ -17,8 +17,8 @@ const CaseStudyGallery = () => {
     {
       id: 2,
       title: "Landing Page Optimization",
-      metric: "+18% AOV",
-      description: "Merchandising-focused homepage test",
+      metric: "+57.4% Conversion Rate Increase",
+      description: "Ad-focused dedicated landing page",
       image: "/placeholder.svg",
       category: "Landing Page"
     },
@@ -90,6 +90,13 @@ const CaseStudyGallery = () => {
                                 <img 
                                   src="/lovable-uploads/84c87a09-5422-4ab4-9d3a-33ef18351388.png" 
                                   alt="Allegiance Made in USA"
+                                  className="absolute top-2 right-2 h-6 w-auto"
+                                />
+                              )}
+                              {study.id === 2 && (
+                                <img 
+                                  src="/lovable-uploads/044f4f7c-632f-40fd-ac25-44e34df54ca2.png" 
+                                  alt="Paperlike Logo"
                                   className="absolute top-2 right-2 h-6 w-auto"
                                 />
                               )}
