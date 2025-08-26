@@ -9,7 +9,7 @@ const CaseStudyGallery = () => {
     {
       id: 1,
       title: "Product Page Optimization",
-      metric: "+15.8% RPS",
+      metric: "+15.8% Revenue Per Session",
       description: "Data-driven PDP overhaul for niche home goods",
       image: "/lovable-uploads/073035e6-0b23-493f-b261-b59c55a82d2b.png",
       category: "E-commerce"
@@ -83,9 +83,16 @@ const CaseStudyGallery = () => {
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
                           )}
                           <div className="absolute bottom-4 left-4 right-4">
-                            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
+                            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 relative">
                               <p className="text-xs text-gray-300 mb-1">{study.category}</p>
                               <p className="font-semibold text-lg">{study.metric}</p>
+                              {study.id === 1 && (
+                                <img 
+                                  src="/lovable-uploads/84c87a09-5422-4ab4-9d3a-33ef18351388.png" 
+                                  alt="Allegiance Made in USA"
+                                  className="absolute top-2 right-2 h-6 w-auto"
+                                />
+                              )}
                             </div>
                           </div>
                         </div>
