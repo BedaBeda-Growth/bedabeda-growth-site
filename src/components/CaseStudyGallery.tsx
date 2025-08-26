@@ -89,15 +89,15 @@ const CaseStudyGallery = () => {
                     </DialogTrigger>
                     <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
                       <div className="p-6">
-                        <div className="aspect-[4/3] bg-gray-100 rounded-lg mb-6 overflow-hidden">
+                        <div className="bg-gray-100 rounded-lg mb-6 overflow-hidden">
                           {study.id === 1 ? (
                             <img 
                               src="/lovable-uploads/073035e6-0b23-493f-b261-b59c55a82d2b.png" 
                               alt="Product Page Optimization Case Study"
-                              className="w-full h-full object-cover"
+                              className="w-full h-auto object-contain"
                             />
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center text-gray-500">
+                            <div className="aspect-[4/3] w-full h-full flex items-center justify-center text-gray-500">
                               Full Case Study View - {study.title}
                             </div>
                           )}
