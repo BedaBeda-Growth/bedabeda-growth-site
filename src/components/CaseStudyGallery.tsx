@@ -69,7 +69,19 @@ const CaseStudyGallery = () => {
                     <DialogTrigger asChild>
                       <div className="bg-gray-800 rounded-2xl overflow-hidden cursor-pointer hover:bg-gray-750 transition-colors group">
                         <div className="aspect-[4/3] bg-gray-700 relative overflow-hidden">
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
+                          {study.id === 1 ? (
+                            <>
+                              <img 
+                                src="/lovable-uploads/cee89299-737e-4676-b52f-73feda5f3234.png" 
+                                alt="Product Page Optimization Background"
+                                className="absolute inset-0 w-full h-full object-cover"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
+                            </>
+                          ) : (
+                            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
+                          )}
                           <div className="absolute bottom-4 left-4 right-4">
                             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
                               <p className="text-xs text-gray-300 mb-1">{study.category}</p>
