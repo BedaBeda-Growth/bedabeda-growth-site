@@ -120,6 +120,13 @@ const CaseStudyGallery = () => {
                                   className="absolute top-2 right-2 h-6 w-auto"
                                 />
                               )}
+                              {study.id === 3 && (
+                                <img 
+                                  src="/lovable-uploads/4c063577-ca79-4938-8d0f-4e64f18822d5.png" 
+                                  alt="Community Logo"
+                                  className="absolute top-2 right-2 h-6 w-auto"
+                                />
+                              )}
                             </div>
                           </div>
                         </div>
