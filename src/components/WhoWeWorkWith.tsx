@@ -118,7 +118,7 @@ const WhoWeWorkWith = () => {
 
           <TestimonialSlider />
           
-          <div className="bg-secondary/30 rounded-2xl p-8 text-left">
+          <div className="bg-white border border-secondary/30 rounded-2xl p-8 text-left">
             <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
               <strong>What ties them together?</strong> They're past the DTC playbook stage. They're ready for depth, not fluff. And they're tired of CRO that doesn't move the needle or leaves their site looking like Frankenstein's love child.
             </p>
