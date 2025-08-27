@@ -172,6 +172,8 @@ const CaseStudyGallery = () => {
                                 ? "Allegiance Flag Supply was growing quickly and wanted to ensure effiency as they scaled, especially knowing their product was more expensive than others in the market."
                                 : study.id === 2
                                 ? "Paperlike had historically only sent their traffic primarily to the product page, and they wanted to improve performance by testing landing pages in a clear and structured way."
+                                : study.id === 3
+                                ? "The Personal Development School was investing meaningfully in growing across all their acquisition channels. They wanted to make sure they were converting that traffic as effectively and efficiently as possible to support profitable growth."
                                 : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                               }
                             </p>
@@ -181,6 +183,8 @@ const CaseStudyGallery = () => {
                                 ? "We used a combination of user research, custom conversion & behavioral reports, and an updated page journey to showcase the right information at the right time to build trust & perceived value."
                                 : study.id === 2
                                 ? "The BedaBeda Growth team used our deep-dive audit and analysis process to create a landing page testing roadmap and framework, customized to support top-performing ads & overal user needs, hesitations, and values."
+                                : study.id === 3
+                                ? "The BedaBeda Growth team discovered that the audience knew their problems and had a decent understanding of how to solve it, but they needed confidence that joining the PDS community was the best, most effective to do that. BBG created a new homepage focused on user education, confidence, and trust-building to outperform the control."
                                 : "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                               }
                             </p>
