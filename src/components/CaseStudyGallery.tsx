@@ -92,7 +92,7 @@ const CaseStudyGallery = () => {
                           ) : study.id === 3 ? (
                             <>
                               <img 
-                                src="/lovable-uploads/homepage-community-bg.png" 
+                                src="/lovable-uploads/eb294c82-2731-41e6-86f1-ba3cad39182a.png" 
                                 alt="Online B2C Community Background"
                                 className="absolute inset-0 w-full h-full object-cover"
                               />
