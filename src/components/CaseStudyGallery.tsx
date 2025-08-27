@@ -155,6 +155,12 @@ const CaseStudyGallery = () => {
                               alt="Paperlike Landing Page Case Study"
                               className="w-full h-auto object-contain"
                             />
+                          ) : study.id === 3 ? (
+                            <img 
+                              src="/lovable-uploads/ac9e1377-2ade-4510-93cd-1a3bc9f79323.png" 
+                              alt="Personal Development School Case Study"
+                              className="w-full h-auto object-contain"
+                            />
                           ) : (
                             <div className="aspect-[4/3] w-full h-full flex items-center justify-center text-gray-500">
                               Full Case Study View - {study.title}
