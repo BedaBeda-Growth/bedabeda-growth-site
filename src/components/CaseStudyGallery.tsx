@@ -24,11 +24,11 @@ const CaseStudyGallery = () => {
     },
     {
       id: 3,
-      title: "Lead Generation",
-      metric: "22% lift",
-      description: "Long-form layout for B2B SaaS",
+      title: "Homepage Optimization",
+      metric: "+36.3% Revenue Per Session",
+      description: "Homepage optimization for high-volume B2C online community",
       image: "/placeholder.svg",
-      category: "Lead Gen"
+      category: "Online B2C Community"
     },
     {
       id: 4,
@@ -89,6 +89,16 @@ const CaseStudyGallery = () => {
                               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
                             </>
+                          ) : study.id === 3 ? (
+                            <>
+                              <img 
+                                src="/lovable-uploads/homepage-community-bg.png" 
+                                alt="Online B2C Community Background"
+                                className="absolute inset-0 w-full h-full object-cover"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
+                            </>
                           ) : (
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
                           )}
@@ -145,7 +155,7 @@ const CaseStudyGallery = () => {
                           )}
                         </div>
                         <h2 className="text-2xl font-bold mb-4">
-                          {study.id === 1 ? "Product Page Optimization" : study.title}
+                          {study.id === 1 ? "Product Page Optimization" : study.id === 2 ? "Landing Page Optimization" : study.title}
                         </h2>
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
