@@ -92,10 +92,10 @@ const CaseStudyGallery = () => {
                           ) : study.id === 3 ? (
                             <>
                               <img 
-                                 src="/lovable-uploads/community-homepage-bg.png" 
-                                 alt="Online B2C Community Background"
-                                 className="absolute inset-0 w-full h-full object-cover"
-                               />
+                                src="/lovable-uploads/homepage-community-bg.png" 
+                                alt="Online B2C Community Background"
+                                className="absolute inset-0 w-full h-full object-cover"
+                              />
                               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
                             </>
