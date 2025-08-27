@@ -132,6 +132,12 @@ const CaseStudyGallery = () => {
                               alt="Product Page Optimization Case Study"
                               className="w-full h-auto object-contain"
                             />
+                          ) : study.id === 2 ? (
+                            <img 
+                              src="/lovable-uploads/c849057c-6021-4b80-b5e8-2f0a47117a60.png" 
+                              alt="Paperlike Landing Page Case Study"
+                              className="w-full h-auto object-contain"
+                            />
                           ) : (
                             <div className="aspect-[4/3] w-full h-full flex items-center justify-center text-gray-500">
                               Full Case Study View - {study.title}
@@ -147,6 +153,8 @@ const CaseStudyGallery = () => {
                             <p className="text-gray-600 mb-4">
                               {study.id === 1 
                                 ? "Allegiance Flag Supply was growing quickly and wanted to ensure effiency as they scaled, especially knowing their product was more expensive than others in the market."
+                                : study.id === 2
+                                ? "Paperlike had historically only sent their traffic primarily to the product page, and they wanted to improve performance by testing landing pages in a clear and structured way."
                                 : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                               }
                             </p>
@@ -154,6 +162,8 @@ const CaseStudyGallery = () => {
                             <p className="text-gray-600">
                               {study.id === 1 
                                 ? "We used a combination of user research, custom conversion & behavioral reports, and an updated page journey to showcase the right information at the right time to build trust & perceived value."
+                                : study.id === 2
+                                ? "The BedaBeda Growth team used our deep-dive audit and analysis process to create a landing page testing roadmap and framework, customized to support top-performing ads & overal user needs, hesitations, and values."
                                 : "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                               }
                             </p>
