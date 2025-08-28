@@ -18,7 +18,7 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-background">
-      <div className="container mx-auto px-6 py-20">
+      <div className="container mx-auto px-6 pt-20 pb-1">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <div className="space-y-8">
