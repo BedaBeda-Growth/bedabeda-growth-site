@@ -180,7 +180,7 @@ const CaseStudyGallery = () => {
                             />
                           ) : study.id === 4 ? (
                             <img 
-                              src="/lovable-uploads/74ef33b8-f697-485c-8321-217c9176ac92.png" 
+                              src="/lovable-uploads/deec6508-50b6-4f84-8315-c099763ec39d.png" 
                               alt="Catalog Page Optimization Case Study"
                               className="w-full h-auto object-contain"
                             />
@@ -204,7 +204,7 @@ const CaseStudyGallery = () => {
                                 : study.id === 3
                                 ? "The Personal Development School was investing meaningfully in growing across all their acquisition channels. They wanted to make sure they were converting that traffic as effectively and efficiently as possible to support profitable growth."
                                 : study.id === 4
-                                ? "This 9-figure equestrian brand needed to optimize their catalog and collections pages to better showcase their extensive SKU range and improve the shopping experience for their customers."
+                                ? "This 9-figure equestrian brand, Schneiders Saddlery, needed to optimize their catalog pages to better build trust and improve the shopping experience for their customers."
                                 : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                               }
                             </p>
@@ -217,7 +217,7 @@ const CaseStudyGallery = () => {
                                 : study.id === 3
                                 ? "The BedaBeda Growth team discovered that the audience knew their problems and had a decent understanding of how to solve it, but they needed confidence that joining the PDS community was the best, most effective to do that. BBG created a new homepage focused on user education, confidence, and trust-building to outperform the control."
                                 : study.id === 4
-                                ? "The BedaBeda Growth team implemented a comprehensive catalog page redesign focused on improving product discovery, filtering capabilities, and visual hierarchy to help customers navigate the extensive inventory more effectively."
+                                ? "The BedaBeda Growth team implemented an immersive collections page update, focused on improving product discovery, filtering capabilities, and visual hierarchy to help customers navigate the extensive inventory more effectively and with higher intent & trust."
                                 : "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                               }
                             </p>
