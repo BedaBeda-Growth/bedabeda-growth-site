@@ -137,6 +137,13 @@ const CaseStudyGallery = () => {
                                   className="absolute top-2 right-2 h-6 w-auto"
                                 />
                               )}
+                              {study.id === 4 && (
+                                <img 
+                                  src="/lovable-uploads/f067cea1-5685-4618-bc9a-dd031addb552.png" 
+                                  alt="Schneiders Logo"
+                                  className="absolute top-2 right-2 h-6 w-auto"
+                                />
+                              )}
                             </div>
                           </div>
                         </div>
