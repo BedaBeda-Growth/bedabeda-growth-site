@@ -32,11 +32,11 @@ const CaseStudyGallery = () => {
     },
     {
       id: 4,
-      title: "Checkout Flow",
-      metric: "+28% completion",
-      description: "Streamlined 3-step checkout process",
+      title: "Catalog Page Optimization",
+      metric: "+$1.8MM New Annual Revenue",
+      description: "Catalog/Collections page optimization for 9-figure brand",
       image: "/placeholder.svg",
-      category: "Conversion"
+      category: "High SKU E-Commerce"
     },
     {
       id: 5,
@@ -94,6 +94,16 @@ const CaseStudyGallery = () => {
                               <img 
                                 src="/lovable-uploads/eb294c82-2731-41e6-86f1-ba3cad39182a.png" 
                                 alt="Online B2C Community Background"
+                                className="absolute inset-0 w-full h-full object-cover"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
+                            </>
+                          ) : study.id === 4 ? (
+                            <>
+                              <img 
+                                src="/lovable-uploads/74ef33b8-f697-485c-8321-217c9176ac92.png" 
+                                alt="Catalog Page Optimization Background"
                                 className="absolute inset-0 w-full h-full object-cover"
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -161,6 +171,12 @@ const CaseStudyGallery = () => {
                               alt="Personal Development School Case Study"
                               className="w-full h-auto object-contain"
                             />
+                          ) : study.id === 4 ? (
+                            <img 
+                              src="/lovable-uploads/74ef33b8-f697-485c-8321-217c9176ac92.png" 
+                              alt="Catalog Page Optimization Case Study"
+                              className="w-full h-auto object-contain"
+                            />
                           ) : (
                             <div className="aspect-[4/3] w-full h-full flex items-center justify-center text-gray-500">
                               Full Case Study View - {study.title}
@@ -168,7 +184,7 @@ const CaseStudyGallery = () => {
                           )}
                         </div>
                         <h2 className="text-2xl font-bold mb-4">
-                          {study.id === 1 ? "Product Page Optimization" : study.id === 2 ? "Landing Page Optimization" : study.title}
+                          {study.id === 1 ? "Product Page Optimization" : study.id === 2 ? "Landing Page Optimization" : study.id === 4 ? "Catalog Page Optimization" : study.title}
                         </h2>
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
@@ -180,6 +196,8 @@ const CaseStudyGallery = () => {
                                 ? "Paperlike had historically only sent their traffic primarily to the product page, and they wanted to improve performance by testing landing pages in a clear and structured way."
                                 : study.id === 3
                                 ? "The Personal Development School was investing meaningfully in growing across all their acquisition channels. They wanted to make sure they were converting that traffic as effectively and efficiently as possible to support profitable growth."
+                                : study.id === 4
+                                ? "This 9-figure equestrian brand needed to optimize their catalog and collections pages to better showcase their extensive SKU range and improve the shopping experience for their customers."
                                 : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                               }
                             </p>
@@ -191,6 +209,8 @@ const CaseStudyGallery = () => {
                                 ? "The BedaBeda Growth team used our deep-dive audit and analysis process to create a landing page testing roadmap and framework, customized to support top-performing ads & overal user needs, hesitations, and values."
                                 : study.id === 3
                                 ? "The BedaBeda Growth team discovered that the audience knew their problems and had a decent understanding of how to solve it, but they needed confidence that joining the PDS community was the best, most effective to do that. BBG created a new homepage focused on user education, confidence, and trust-building to outperform the control."
+                                : study.id === 4
+                                ? "The BedaBeda Growth team implemented a comprehensive catalog page redesign focused on improving product discovery, filtering capabilities, and visual hierarchy to help customers navigate the extensive inventory more effectively."
                                 : "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                               }
                             </p>
