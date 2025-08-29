@@ -5,22 +5,22 @@ const TestimonialSlider = () => {
 
   const testimonials = [
     {
-      quote: "BedaBeda Growth transformed our conversion strategy with deep insights that led to a 35% increase in conversions within 3 months.",
-      name: "Sarah Johnson",
-      title: "VP of Growth",
-      company: "TechStart Inc."
+      quote: "Working with BedaBeda Growth has brought immeasurable value to our business. Their copywriting and conversion rate optimization services significantly lowered our CPA in a very competitive market. Although BedaBeda Growth isn't cheap, they are extremely efficient and the decision to work with this team has provided an exponential ROI.",
+      name: "Jon Klein",
+      title: "CEO",
+      company: "Neutralyze"
     },
     {
-      quote: "Their approach to CRO is unlike anything we've experienced. They don't just run tests - they understand our customers.",
-      name: "Mike Chen",
-      title: "Head of Marketing",
-      company: "Commerce Plus"
+      quote: "We were highly impressed with them ad how they thought about shaping the customer journey.",
+      name: "Gabriel Kattan",
+      title: "CEO",
+      company: "Perk"
     },
     {
-      quote: "The team's strategic thinking and execution helped us break through a plateau we'd been stuck at for months.",
-      name: "Emily Rodriguez",
-      title: "CMO",
-      company: "ScaleUp Solutions"
+      quote: "What impressed me the most was their understanding of our customers psychology and then translating that to good copywriting. They delivered items on time and were great at keeping us updated on the progress they were making. They were thoughtful partners and they cared about delivering quality pages.",
+      name: "KM",
+      title: "CEO",
+      company: "The Earthling Co"
     }
   ];
 

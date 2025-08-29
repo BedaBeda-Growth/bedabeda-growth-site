@@ -22,7 +22,7 @@ const WhoWeWorkWith = () => {
         <div className="max-w-4xl mx-auto space-y-12">
           <div className="text-center space-y-6">
             <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-              Ecommerce + High-Volume B2C = <br />
+              Ecommerce & High-Volume B2C = <br />
               <span className="text-primary">Our Sweet Spot</span>
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed text-center">
