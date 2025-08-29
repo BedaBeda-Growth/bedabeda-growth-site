@@ -11,7 +11,7 @@ const TestimonialSlider = () => {
       company: "Neutralyze"
     },
     {
-      quote: "We were highly impressed with them ad how they thought about shaping the customer journey.",
+      quote: "BedaBeda did an excellent job of identifying opportunities and implementing them in order to increase our conversion. They truly understand the mind of consumers and how to shape journeys around purchase intent. We were highly impressed with them and how they thought about shaping the customer journey.",
       name: "Gabriel Kattan",
       title: "CEO",
       company: "Perk"
