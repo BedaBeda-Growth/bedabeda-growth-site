@@ -70,7 +70,7 @@ const DisruptiveCROSection = () => {
             {/* Aqua divider line */}
             <div className="w-24 h-0.5 bg-primary mx-auto"></div>
             <p className="text-lg text-muted-foreground mt-4">
-              Just call us your personal CRO concierge.
+              We believe: to optimize behavior, you must optimize perception.
             </p>
           </div>
 
