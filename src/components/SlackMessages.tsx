@@ -2,7 +2,7 @@ const SlackMessages = () => {
   const messages = [
     { text: "My site feels like it's taped together with random widgets.", title: "VP of Growth" },
     { text: "We don't have a cohesive story throughout our site.", title: "Head of eCommerce" },
-    { text: "I'm not 'feeling' any of our wins.", title: "Director of Marketing" },
+    { text: "My designers & devs don't think like performance marketers.", title: "Director of Marketing" },
     { text: "The testing ideas feel uncreative.", title: "CEO & Co-Founder" }
   ];
 
