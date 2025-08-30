@@ -21,7 +21,7 @@ const AntiCookieCutter = () => {
               At BedaBeda Growth, we take a hybrid approach: blending the best of traditional CRO, deep strategic insight, and "big swing" psychological & storytelling experimentation. The result? Bigger wins, clearer signals, and long-term upside you can actually build on.
             </p>
             <p className="text-xl font-semibold text-primary text-center">
-              We're not chasing speed. We're chasing signal.
+              We're not chasing dashboard dollars. We're chasing real dollars.
             </p>
           </div>
 
