@@ -40,11 +40,11 @@ const CaseStudyGallery = () => {
     },
     {
       id: 5,
-      title: "Mobile Experience",
-      metric: "+45% mobile CVR",
-      description: "Mobile-first redesign approach",
+      title: "Offer Optimization",
+      metric: "+95.6% ROAS Increase",
+      description: "Landing page offer optimization for men's care brand",
       image: "/placeholder.svg",
-      category: "Mobile"
+      category: "Landing Page"
     }
   ];
 
@@ -110,7 +110,15 @@ const CaseStudyGallery = () => {
                               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
                             </>
                           ) : (
-                            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
+                            <>
+                              <img 
+                                src="/lovable-uploads/435022bc-f43c-43b0-ada3-cfc61bfbad0d.png" 
+                                alt="Offer Optimization Background"
+                                className="absolute inset-0 w-full h-full object-cover"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
+                            </>
                           )}
                           <div className="absolute bottom-4 left-4 right-4">
                             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 relative">
@@ -185,13 +193,15 @@ const CaseStudyGallery = () => {
                               className="w-full h-auto object-contain"
                             />
                           ) : (
-                            <div className="aspect-[4/3] w-full h-full flex items-center justify-center text-gray-500">
-                              Full Case Study View - {study.title}
-                            </div>
+                            <img 
+                              src="/lovable-uploads/435022bc-f43c-43b0-ada3-cfc61bfbad0d.png" 
+                              alt="Offer Optimization Case Study"
+                              className="w-full h-auto object-contain"
+                            />
                           )}
                         </div>
                         <h2 className="text-2xl font-bold mb-4">
-                          {study.id === 1 ? "Product Page Optimization" : study.id === 2 ? "Landing Page Optimization" : study.id === 4 ? "Catalog Page Optimization" : study.title}
+                          {study.id === 1 ? "Product Page Optimization" : study.id === 2 ? "Landing Page Optimization" : study.id === 4 ? "Catalog Page Optimization" : study.id === 5 ? "Offer Optimization" : study.title}
                         </h2>
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
@@ -205,6 +215,8 @@ const CaseStudyGallery = () => {
                                 ? "The Personal Development School was investing meaningfully in growing across all their acquisition channels. They wanted to make sure they were converting that traffic as effectively and efficiently as possible to support profitable growth."
                                 : study.id === 4
                                 ? "This 9-figure equestrian brand, Schneiders Saddlery, needed to optimize their catalog pages to better build trust and improve the shopping experience for their customers."
+                                : study.id === 5
+                                ? "This men's care brand needed to optimize their landing page offers to improve ROAS and better convert their paid traffic from various advertising channels."
                                 : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                               }
                             </p>
@@ -218,6 +230,8 @@ const CaseStudyGallery = () => {
                                 ? "The BedaBeda Growth team discovered that the audience knew their problems and had a decent understanding of how to solve it, but they needed confidence that joining the PDS community was the best, most effective to do that. BBG created a new homepage focused on user education, confidence, and trust-building to outperform the control."
                                 : study.id === 4
                                 ? "The BedaBeda Growth team implemented an immersive collections page update, focused on improving product discovery, filtering capabilities, and visual hierarchy to help customers navigate the extensive inventory more effectively and with higher intent & trust."
+                                : study.id === 5
+                                ? "The BedaBeda Growth team redesigned the landing page experience with optimized offer structure, improved value proposition clarity, and enhanced trust signals to maximize conversion rates and return on ad spend."
                                 : "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                               }
                             </p>
