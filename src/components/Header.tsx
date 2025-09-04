@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import bedabedaLogo from "@/assets/bedabeda-logo.png";
+const bedabedaLogo = "/lovable-uploads/bc61751b-5167-4161-823e-43052fe14ff9.png";
 
 const Header = () => {
   return (
@@ -12,7 +12,7 @@ const Header = () => {
               <img 
                 src={bedabedaLogo} 
                 alt="BedaBeda Growth" 
-                className="h-8 w-auto"
+                className="h-12 w-auto"
               />
             </a>
           </div>
