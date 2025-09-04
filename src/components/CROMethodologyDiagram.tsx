@@ -1,4 +1,4 @@
-import { BarChart3, Play, Zap, PenTool, Split, Palette, TrendingUp } from "lucide-react";
+import { BarChart3, Play, Zap, PenTool, Split, Palette, TrendingUp, Brain, Book } from "lucide-react";
 
 const CROMethodologyDiagram = () => {
   const methodologies = [
@@ -13,6 +13,12 @@ const CROMethodologyDiagram = () => {
       title: "UI/UX Design", 
       position: "top-16 right-2",
       delay: "0.2s"
+    },
+    {
+      icon: Brain,
+      title: "User Psychology",
+      position: "top-1/2 right-2 transform -translate-y-1/2",
+      delay: "0.3s"
     },
     {
       icon: Split,
@@ -31,6 +37,12 @@ const CROMethodologyDiagram = () => {
       title: "Heat Mapping",
       position: "bottom-16 left-2",
       delay: "0.8s"
+    },
+    {
+      icon: Book,
+      title: "Brand Positioning",
+      position: "top-1/2 left-2 transform -translate-y-1/2",
+      delay: "0.9s"
     },
     {
       icon: Play,
@@ -53,11 +65,12 @@ const CROMethodologyDiagram = () => {
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
         <g className="opacity-30">
           {methodologies.map((_, index) => {
-            const angle = (index * 60) * (Math.PI / 180);
+            const angle = (index * 45) * (Math.PI / 180);
+            const radius = index % 2 === 0 ? 120 : 140;
             const startX = 200;
             const startY = 200;
-            const endX = 200 + Math.cos(angle) * 120;
-            const endY = 200 + Math.sin(angle) * 120;
+            const endX = 200 + Math.cos(angle) * radius;
+            const endY = 200 + Math.sin(angle) * radius;
             
             return (
               <line
