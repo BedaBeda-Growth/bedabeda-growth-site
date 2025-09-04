@@ -1,41 +1,41 @@
-import { BarChart3, Play, Zap, PenTool, Split, Palette } from "lucide-react";
+import { BarChart3, Play, Zap, PenTool, Split, Palette, TrendingUp } from "lucide-react";
 
 const CROMethodologyDiagram = () => {
   const methodologies = [
     {
       icon: BarChart3,
       title: "Advanced Analytics",
-      position: "top-8 left-1/2 transform -translate-x-1/2",
+      position: "top-4 left-1/2 transform -translate-x-1/2",
       delay: "0s"
     },
     {
       icon: Palette,
       title: "UI/UX Design", 
-      position: "top-1/3 right-4",
+      position: "top-16 right-2",
       delay: "0.2s"
     },
     {
       icon: Split,
       title: "A/B Testing",
-      position: "bottom-1/3 right-4", 
+      position: "bottom-16 right-2", 
       delay: "0.4s"
     },
     {
       icon: PenTool,
       title: "Persuasive Copy",
-      position: "bottom-8 left-1/2 transform -translate-x-1/2",
+      position: "bottom-4 left-1/2 transform -translate-x-1/2",
       delay: "0.6s"
     },
     {
       icon: Zap,
       title: "Heat Mapping",
-      position: "bottom-1/3 left-4",
+      position: "bottom-16 left-2",
       delay: "0.8s"
     },
     {
       icon: Play,
       title: "Session Recordings",
-      position: "top-1/3 left-4",
+      position: "top-16 left-2",
       delay: "1s"
     }
   ];
@@ -45,7 +45,7 @@ const CROMethodologyDiagram = () => {
       {/* Central hub */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full border-2 border-primary/30 backdrop-blur-sm flex items-center justify-center animate-pulse">
         <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-muted rounded-full flex items-center justify-center shadow-xl">
-          <span className="text-white font-bold text-sm">CRO</span>
+          <TrendingUp className="w-8 h-8 text-white" />
         </div>
       </div>
 
