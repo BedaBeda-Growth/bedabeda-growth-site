@@ -26,7 +26,7 @@ const Header = () => {
             <a href="#newsletter" className="text-gray-600 hover:text-primary transition-smooth font-medium">
               Newsletter
             </a>
-            <a href="#contact" className="text-gray-600 hover:text-primary transition-smooth font-medium">
+            <a href="/contact" className="text-gray-600 hover:text-primary transition-smooth font-medium">
               Contact
             </a>
           </nav>
