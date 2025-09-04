@@ -8,11 +8,13 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <img 
-              src={bedabedaLogo} 
-              alt="BedaBeda Growth" 
-              className="h-8 w-auto"
-            />
+            <a href="/" className="flex items-center">
+              <img 
+                src={bedabedaLogo} 
+                alt="BedaBeda Growth" 
+                className="h-8 w-auto"
+              />
+            </a>
           </div>
 
           {/* Navigation */}
