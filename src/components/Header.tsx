@@ -12,7 +12,7 @@ const Header = () => {
               <img 
                 src={bedabedaLogo} 
                 alt="BedaBeda Growth" 
-                className="h-14 w-auto"
+                className="h-18 w-auto"
               />
             </a>
           </div>
