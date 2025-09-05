@@ -128,13 +128,15 @@ const CROMethodologyDiagram = () => {
 
       {/* Mobile View */}
       <div className="md:hidden w-full max-w-sm mx-auto">
-        {/* Central hub for mobile */}
-        <div className="flex justify-center mb-8">
+        {/* Central hub with headline for mobile */}
+        <div className="flex items-center justify-center mb-8 gap-4">
+          <h3 className="text-2xl font-bold text-foreground">Our</h3>
           <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full border-2 border-primary/30 backdrop-blur-sm flex items-center justify-center animate-pulse">
             <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-muted rounded-full flex items-center justify-center shadow-xl">
               <TrendingUp className="w-6 h-6 text-white" />
             </div>
           </div>
+          <h3 className="text-2xl font-bold text-foreground">Toolkit</h3>
         </div>
 
         {/* Mobile methodology grid */}
