@@ -37,8 +37,11 @@ const Header = () => {
           <div className="flex items-center space-x-4">
             <Button 
               className="bg-primary hover:bg-primary-muted text-primary-foreground font-semibold px-6 py-2 rounded-lg transition-smooth hidden sm:inline-flex"
+              asChild
             >
-              Book a Call
+              <a href="https://calendly.com/kanika-misra" target="_blank" rel="noopener noreferrer">
+                Book a Call
+              </a>
             </Button>
             
             {/* Mobile menu button */}

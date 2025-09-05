@@ -38,15 +38,11 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 className="bg-primary hover:bg-primary-muted text-primary-foreground font-semibold px-8 py-4 rounded-xl transition-smooth hover-lift"
+                asChild
               >
-                Book a Discovery Call
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-gray-300 text-gray-700 hover:bg-gray-50 font-semibold px-8 py-4 rounded-xl transition-smooth"
-              >
-                View Our Approach
+                <a href="https://calendly.com/kanika-misra" target="_blank" rel="noopener noreferrer">
+                  Book a Discovery Call
+                </a>
               </Button>
             </div>
 

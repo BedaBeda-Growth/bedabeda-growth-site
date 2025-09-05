@@ -30,8 +30,11 @@ const AntiCookieCutter = () => {
               variant="outline"
               size="lg"
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-4 rounded-xl transition-smooth"
+              asChild
             >
-              Learn More About Our Method
+              <a href="https://calendly.com/kanika-misra" target="_blank" rel="noopener noreferrer">
+                Learn More About Our Method
+              </a>
             </Button>
           </div>
         </div>
