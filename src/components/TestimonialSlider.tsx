@@ -5,18 +5,21 @@ const TestimonialSlider = () => {
 
   const testimonials = [
     {
+      headline: "The decision to work with this team has provided an exponential ROI.",
       quote: "Working with BedaBeda Growth has brought immeasurable value to our business. Their copywriting and conversion rate optimization services significantly lowered our CPA in a very competitive market. Although BedaBeda Growth isn't cheap, they are extremely efficient and the decision to work with this team has provided an exponential ROI.",
       name: "Jon Klein",
       title: "CEO",
       company: "Neutralyze"
     },
     {
+      headline: "They truly understand the mind of consumers",
       quote: "BedaBeda did an excellent job of identifying opportunities and implementing them in order to increase our conversion. They truly understand the mind of consumers and how to shape journeys around purchase intent. We were highly impressed with them and how they thought about shaping the customer journey.",
       name: "Gabriel Kattan",
       title: "CEO",
       company: "Perk"
     },
     {
+      headline: "Thoughtful partners and they cared",
       quote: "What impressed me the most was their understanding of our customers psychology and then translating that to good copywriting. They delivered items on time and were great at keeping us updated on the progress they were making. They were thoughtful partners and they cared about delivering quality pages.",
       name: "KM",
       title: "CEO",
@@ -35,6 +38,9 @@ const TestimonialSlider = () => {
     <div className="bg-secondary/20 rounded-2xl p-8 mb-8">
       <div className="text-center">
         <div className="mb-6">
+          <h3 className="text-xl font-bold text-foreground mb-4 max-w-3xl mx-auto">
+            {testimonials[currentSlide].headline}
+          </h3>
           <p className="text-lg italic text-gray-700 leading-relaxed max-w-3xl mx-auto">
             "{testimonials[currentSlide].quote}"
           </p>
