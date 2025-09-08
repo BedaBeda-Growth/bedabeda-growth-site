@@ -29,8 +29,13 @@ const Hero = () => {
                 Teams
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed max-w-2xl text-left">
-                We don't run shallow tests just to say we tested.<br />
-                We design high-leverage, hybrid experiments that combine deep strategic insight with standout execution — so you get conversion lifts that actually last.
+                We don't run shallow tests just to say we tested.
+                <br /><br />
+                We design <strong>high-leverage, hybrid experiments that combine deep strategic insight with standout execution</strong> – so you get conversion lifts that actually last.
+                <br /><br />
+                Our approach blends data-backed analysis, creative experimentation, and a sharp eye on long-term upside.
+                <br /><br />
+                No fluff. No wasted traffic. Just smarter testing that compounds.
               </p>
             </div>
             
