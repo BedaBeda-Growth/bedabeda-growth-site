@@ -14,7 +14,7 @@ const DisruptiveCROSection = () => {
       description: "We use a systematic approach to continuously improve your conversion rates through data-driven testing."
     },
     {
-      title: "Deep-dive into all things 'your brand'",
+      title: "Build brand perception & value",
       description: "We take time to understand your brand, audience, and unique value proposition before making recommendations."
     }
   ];
