@@ -15,7 +15,11 @@ const DisruptiveCROSection = () => {
     },
     {
       title: "Build brand perception & value",
-      description: "Our process <em>strengthens</em> your brand value, while driving real performance results."
+      description: (
+        <>
+          Our process <em>strengthens</em> your brand value, while driving real performance results.
+        </>
+      )
     }
   ];
 
