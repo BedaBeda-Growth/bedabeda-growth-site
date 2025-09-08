@@ -96,11 +96,7 @@ const DisruptiveCROSection = () => {
                         {point.title}
                       </h4>
                       <p className="text-sm text-gray-300 leading-relaxed flex-1 flex items-center">
-                        {index === 2 ? (
-                          <>Our process <em>strengthens</em> your brand value, while driving real performance results.</>
-                        ) : (
-                          point.description
-                        )}
+                        {point.description}
                       </p>
                     </div>
                   </div>
@@ -264,11 +260,7 @@ const DisruptiveCROSection = () => {
                           {point.title}
                         </h4>
                         <p className="text-sm text-gray-300 leading-relaxed">
-                          {index === 2 ? (
-                            <>Our process <em>strengthens</em> your brand value, while driving real performance results.</>
-                          ) : (
-                            point.description
-                          )}
+                          {point.description}
                         </p>
                       </div>
                     ))}
