@@ -9,7 +9,7 @@ const CaseStudyTeasers = () => {
           <text x="32" y="45" textAnchor="middle" fontSize="12" fill="currentColor">$</text>
         </svg>
       ),
-      title: "Average of 18% Increase in Revenue Per Visitor in First 5 Months",
+      title: "Average of 23% Increase in Revenue Per Visitor in First 5 Months",
       description: "Huge increases in conversion rates and AOV (ultimately RPV) mean huge boosts in overall performance, making your acquisition spend way more efficient and impacting your top & bottom line quickly."
     },
     {
