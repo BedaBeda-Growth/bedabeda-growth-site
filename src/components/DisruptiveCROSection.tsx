@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import bedabedaLogo from "../assets/bedabeda-logo.png";
 
 const DisruptiveCROSection = () => {
   const [activePage, setActivePage] = useState(0);
@@ -248,7 +247,7 @@ const DisruptiveCROSection = () => {
                           height: '64px'
                         }}
                       >
-                        <img src={bedabedaLogo} alt="Bedabeda Logo" className="w-8 h-8" />
+                        <img src="/lovable-uploads/f71869bd-fed3-4bbd-a0cb-41a2ebce63be.png" alt="BBG Logo" className="w-8 h-8" />
                       </div>
                     </div>
                     {wePoints.map((point, index) => (
