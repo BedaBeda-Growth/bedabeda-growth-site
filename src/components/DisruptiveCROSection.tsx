@@ -21,15 +21,15 @@ const DisruptiveCROSection = () => {
 
   const theyPoints = [
     {
-      title: "Make one-size-fits-all recommendations",
+      title: "Give your site a once-over",
       description: "Generic advice that doesn't account for your unique audience, industry, or business model."
     },
     {
-      title: "Give your site a once-over",
+      title: "Quickly exhaust their list of best practices",
       description: "Quick surface-level analysis without deep understanding of your specific business needs."
     },
     {
-      title: "Quickly exhaust their list of best practices",
+      title: "Provide no long-term growth planning",
       description: "Limited toolkit of standard practices without custom strategy or innovation."
     }
   ];
