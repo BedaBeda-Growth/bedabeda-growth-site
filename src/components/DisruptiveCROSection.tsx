@@ -14,14 +14,14 @@ const DisruptiveCROSection = () => {
       description: "We use a systematic approach to continuously improve your conversion rates through data-driven testing."
     },
     {
-      title: "Build brand perception & value",
-      description: "Our process strengthens your brand value, while driving real performance results."
+      title: "Build site perception & value",
+      description: "Our process strengthens your site value, while driving real performance results."
     }
   ];
 
   const theyPoints = [
     {
-      title: "Give your brand a once-over",
+      title: "Give your site a once-over",
       description: "Quick surface-level analysis without deep understanding of your specific business needs."
     },
     {
