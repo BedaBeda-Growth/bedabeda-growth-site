@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import bedabedaLogo from "../assets/bedabeda-logo.png";
 
 const DisruptiveCROSection = () => {
   const [activePage, setActivePage] = useState(0);
@@ -247,7 +248,7 @@ const DisruptiveCROSection = () => {
                           height: '64px'
                         }}
                       >
-                        <span className="text-xl font-bold text-white">WE</span>
+                        <img src={bedabedaLogo} alt="Bedabeda Logo" className="w-8 h-8" />
                       </div>
                     </div>
                     {wePoints.map((point, index) => (
@@ -270,14 +271,14 @@ const DisruptiveCROSection = () => {
                   <div className="space-y-6">
                     <div className="text-center mb-6">
                       <div 
-                        className="rounded-full flex items-center justify-center mx-auto mb-3"
+                        className="rounded-full flex items-center justify-center mx-auto mb-3 px-2"
                         style={{ 
                           backgroundColor: '#EEFAF8',
-                          width: '64px',
-                          height: '64px'
+                          width: '80px',
+                          height: '80px'
                         }}
                       >
-                        <span className="text-xl font-bold" style={{ color: '#92B5AF' }}>THEY</span>
+                        <span className="text-xs font-bold text-center leading-tight" style={{ color: '#92B5AF' }}>Regular CRO Agencies</span>
                       </div>
                     </div>
                     {theyPoints.map((point, index) => (
@@ -309,7 +310,7 @@ const DisruptiveCROSection = () => {
                 </button>
                 
                 <span className="text-sm text-muted-foreground">
-                  {activePage === 0 ? 'WE' : 'THEY'}
+                  {activePage === 0 ? 'US' : 'Regular CRO Agencies'}
                 </span>
                 
                 <button
