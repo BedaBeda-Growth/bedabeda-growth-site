@@ -26,11 +26,11 @@ const DisruptiveCROSection = () => {
     },
     {
       title: "Quickly exhaust their list of best practices",
-      description: "Quick surface-level analysis without deep understanding of your specific business needs."
+      description: "Test ideas feel stale quickly, risky tests are rolled out, and important data-based considerations are missed."
     },
     {
       title: "Provide no long-term growth planning",
-      description: "Limited toolkit of standard practices without custom strategy or innovation."
+      description: "Lack of innovation and strategy means no long-term competitive thinking - just short-term tactics that create a patchwork site decreasing in value."
     }
   ];
 
