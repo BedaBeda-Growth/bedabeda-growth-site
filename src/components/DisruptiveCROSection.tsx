@@ -310,7 +310,7 @@ const DisruptiveCROSection = () => {
                 </button>
                 
                 <span className="text-sm text-muted-foreground">
-                  {activePage === 0 ? 'US' : 'Regular CRO Agencies'}
+                  {activePage === 0 ? 'BedaBeda Growth' : 'Regular CRO Agencies'}
                 </span>
                 
                 <button
