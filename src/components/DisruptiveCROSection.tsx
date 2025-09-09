@@ -240,9 +240,9 @@ const DisruptiveCROSection = () => {
                   <div className="space-y-6">
                     <div className="text-center mb-6">
                       <div 
-                        className="rounded-full flex items-center justify-center mx-auto mb-3"
+                        className="rounded-full flex items-center justify-center mx-auto mb-3 border-2 border-gray-300"
                         style={{ 
-                          backgroundColor: '#2E3242',
+                          backgroundColor: 'transparent',
                           width: '64px',
                           height: '64px'
                         }}
