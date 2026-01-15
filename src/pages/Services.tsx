@@ -142,7 +142,7 @@ const Services = () => {
                   </p>
                   <div className="border-t border-gray-700 pt-6">
                     <p className="text-gray-400 text-sm italic mb-6">
-                      "No one can guarantee that every test will win. Often, the biggest learnings are from losing tests. We use that insight to fuel future hypotheses and get a compound effect over time."
+                      "We identify your highest-impact growth opportunities and apply a data-driven methodology that compounds over time, turning insights into sustainable revenue gains."
                     </p>
                     <Button 
                       variant="outline"
