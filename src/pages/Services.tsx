@@ -223,7 +223,7 @@ const Services = () => {
               <div className="grid lg:grid-cols-2 gap-12 items-start">
                 <div className="space-y-6">
                   <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-gray-200 text-gray-700">
-                    Beyond Surface-Level Fixes
+                    Beyond Best Practices
                   </span>
                   <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
                     Deep Data Audits & Testing Roadmaps
