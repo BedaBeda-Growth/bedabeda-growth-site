@@ -142,7 +142,7 @@ const Services = () => {
                   </p>
                   <div className="border-t border-gray-700 pt-6">
                     <p className="text-gray-400 text-sm italic mb-6">
-                      "We identify your highest-impact growth opportunities and apply a data-driven methodology that compounds over time, turning insights into sustainable revenue gains."
+                      We identify your highest-impact growth opportunities and apply a data-driven methodology that compounds over time, turning insights into sustainable revenue gains.
                     </p>
                     <Button 
                       variant="outline"
