@@ -114,7 +114,7 @@ const DisruptiveCROSection = () => {
                     height: '180px'
                   }}
                 >
-                  <span className="text-2xl font-bold" style={{ color: '#2E3242' }}>WE</span>
+                  <span className="text-2xl font-bold" style={{ color: '#92B5AF' }}>WE</span>
                   
                   {/* Connection lines from left edge of WE circle to WE boxes */}
                   {wePoints.map((_, index) => {
