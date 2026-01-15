@@ -1,10 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { X, Menu } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 const bedabedaLogo = "/lovable-uploads/bc61751b-5167-4161-823e-43052fe14ff9.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -12,6 +15,20 @@ const Header = () => {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    closeMenu();
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        element?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      element?.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -34,9 +51,9 @@ const Header = () => {
             <a href="#approach" className="text-gray-600 hover:text-primary transition-smooth font-medium">
               Approach
             </a>
-            <a href="/#case-studies" className="text-gray-600 hover:text-primary transition-smooth font-medium">
+            <button onClick={() => scrollToSection("case-studies")} className="text-gray-600 hover:text-primary transition-smooth font-medium">
               Case Studies
-            </a>
+            </button>
             <a href="#newsletter" className="text-gray-600 hover:text-primary transition-smooth font-medium">
               Newsletter
             </a>
@@ -83,13 +100,12 @@ const Header = () => {
                 >
                   Approach
                 </a>
-                <a 
-                  href="/#case-studies" 
-                  className="text-gray-600 hover:text-primary transition-smooth font-medium py-2"
-                  onClick={closeMenu}
+                <button 
+                  onClick={() => scrollToSection("case-studies")}
+                  className="text-gray-600 hover:text-primary transition-smooth font-medium py-2 text-left"
                 >
                   Case Studies
-                </a>
+                </button>
                 <a 
                   href="#newsletter" 
                   className="text-gray-600 hover:text-primary transition-smooth font-medium py-2"
