@@ -30,7 +30,7 @@ const Services = () => {
       )
     },
     {
-      title: "User Experience",
+      title: "UX & Psychology",
       description: "We put ourselves in users' shoes through usability testing, customer polls, surveys, and interviews. Keeping things clean, value-based, and easy to follow.",
       icon: (
         <svg className="w-8 h-8" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
