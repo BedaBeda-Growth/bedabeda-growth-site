@@ -48,6 +48,9 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
+            <a href="/services" className="text-gray-600 hover:text-primary transition-smooth font-medium">
+              Services
+            </a>
             <a href="#approach" className="text-gray-600 hover:text-primary transition-smooth font-medium">
               Approach
             </a>
@@ -93,6 +96,13 @@ const Header = () => {
           <div className="md:hidden absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-md border-b border-gray-200 shadow-lg">
             <nav className="container mx-auto px-6 py-4">
               <div className="flex flex-col space-y-4">
+                <a 
+                  href="/services" 
+                  className="text-gray-600 hover:text-primary transition-smooth font-medium py-2"
+                  onClick={closeMenu}
+                >
+                  Services
+                </a>
                 <a 
                   href="#approach" 
                   className="text-gray-600 hover:text-primary transition-smooth font-medium py-2"
