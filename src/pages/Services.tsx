@@ -115,7 +115,7 @@ const Services = () => {
                       {[
                         "Custom high-performance pages built for conversion",
                         "Sitewide testing: copywriting, UX design, and build",
-                        "Full-funnel optimization including upsells, cross-sells, and pricing",
+                        "Full-funnel optimization to improve conversions, revenue, AOV, LTV, and more",
                         "AOV and LTV optimization strategies",
                         "Homepage to checkout journey optimization",
                         "Continuous testing programs with statistically-backed methods"
