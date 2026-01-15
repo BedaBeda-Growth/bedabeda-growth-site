@@ -44,8 +44,8 @@ const ClientLogos = () => {
           <p className="text-lg font-medium text-gray-600">Trusted by:</p>
         </div>
         
-        {/* Desktop Layout */}
-        <div className="hidden md:flex justify-center items-start gap-8 lg:gap-12">
+        {/* Desktop Layout - Only on xl and above */}
+        <div className="hidden xl:flex justify-center items-start gap-8 2xl:gap-12">
           {logos.map((logo, index) => (
             <div key={index} className="flex flex-col items-center">
               <div 
@@ -70,8 +70,8 @@ const ClientLogos = () => {
           ))}
         </div>
 
-        {/* Mobile Layout */}
-        <div className="flex md:hidden flex-col items-center gap-6">
+        {/* Mobile, Tablet & Medium Desktop Layout */}
+        <div className="flex xl:hidden flex-col md:flex-row md:flex-wrap md:justify-center items-center gap-6">
           {logos.map((logo, index) => (
             <div key={index} className="flex flex-col items-center">
               <div 
