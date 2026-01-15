@@ -34,7 +34,7 @@ const Header = () => {
             <a href="#approach" className="text-gray-600 hover:text-primary transition-smooth font-medium">
               Approach
             </a>
-            <a href="#case-studies" className="text-gray-600 hover:text-primary transition-smooth font-medium">
+            <a href="/#case-studies" className="text-gray-600 hover:text-primary transition-smooth font-medium">
               Case Studies
             </a>
             <a href="#newsletter" className="text-gray-600 hover:text-primary transition-smooth font-medium">
@@ -84,7 +84,7 @@ const Header = () => {
                   Approach
                 </a>
                 <a 
-                  href="#case-studies" 
+                  href="/#case-studies" 
                   className="text-gray-600 hover:text-primary transition-smooth font-medium py-2"
                   onClick={closeMenu}
                 >
