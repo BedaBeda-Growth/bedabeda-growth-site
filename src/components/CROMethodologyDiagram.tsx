@@ -54,8 +54,8 @@ const CROMethodologyDiagram = () => {
 
   return (
     <>
-      {/* Desktop & Tablet View */}
-      <div className="hidden md:block relative w-full max-w-lg mx-auto aspect-square">
+      {/* Desktop View - Only on lg and above */}
+      <div className="hidden lg:block relative w-full max-w-lg mx-auto aspect-square">
         {/* Central hub */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full border-2 border-primary/30 backdrop-blur-sm flex items-center justify-center animate-pulse">
           <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-muted rounded-full flex items-center justify-center shadow-xl">
@@ -126,8 +126,8 @@ const CROMethodologyDiagram = () => {
         <div className="absolute top-4 right-12 w-16 h-16 bg-primary/10 rounded-full blur-xl animate-pulse" style={{ animationDelay: "0.5s" }}></div>
       </div>
 
-      {/* Mobile View */}
-      <div className="md:hidden w-full max-w-sm mx-auto">
+      {/* Mobile & Tablet View */}
+      <div className="lg:hidden w-full max-w-sm mx-auto">
         {/* Central hub with headline for mobile */}
         <div className="flex items-center justify-center mb-8 gap-4">
           <h3 className="text-2xl font-bold text-foreground">Our</h3>

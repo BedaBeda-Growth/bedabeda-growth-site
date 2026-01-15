@@ -74,8 +74,8 @@ const DisruptiveCROSection = () => {
             </p>
           </div>
 
-          {/* Desktop & Tablet Layout */}
-          <div className="hidden md:block">
+          {/* Desktop Layout - Only on lg and above */}
+          <div className="hidden lg:block">
             <div className="relative min-h-[600px]">
               {/* WE Section - 3 separate boxes */}
               <div className="absolute left-0 w-[400px]">
@@ -222,8 +222,8 @@ const DisruptiveCROSection = () => {
             </div>
           </div>
 
-          {/* Mobile Slider */}
-          <div className="md:hidden">
+          {/* Mobile & Tablet Slider */}
+          <div className="lg:hidden">
             <div className="relative bg-white rounded-2xl shadow-lg border border-border overflow-hidden">
               {/* Page Indicators */}
               <div className="bg-muted/50 p-4 text-center border-b border-border">
