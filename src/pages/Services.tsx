@@ -104,7 +104,7 @@ const Services = () => {
                     Full Service Disruptive™ CRO
                   </h2>
                   <p className="text-lg text-gray-600 leading-relaxed">
-                    We partner with 7-9 figure brands and Series A+ companies to predict, achieve, and accelerate growth. This isn't about changing button colors. It's about full-funnel optimization across your entire customer journey.
+                    We partner with 8-9 figure brands and Series A+ companies to predict, achieve, and accelerate growth. This isn't about changing button colors. It's about full-funnel optimization across your entire customer journey.
                   </p>
                   <p className="text-gray-600 leading-relaxed">
                     Dropping acquisition costs and increasing conversion rates equals sustainable scaling. We take a growth marketing approach to traditional CRO, integrating emotion mapping, user psychology, and data-backed experimentation to create a compound effect over time.
