@@ -170,7 +170,7 @@ const Services = () => {
                   style={{ backgroundColor: '#EEFAF8' }}
                 >
                   <h3 className="text-xl font-bold text-foreground mb-6">
-                    We Are the Watson to Your Sherlock Holmes
+                    You Drive Traffic, We Drive Conversions
                   </h3>
                   <p className="text-gray-700 leading-relaxed mb-6">
                     Need research-backed dedicated pages with strategic UX design and custom development? We create customer-focused landing pages, strategizing, writing, designing, building, and testing to ensure they deliver results.
