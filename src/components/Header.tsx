@@ -54,7 +54,7 @@ const Header = () => {
             <button onClick={() => scrollToSection("case-studies")} className="text-gray-600 hover:text-primary transition-smooth font-medium">
               Case Studies
             </button>
-            <a href="#newsletter" className="text-gray-600 hover:text-primary transition-smooth font-medium">
+            <a href="https://conversioncurrent.beehiiv.com/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary transition-smooth font-medium">
               Newsletter
             </a>
             <a href="/contact" className="text-gray-600 hover:text-primary transition-smooth font-medium">
@@ -107,7 +107,9 @@ const Header = () => {
                   Case Studies
                 </button>
                 <a 
-                  href="#newsletter" 
+                  href="https://conversioncurrent.beehiiv.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
                   className="text-gray-600 hover:text-primary transition-smooth font-medium py-2"
                   onClick={closeMenu}
                 >
