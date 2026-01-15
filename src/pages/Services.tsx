@@ -114,7 +114,7 @@ const Services = () => {
                     <ul className="space-y-3">
                       {[
                         "Custom high-performance pages built for conversion",
-                        "Sitewide testing: copywriting, UX design, and development",
+                        "Sitewide testing: copywriting, UX design, and build",
                         "Full-funnel optimization including upsells, cross-sells, and pricing",
                         "AOV and LTV optimization strategies",
                         "Homepage to checkout journey optimization",
