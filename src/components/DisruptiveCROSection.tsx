@@ -89,13 +89,13 @@ const DisruptiveCROSection = () => {
                     }}
                   >
                     <div 
-                      className="rounded-xl p-6 text-white relative w-full h-[180px] mb-6 flex flex-col"
-                      style={{ backgroundColor: '#181B21' }}
+                      className="rounded-xl p-6 relative w-full h-[180px] mb-6 flex flex-col"
+                      style={{ backgroundColor: '#EEFAF8' }}
                     >
-                      <h4 className="text-lg font-bold mb-3 text-white">
+                      <h4 className="text-lg font-bold mb-3" style={{ color: '#2E3242' }}>
                         {point.title}
                       </h4>
-                      <p className="text-sm text-gray-300 leading-relaxed flex-1 flex items-center">
+                      <p className="text-sm leading-relaxed flex-1 flex items-center" style={{ color: '#3D3D3D' }}>
                         {point.description}
                       </p>
                     </div>
@@ -109,12 +109,12 @@ const DisruptiveCROSection = () => {
                 <div 
                   className="rounded-full flex items-center justify-center relative"
                   style={{ 
-                    backgroundColor: '#2E3242',
+                    backgroundColor: '#EEFAF8',
                     width: '180px',
                     height: '180px'
                   }}
                 >
-                  <span className="text-2xl font-bold text-white">WE</span>
+                  <span className="text-2xl font-bold" style={{ color: '#2E3242' }}>WE</span>
                   
                   {/* Connection lines from left edge of WE circle to WE boxes */}
                   {wePoints.map((_, index) => {
@@ -153,12 +153,12 @@ const DisruptiveCROSection = () => {
                 <div 
                   className="rounded-full flex items-center justify-center relative"
                   style={{ 
-                    backgroundColor: '#EEFAF8',
+                    backgroundColor: '#2E3242',
                     width: '180px',
                     height: '180px'
                   }}
                 >
-                  <span className="text-2xl font-bold" style={{ color: '#92B5AF' }}>THEY</span>
+                  <span className="text-2xl font-bold text-white">THEY</span>
                   
                   {/* Connection lines from right edge of THEY circle to THEY boxes */}
                   {theyPoints.map((_, index) => {
@@ -206,13 +206,13 @@ const DisruptiveCROSection = () => {
                     }}
                   >
                     <div 
-                      className="rounded-xl p-6 relative w-full h-[180px] mb-6 flex flex-col"
-                      style={{ backgroundColor: '#EEFAF8' }}
+                      className="rounded-xl p-6 text-white relative w-full h-[180px] mb-6 flex flex-col"
+                      style={{ backgroundColor: '#181B21' }}
                     >
-                      <h4 className="text-lg font-bold mb-3" style={{ color: '#2E3242' }}>
+                      <h4 className="text-lg font-bold mb-3 text-white">
                         {point.title}
                       </h4>
-                      <p className="text-sm leading-relaxed flex-1 flex items-center" style={{ color: '#3D3D3D' }}>
+                      <p className="text-sm text-gray-300 leading-relaxed flex-1 flex items-center">
                         {point.description}
                       </p>
                     </div>
@@ -240,9 +240,9 @@ const DisruptiveCROSection = () => {
                   <div className="space-y-6">
                     <div className="text-center mb-6">
                       <div 
-                        className="rounded-full flex items-center justify-center mx-auto mb-3 border-2 border-gray-300"
+                        className="rounded-full flex items-center justify-center mx-auto mb-3"
                         style={{ 
-                          backgroundColor: 'transparent',
+                          backgroundColor: '#EEFAF8',
                           width: '64px',
                           height: '64px'
                         }}
@@ -253,13 +253,13 @@ const DisruptiveCROSection = () => {
                     {wePoints.map((point, index) => (
                       <div 
                         key={index} 
-                        className="rounded-xl p-4 text-white"
-                        style={{ backgroundColor: '#181B21' }}
+                        className="rounded-xl p-4"
+                        style={{ backgroundColor: '#EEFAF8' }}
                       >
-                        <h4 className="text-base font-bold mb-2 text-white">
+                        <h4 className="text-base font-bold mb-2" style={{ color: '#2E3242' }}>
                           {point.title}
                         </h4>
-                        <p className="text-sm text-gray-300 leading-relaxed">
+                        <p className="text-sm text-gray-600 leading-relaxed">
                           {point.description}
                         </p>
                       </div>
@@ -272,24 +272,24 @@ const DisruptiveCROSection = () => {
                       <div 
                         className="rounded-full flex items-center justify-center mx-auto mb-3 px-2"
                         style={{ 
-                          backgroundColor: '#EEFAF8',
+                          backgroundColor: '#2E3242',
                           width: '80px',
                           height: '80px'
                         }}
                       >
-                        <span className="text-xs font-bold text-center leading-tight" style={{ color: '#92B5AF' }}>Regular CRO Agencies</span>
+                        <span className="text-xs font-bold text-center leading-tight text-white">Regular CRO Agencies</span>
                       </div>
                     </div>
                     {theyPoints.map((point, index) => (
                       <div 
                         key={index} 
-                        className="rounded-xl p-4"
-                        style={{ backgroundColor: '#EEFAF8' }}
+                        className="rounded-xl p-4 text-white"
+                        style={{ backgroundColor: '#181B21' }}
                       >
-                        <h4 className="text-base font-bold mb-2" style={{ color: '#2E3242' }}>
+                        <h4 className="text-base font-bold mb-2 text-white">
                           {point.title}
                         </h4>
-                        <p className="text-sm text-gray-600 leading-relaxed">
+                        <p className="text-sm text-gray-300 leading-relaxed">
                           {point.description}
                         </p>
                       </div>
