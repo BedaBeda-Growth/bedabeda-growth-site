@@ -116,7 +116,7 @@ const Services = () => {
                         "Custom high-performance pages built for conversion",
                         "Sitewide testing: copywriting, UX design, and build",
                         "Full-funnel optimization to improve conversions, revenue, AOV, LTV, and more",
-                        "Homepage to checkout journey optimization",
+                        "Custom reporting & in-depth analysis to share insights, learnings, and recommendations",
                         "Continuous testing programs with statistically-backed methods"
                       ].map((item, idx) => (
                         <li key={idx} className="flex items-start gap-3 text-gray-700">
