@@ -52,7 +52,7 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold">Navigation</h4>
             <ul className="space-y-3">
-              <li><a href="#approach" className="text-gray-300 hover:text-primary transition-smooth">Approach</a></li>
+              <li><a href="/services" className="text-gray-300 hover:text-primary transition-smooth">Services</a></li>
               <li><button onClick={() => scrollToSection("case-studies")} className="text-gray-300 hover:text-primary transition-smooth">Case Studies</button></li>
               <li><a href="https://conversioncurrent.beehiiv.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-primary transition-smooth">Newsletter</a></li>
               <li><a href="/contact" className="text-gray-300 hover:text-primary transition-smooth">Contact</a></li>

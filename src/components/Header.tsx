@@ -51,9 +51,6 @@ const Header = () => {
             <a href="/services" className="text-gray-600 hover:text-primary transition-smooth font-medium">
               Services
             </a>
-            <a href="#approach" className="text-gray-600 hover:text-primary transition-smooth font-medium">
-              Approach
-            </a>
             <button onClick={() => scrollToSection("case-studies")} className="text-gray-600 hover:text-primary transition-smooth font-medium">
               Case Studies
             </button>
@@ -102,13 +99,6 @@ const Header = () => {
                   onClick={closeMenu}
                 >
                   Services
-                </a>
-                <a 
-                  href="#approach" 
-                  className="text-gray-600 hover:text-primary transition-smooth font-medium py-2"
-                  onClick={closeMenu}
-                >
-                  Approach
                 </a>
                 <button 
                   onClick={() => scrollToSection("case-studies")}
