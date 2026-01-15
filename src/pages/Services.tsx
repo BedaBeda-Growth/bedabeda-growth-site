@@ -178,7 +178,7 @@ const Services = () => {
                   <div className="space-y-4 mb-8">
                     <div className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Conversion-centered design principles</span>
+                      <span className="text-gray-700">Data-backed UX design principles</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
