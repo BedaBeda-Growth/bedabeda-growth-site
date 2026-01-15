@@ -113,7 +113,7 @@ const Services = () => {
                     <h3 className="font-bold text-foreground mb-4">What's Included:</h3>
                     <ul className="space-y-3">
                       {[
-                        "Custom high-performance landing pages built for conversion",
+                        "Custom high-performance pages built for conversion",
                         "Sitewide testing: copywriting, UX design, and development",
                         "Full-funnel optimization including upsells, cross-sells, and pricing",
                         "AOV and LTV optimization strategies",
