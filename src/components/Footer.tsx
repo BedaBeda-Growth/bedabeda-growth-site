@@ -1,5 +1,22 @@
+import { useNavigate, useLocation } from "react-router-dom";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        element?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      element?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <footer className="bg-gray-900 text-white py-16">
@@ -36,7 +53,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold">Navigation</h4>
             <ul className="space-y-3">
               <li><a href="#approach" className="text-gray-300 hover:text-primary transition-smooth">Approach</a></li>
-              <li><a href="/#case-studies" className="text-gray-300 hover:text-primary transition-smooth">Case Studies</a></li>
+              <li><button onClick={() => scrollToSection("case-studies")} className="text-gray-300 hover:text-primary transition-smooth">Case Studies</button></li>
               <li><a href="#newsletter" className="text-gray-300 hover:text-primary transition-smooth">Newsletter</a></li>
               <li><a href="/contact" className="text-gray-300 hover:text-primary transition-smooth">Contact</a></li>
             </ul>
