@@ -193,9 +193,17 @@ const Services = () => {
                       <span className="text-gray-700">Regular reporting with actionable insights</span>
                     </div>
                   </div>
-                  <p className="text-gray-600 text-sm italic">
+                  <p className="text-gray-600 text-sm italic mb-6">
                     The insights we uncover can be used across your entire organization, not just your landing pages.
                   </p>
+                  <Button 
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                    asChild
+                  >
+                    <a href="https://calendly.com/kanika-misra" target="_blank" rel="noopener noreferrer">
+                      Book a Discovery Call
+                    </a>
+                  </Button>
                 </div>
                 <div className="space-y-6 order-1 lg:order-2">
                   <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-gray-200 text-gray-700">
@@ -210,14 +218,6 @@ const Services = () => {
                   <p className="text-gray-600 leading-relaxed">
                     Looking to boost marketing efficiency and conversion rates? We take the guesswork out of landing page performance and replace it with systematic optimization based on real user behavior and data.
                   </p>
-                  <Button 
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                    asChild
-                  >
-                    <a href="https://calendly.com/kanika-misra" target="_blank" rel="noopener noreferrer">
-                      Book a Discovery Call
-                    </a>
-                  </Button>
                 </div>
               </div>
             </div>
@@ -302,16 +302,6 @@ const Services = () => {
                         Our senior team works alongside founders and internal teams to bring clarity, momentum, and confidence to high-stakes decisions.
                       </p>
                     </div>
-                    <div className="pt-6">
-                      <Button 
-                        className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                        asChild
-                      >
-                        <a href="https://calendly.com/kanika-misra" target="_blank" rel="noopener noreferrer">
-                          Book a Consulting Call
-                        </a>
-                      </Button>
-                    </div>
                   </div>
                 </div>
 
@@ -331,9 +321,18 @@ const Services = () => {
                     ))}
                   </ul>
                   <div className="mt-8 pt-6 border-t border-gray-700">
-                    <p className="text-gray-400 text-sm italic">
+                    <p className="text-gray-400 text-sm italic mb-6">
                       No generic playbooks. No performative deliverables. Just thoughtful, hands-on guidance rooted in real execution and accountability.
                     </p>
+                    <Button 
+                      variant="outline"
+                      className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                      asChild
+                    >
+                      <a href="https://calendly.com/kanika-misra" target="_blank" rel="noopener noreferrer">
+                        Book a Consulting Call
+                      </a>
+                    </Button>
                   </div>
                 </div>
               </div>
