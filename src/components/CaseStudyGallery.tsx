@@ -257,13 +257,15 @@ const CaseStudyGallery = () => {
           </Carousel>
 
           <div className="text-center mt-12">
-            <Button 
-              variant="outline"
-              size="lg"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-4 rounded-xl transition-smooth"
-            >
-              See More of What We Can Do
-            </Button>
+            <a href="/services">
+              <Button 
+                variant="outline"
+                size="lg"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-4 rounded-xl transition-smooth"
+              >
+                Get Results Like These
+              </Button>
+            </a>
           </div>
         </div>
       </div>
