@@ -302,14 +302,16 @@ const Services = () => {
                         Our senior team works alongside founders and internal teams to bring clarity, momentum, and confidence to high-stakes decisions.
                       </p>
                     </div>
-                    <Button 
-                      className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                      asChild
-                    >
-                      <a href="https://calendly.com/kanika-misra" target="_blank" rel="noopener noreferrer">
-                        Book a Discovery Call
-                      </a>
-                    </Button>
+                    <div className="pt-6">
+                      <Button 
+                        className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                        asChild
+                      >
+                        <a href="https://calendly.com/kanika-misra" target="_blank" rel="noopener noreferrer">
+                          Book a Consulting Call
+                        </a>
+                      </Button>
+                    </div>
                   </div>
                 </div>
 
