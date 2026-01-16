@@ -210,6 +210,14 @@ const Services = () => {
                   <p className="text-gray-600 leading-relaxed">
                     Looking to boost marketing efficiency and conversion rates? We take the guesswork out of landing page performance and replace it with systematic optimization based on real user behavior and data.
                   </p>
+                  <Button 
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                    asChild
+                  >
+                    <a href="https://calendly.com/kanika-misra" target="_blank" rel="noopener noreferrer">
+                      Book a Discovery Call
+                    </a>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -294,6 +302,14 @@ const Services = () => {
                         Our senior team works alongside founders and internal teams to bring clarity, momentum, and confidence to high-stakes decisions.
                       </p>
                     </div>
+                    <Button 
+                      className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                      asChild
+                    >
+                      <a href="https://calendly.com/kanika-misra" target="_blank" rel="noopener noreferrer">
+                        Book a Discovery Call
+                      </a>
+                    </Button>
                   </div>
                 </div>
 
