@@ -1,770 +1,668 @@
 # BedaBeda Growth Site - Blog & CMS Implementation Plan
 
-## Executive Summary
-
-This plan outlines how to add:
-1. **A blog** - SEO-friendly, easy to update without coding
-2. **Case study management** - Swap out case studies via a visual interface
-
-**Current State**: Everything is hardcoded in React components. No backend, no CMS.
-
-**Recommended Solution**: **Sanity CMS** (headless CMS with visual editor)
+## Keystatic + Vercel (No External Services)
 
 ---
 
-## Why Sanity CMS?
+## Quick Summary
 
-| Feature | Benefit |
-|---------|---------|
-| Free tier | 100K API requests/month, 10GB bandwidth - plenty for a marketing site |
-| Visual editor | Non-technical users can add/edit content |
-| Image handling | Built-in image optimization and CDN |
-| SEO fields | Easy to add meta titles, descriptions, OG images |
-| React SDK | First-class React integration |
-| Real-time | Content updates appear instantly |
-| Portable | You own your data, can export anytime |
+| What | How |
+|------|-----|
+| **Blog** | MDX files in `/content/blog/` |
+| **Case Studies** | JSON files in `/content/case-studies/` |
+| **Admin UI** | Keystatic at `/keystatic` route |
+| **Auth** | GitHub login (free) |
+| **Database** | None - just files in your repo |
+| **Hosting** | Everything on Vercel |
 
-**Alternative Options** (covered at end):
-- Contentful (similar to Sanity, slightly less flexible)
-- MDX files in repo (requires GitHub knowledge to update)
+**Your wife's workflow:**
+1. Goes to `bedabedagrowth.com/keystatic`
+2. Logs in with GitHub (one-time setup)
+3. Creates/edits blog posts or case studies in visual editor
+4. Clicks "Save" → auto-commits to GitHub → Vercel rebuilds (~30 sec)
+5. Done!
 
 ---
 
-## Phase 1: Sanity CMS Setup
+## Architecture Decision: Astro vs Vite
 
-### Step 1.1: Create Sanity Project
+### Current Setup: Vite + React (Client-Side Rendered)
+
+The site currently runs as a **Single Page Application (SPA)**. This works fine but has SEO limitations:
+- Search engines see a blank page initially, then JavaScript loads content
+- Not ideal for "SEO juice" goals
+- Keystatic's GitHub mode requires extra API route setup
+
+### Recommended: Migrate to Astro
+
+**Astro** is perfect for this use case:
+- Generates **static HTML** at build time (excellent for SEO)
+- **First-class Keystatic support** (zero config)
+- Can **reuse all your existing React components**
+- Built-in **image optimization**
+- **Faster page loads** (ships zero JS by default, adds it only where needed)
+- Vercel has official Astro adapter
+
+**Migration effort:** Medium - mostly moving files and updating imports. All React components work as-is.
+
+---
+
+## Phase 1: Migrate to Astro
+
+### Step 1.1: Initialize Astro in the Project
 
 ```bash
-# Install Sanity CLI globally
-npm install -g @sanity/cli
+# Install Astro and required packages
+npm install astro @astrojs/react @astrojs/tailwind @astrojs/vercel
 
-# Create new Sanity project (in a separate folder, NOT in the React app)
-cd ..
-mkdir bedabeda-cms
-cd bedabeda-cms
-npx sanity@latest init
-
-# When prompted:
-# - Create new project: Yes
-# - Project name: bedabeda-growth-cms
-# - Use default dataset (production): Yes
-# - Project output path: (current directory)
-# - Select template: Clean project with no predefined schemas
+# Install Keystatic
+npm install @keystatic/core @keystatic/astro
 ```
 
-### Step 1.2: Define Content Schemas
+### Step 1.2: Create Astro Config
 
-Create schemas for blog posts and case studies.
+**File: `astro.config.mjs`**
 
-**File: `bedabeda-cms/schemaTypes/blogPost.ts`**
+```javascript
+import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
+import tailwind from '@astrojs/tailwind';
+import vercel from '@astrojs/vercel/static';
+import keystatic from '@keystatic/astro';
+
+export default defineConfig({
+  integrations: [
+    react(),
+    tailwind(),
+    keystatic(),
+  ],
+  output: 'hybrid', // Allows both static and server routes
+  adapter: vercel(),
+});
+```
+
+### Step 1.3: Restructure for Astro
+
+```
+bedabeda-growth-site/
+├── src/
+│   ├── components/          # Keep all existing React components
+│   │   ├── ui/              # shadcn components (unchanged)
+│   │   ├── Header.tsx       # (unchanged)
+│   │   ├── Footer.tsx       # (unchanged)
+│   │   ├── CaseStudyGallery.tsx  # (will update to read from content)
+│   │   └── ...
+│   ├── layouts/
+│   │   └── BaseLayout.astro # New: common page wrapper
+│   ├── pages/
+│   │   ├── index.astro      # Convert from Index.tsx
+│   │   ├── services.astro   # Convert from Services.tsx
+│   │   ├── contact.astro    # Convert from Contact.tsx
+│   │   ├── blog/
+│   │   │   ├── index.astro  # Blog listing page
+│   │   │   └── [...slug].astro  # Dynamic blog post pages
+│   │   └── keystatic/
+│   │       └── [...params].astro  # Keystatic admin UI
+│   └── content/             # NEW: Where content lives
+│       ├── blog/            # Blog posts (MDX files)
+│       └── case-studies/    # Case study data (JSON files)
+├── public/
+│   └── images/              # Static images
+├── keystatic.config.ts      # Keystatic schema
+├── astro.config.mjs         # Astro config
+└── package.json
+```
+
+### Step 1.4: Create Base Layout
+
+**File: `src/layouts/BaseLayout.astro`**
+
+```astro
+---
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import '@/index.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description, ogImage } = Astro.props;
+const siteUrl = 'https://bedabedagrowth.com';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | BedaBeda Growth</title>
+    <meta name="description" content={description || 'CRO & Conversion Optimization Agency'} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage || `${siteUrl}/og-default.png`} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bedabedagrowth" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen bg-background font-sans antialiased">
+    <Header client:load />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+```
+
+### Step 1.5: Convert Homepage
+
+**File: `src/pages/index.astro`**
+
+```astro
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/Hero';
+import ClientLogos from '@/components/ClientLogos';
+import DisruptiveCROSection from '@/components/DisruptiveCROSection';
+import WhoWeWorkWith from '@/components/WhoWeWorkWith';
+import CROMethodologyDiagram from '@/components/CROMethodologyDiagram';
+import CaseStudyTeasers from '@/components/CaseStudyTeasers';
+import CaseStudyGallery from '@/components/CaseStudyGallery';
+import AntiCookieCutter from '@/components/AntiCookieCutter';
+import SlackMessages from '@/components/SlackMessages';
+import TestimonialSlider from '@/components/TestimonialSlider';
+import WhoYoullWorkWith from '@/components/WhoYoullWorkWith';
+import ConversionBlock from '@/components/ConversionBlock';
+
+// Fetch case studies at build time
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../keystatic.config';
+
+const reader = createReader(process.cwd(), keystaticConfig);
+const caseStudies = await reader.collections.caseStudies.all();
+---
+
+<BaseLayout
+  title="CRO & Conversion Optimization Agency"
+  description="We help e-commerce brands increase revenue through data-driven conversion rate optimization."
+>
+  <Hero client:load />
+  <ClientLogos />
+  <DisruptiveCROSection client:visible />
+  <WhoWeWorkWith />
+  <CROMethodologyDiagram client:visible />
+  <CaseStudyTeasers />
+  <CaseStudyGallery caseStudies={caseStudies} client:load />
+  <AntiCookieCutter />
+  <SlackMessages client:visible />
+  <TestimonialSlider client:load />
+  <WhoYoullWorkWith />
+  <ConversionBlock />
+</BaseLayout>
+```
+
+---
+
+## Phase 2: Set Up Keystatic
+
+### Step 2.1: Create Keystatic Config
+
+**File: `keystatic.config.ts`**
 
 ```typescript
-import { defineType, defineField } from 'sanity'
+import { config, fields, collection } from '@keystatic/core';
 
-export default defineType({
-  name: 'blogPost',
-  title: 'Blog Post',
-  type: 'document',
-  fields: [
-    defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: { source: 'title', maxLength: 96 },
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'publishedAt',
-      title: 'Published At',
-      type: 'datetime',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'text',
-      rows: 3,
-      description: 'Short summary for SEO and previews (150-160 chars ideal)',
-    }),
-    defineField({
-      name: 'featuredImage',
-      title: 'Featured Image',
-      type: 'image',
-      options: { hotspot: true },
-    }),
-    defineField({
-      name: 'author',
-      title: 'Author',
-      type: 'string',
-      initialValue: 'BedaBeda Growth Team',
-    }),
-    defineField({
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{ type: 'string' }],
-      options: {
-        list: [
-          { title: 'CRO', value: 'cro' },
-          { title: 'E-commerce', value: 'ecommerce' },
-          { title: 'Landing Pages', value: 'landing-pages' },
-          { title: 'A/B Testing', value: 'ab-testing' },
-          { title: 'Case Study', value: 'case-study' },
-        ],
-      },
-    }),
-    defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'array',
-      of: [
-        { type: 'block' }, // Rich text
-        {
-          type: 'image',
-          options: { hotspot: true },
-          fields: [
-            {
-              name: 'alt',
-              title: 'Alt Text',
-              type: 'string',
-            },
-            {
-              name: 'caption',
-              title: 'Caption',
-              type: 'string',
-            },
+export default config({
+  storage: {
+    // Use 'local' for development, 'github' for production
+    kind: process.env.NODE_ENV === 'development' ? 'local' : 'github',
+    repo: {
+      owner: 'BedaBeda-Growth',
+      name: 'bedabeda-growth-site',
+    },
+  },
+
+  collections: {
+    // ==================
+    // BLOG POSTS
+    // ==================
+    blog: collection({
+      label: 'Blog Posts',
+      slugField: 'title',
+      path: 'src/content/blog/*',
+      format: { contentField: 'content' },
+      schema: {
+        title: fields.slug({
+          name: { label: 'Title', validation: { isRequired: true } },
+        }),
+        publishedDate: fields.date({
+          label: 'Published Date',
+          validation: { isRequired: true },
+        }),
+        excerpt: fields.text({
+          label: 'Excerpt',
+          description: 'Short summary for SEO and social sharing (150-160 characters ideal)',
+          multiline: true,
+        }),
+        featuredImage: fields.image({
+          label: 'Featured Image',
+          directory: 'public/images/blog',
+          publicPath: '/images/blog/',
+        }),
+        author: fields.text({
+          label: 'Author',
+          defaultValue: 'BedaBeda Growth Team',
+        }),
+        categories: fields.multiselect({
+          label: 'Categories',
+          options: [
+            { label: 'CRO', value: 'cro' },
+            { label: 'E-commerce', value: 'ecommerce' },
+            { label: 'Landing Pages', value: 'landing-pages' },
+            { label: 'A/B Testing', value: 'ab-testing' },
+            { label: 'Case Study', value: 'case-study' },
+            { label: 'Strategy', value: 'strategy' },
           ],
-        },
-      ],
-    }),
-    // SEO Fields
-    defineField({
-      name: 'seo',
-      title: 'SEO',
-      type: 'object',
-      fields: [
-        { name: 'metaTitle', title: 'Meta Title', type: 'string' },
-        { name: 'metaDescription', title: 'Meta Description', type: 'text', rows: 2 },
-        { name: 'ogImage', title: 'Open Graph Image', type: 'image' },
-      ],
-    }),
-  ],
-  preview: {
-    select: {
-      title: 'title',
-      date: 'publishedAt',
-      media: 'featuredImage',
-    },
-  },
-})
-```
-
-**File: `bedabeda-cms/schemaTypes/caseStudy.ts`**
-
-```typescript
-import { defineType, defineField } from 'sanity'
-
-export default defineType({
-  name: 'caseStudy',
-  title: 'Case Study',
-  type: 'document',
-  fields: [
-    defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-      description: 'e.g., "Product Page Optimization"',
-    }),
-    defineField({
-      name: 'order',
-      title: 'Display Order',
-      type: 'number',
-      description: 'Lower numbers appear first in carousel',
-    }),
-    defineField({
-      name: 'metric',
-      title: 'Key Metric',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-      description: 'e.g., "+15.8% Revenue Per Session"',
-    }),
-    defineField({
-      name: 'description',
-      title: 'Short Description',
-      type: 'string',
-      description: 'One-line description for the card',
-    }),
-    defineField({
-      name: 'category',
-      title: 'Category',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'E-commerce', value: 'E-commerce' },
-          { title: 'Landing Page', value: 'Landing Page' },
-          { title: 'Online B2C Community', value: 'Online B2C Community' },
-          { title: 'High SKU E-Commerce', value: 'High SKU E-Commerce' },
-        ],
+        }),
+        seoTitle: fields.text({
+          label: 'SEO Title',
+          description: 'Override the title for search engines (optional)',
+        }),
+        seoDescription: fields.text({
+          label: 'SEO Description',
+          description: 'Override the excerpt for search engines (optional)',
+          multiline: true,
+        }),
+        content: fields.mdx({
+          label: 'Content',
+          options: {
+            image: {
+              directory: 'public/images/blog',
+              publicPath: '/images/blog/',
+            },
+          },
+        }),
       },
     }),
-    defineField({
-      name: 'cardBackgroundImage',
-      title: 'Card Background Image',
-      type: 'image',
-      options: { hotspot: true },
-      description: 'Image shown in the carousel card',
+
+    // ==================
+    // CASE STUDIES
+    // ==================
+    caseStudies: collection({
+      label: 'Case Studies',
+      slugField: 'title',
+      path: 'src/content/case-studies/*',
+      format: { data: 'json' },
+      schema: {
+        title: fields.slug({
+          name: { label: 'Title', validation: { isRequired: true } },
+          description: 'e.g., "Product Page Optimization"',
+        }),
+        order: fields.integer({
+          label: 'Display Order',
+          description: 'Lower numbers appear first in the carousel',
+          defaultValue: 99,
+        }),
+        isActive: fields.checkbox({
+          label: 'Show on Website',
+          defaultValue: true,
+        }),
+        metric: fields.text({
+          label: 'Key Metric',
+          validation: { isRequired: true },
+          description: 'e.g., "+15.8% Revenue Per Session"',
+        }),
+        description: fields.text({
+          label: 'Short Description',
+          description: 'One-line description shown on the card',
+        }),
+        category: fields.select({
+          label: 'Category',
+          options: [
+            { label: 'E-commerce', value: 'E-commerce' },
+            { label: 'Landing Page', value: 'Landing Page' },
+            { label: 'Online B2C Community', value: 'Online B2C Community' },
+            { label: 'High SKU E-Commerce', value: 'High SKU E-Commerce' },
+            { label: 'DTC Brand', value: 'DTC Brand' },
+          ],
+          defaultValue: 'E-commerce',
+        }),
+        cardImage: fields.image({
+          label: 'Card Background Image',
+          description: 'Image shown in the carousel card (recommended: 600x450px)',
+          directory: 'public/images/case-studies',
+          publicPath: '/images/case-studies/',
+        }),
+        clientLogo: fields.image({
+          label: 'Client Logo',
+          description: 'Small logo shown in bottom-right of card',
+          directory: 'public/images/case-studies',
+          publicPath: '/images/case-studies/',
+        }),
+        modalImage: fields.image({
+          label: 'Modal/Popup Image',
+          description: 'Large image shown when clicking into the case study',
+          directory: 'public/images/case-studies',
+          publicPath: '/images/case-studies/',
+        }),
+        challenge: fields.text({
+          label: 'Challenge',
+          description: 'What challenge did the client face?',
+          multiline: true,
+          validation: { isRequired: true },
+        }),
+        solution: fields.text({
+          label: 'Solution',
+          description: 'How did BedaBeda Growth solve it?',
+          multiline: true,
+          validation: { isRequired: true },
+        }),
+      },
     }),
-    defineField({
-      name: 'clientLogo',
-      title: 'Client Logo',
-      type: 'image',
-      description: 'Small logo shown in bottom-right of card',
-    }),
-    defineField({
-      name: 'modalImage',
-      title: 'Modal/Popup Image',
-      type: 'image',
-      options: { hotspot: true },
-      description: 'Large image shown when clicking into the case study',
-    }),
-    defineField({
-      name: 'challenge',
-      title: 'Challenge',
-      type: 'text',
-      rows: 4,
-      description: 'What challenge did the client face?',
-    }),
-    defineField({
-      name: 'solution',
-      title: 'Solution',
-      type: 'text',
-      rows: 4,
-      description: 'How did BedaBeda solve it?',
-    }),
-    defineField({
-      name: 'isActive',
-      title: 'Show on Website',
-      type: 'boolean',
-      initialValue: true,
-      description: 'Toggle to show/hide this case study',
-    }),
-  ],
-  orderings: [
-    {
-      title: 'Display Order',
-      name: 'orderAsc',
-      by: [{ field: 'order', direction: 'asc' }],
-    },
-  ],
-  preview: {
-    select: {
-      title: 'title',
-      metric: 'metric',
-      media: 'cardBackgroundImage',
-    },
-    prepare({ title, metric, media }) {
-      return {
-        title,
-        subtitle: metric,
-        media,
-      }
-    },
   },
-})
+});
 ```
 
-**File: `bedabeda-cms/schemaTypes/index.ts`**
+### Step 2.2: Create Keystatic Admin Route
+
+**File: `src/pages/keystatic/[...params].astro`**
+
+```astro
+---
+import { Keystatic } from '@keystatic/astro/ui';
+---
+<Keystatic />
+```
+
+### Step 2.3: Set Up GitHub Authentication (for Production)
+
+1. **Create GitHub OAuth App:**
+   - Go to GitHub → Settings → Developer Settings → OAuth Apps → New OAuth App
+   - Application name: `BedaBeda CMS`
+   - Homepage URL: `https://bedabedagrowth.com`
+   - Authorization callback URL: `https://bedabedagrowth.com/api/keystatic/github/oauth/callback`
+
+2. **Add Environment Variables in Vercel:**
+   ```
+   KEYSTATIC_GITHUB_CLIENT_ID=your_client_id
+   KEYSTATIC_GITHUB_CLIENT_SECRET=your_client_secret
+   KEYSTATIC_SECRET=any_random_32_character_string
+   ```
+
+3. **Create API Route for GitHub OAuth:**
+
+**File: `src/pages/api/keystatic/[...params].ts`**
 
 ```typescript
-import blogPost from './blogPost'
-import caseStudy from './caseStudy'
+import { makeHandler } from '@keystatic/astro/api';
+import keystaticConfig from '../../../keystatic.config';
 
-export const schemaTypes = [blogPost, caseStudy]
-```
-
-### Step 1.3: Deploy Sanity Studio
-
-```bash
-# Deploy the Sanity Studio (admin interface)
-cd bedabeda-cms
-npx sanity deploy
-
-# This will give you a URL like: https://bedabeda-growth-cms.sanity.studio
-# Your wife can bookmark this to manage content!
+export const all = makeHandler({ config: keystaticConfig });
+export const prerender = false;
 ```
 
 ---
 
-## Phase 2: Connect React App to Sanity
+## Phase 3: Build Blog Pages
 
-### Step 2.1: Install Sanity Client in React App
+### Step 3.1: Blog Listing Page
 
-```bash
-cd /home/user/bedabeda-growth-site
-npm install @sanity/client @sanity/image-url @portabletext/react
-```
+**File: `src/pages/blog/index.astro`**
 
-### Step 2.2: Create Sanity Client Configuration
+```astro
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../../keystatic.config';
 
-**File: `src/lib/sanity.ts`**
+const reader = createReader(process.cwd(), keystaticConfig);
+const posts = await reader.collections.blog.all();
 
-```typescript
-import { createClient } from '@sanity/client'
-import imageUrlBuilder from '@sanity/image-url'
-
-export const client = createClient({
-  projectId: 'YOUR_PROJECT_ID', // Get from sanity.io/manage
-  dataset: 'production',
-  useCdn: true, // Faster, cached responses
-  apiVersion: '2024-01-01',
-})
-
-const builder = imageUrlBuilder(client)
-
-export function urlFor(source: any) {
-  return builder.image(source)
-}
-
-// Query helpers
-export async function getBlogPosts() {
-  return client.fetch(`
-    *[_type == "blogPost"] | order(publishedAt desc) {
-      _id,
-      title,
-      slug,
-      excerpt,
-      publishedAt,
-      featuredImage,
-      categories,
-      author
-    }
-  `)
-}
-
-export async function getBlogPost(slug: string) {
-  return client.fetch(`
-    *[_type == "blogPost" && slug.current == $slug][0] {
-      _id,
-      title,
-      slug,
-      excerpt,
-      publishedAt,
-      featuredImage,
-      categories,
-      author,
-      body,
-      seo
-    }
-  `, { slug })
-}
-
-export async function getCaseStudies() {
-  return client.fetch(`
-    *[_type == "caseStudy" && isActive == true] | order(order asc) {
-      _id,
-      title,
-      metric,
-      description,
-      category,
-      cardBackgroundImage,
-      clientLogo,
-      modalImage,
-      challenge,
-      solution
-    }
-  `)
-}
-```
-
-### Step 2.3: Create Custom Hook for Data Fetching
-
-**File: `src/hooks/useSanityData.ts`**
-
-```typescript
-import { useQuery } from '@tanstack/react-query'
-import { getBlogPosts, getBlogPost, getCaseStudies } from '@/lib/sanity'
-
-export function useBlogPosts() {
-  return useQuery({
-    queryKey: ['blogPosts'],
-    queryFn: getBlogPosts,
-    staleTime: 1000 * 60 * 5, // 5 minutes
-  })
-}
-
-export function useBlogPost(slug: string) {
-  return useQuery({
-    queryKey: ['blogPost', slug],
-    queryFn: () => getBlogPost(slug),
-    enabled: !!slug,
-  })
-}
-
-export function useCaseStudies() {
-  return useQuery({
-    queryKey: ['caseStudies'],
-    queryFn: getCaseStudies,
-    staleTime: 1000 * 60 * 5,
-  })
-}
-```
-
+// Sort by date, newest first
+const sortedPosts = posts
+  .filter(post => post.entry.publishedDate)
+  .sort((a, b) =>
+    new Date(b.entry.publishedDate!).getTime() - new Date(a.entry.publishedDate!).getTime()
+  );
 ---
 
-## Phase 3: Build the Blog Feature
+<BaseLayout
+  title="Blog"
+  description="Expert insights on conversion rate optimization, A/B testing, and e-commerce growth strategies."
+>
+  <section class="pt-24 pb-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl lg:text-5xl font-bold mb-4">The Growth Blog</h1>
+        <p class="text-xl text-gray-600 mb-12">
+          Insights on CRO, A/B testing, and conversion optimization
+        </p>
 
-### Step 3.1: Create Blog List Page
-
-**File: `src/pages/Blog.tsx`**
-
-```tsx
-import { useBlogPosts } from '@/hooks/useSanityData'
-import { urlFor } from '@/lib/sanity'
-import { Link } from 'react-router-dom'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import { Helmet } from 'react-helmet-async'
-
-const Blog = () => {
-  const { data: posts, isLoading, error } = useBlogPosts()
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-      </div>
-    )
-  }
-
-  return (
-    <>
-      <Helmet>
-        <title>Blog | BedaBeda Growth - CRO & Conversion Optimization Insights</title>
-        <meta name="description" content="Expert insights on conversion rate optimization, A/B testing, and e-commerce growth strategies from the BedaBeda Growth team." />
-      </Helmet>
-
-      <Header />
-
-      <main className="pt-24 pb-16">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-              The Growth Blog
-            </h1>
-            <p className="text-xl text-gray-600 mb-12">
-              Insights on CRO, A/B testing, and conversion optimization
-            </p>
-
-            <div className="grid gap-8">
-              {posts?.map((post: any) => (
-                <Link
-                  key={post._id}
-                  to={`/blog/${post.slug.current}`}
-                  className="group"
-                >
-                  <article className="flex flex-col md:flex-row gap-6 p-6 rounded-2xl border border-gray-200 hover:border-primary transition-colors">
-                    {post.featuredImage && (
-                      <div className="md:w-48 md:h-32 rounded-lg overflow-hidden flex-shrink-0">
-                        <img
-                          src={urlFor(post.featuredImage).width(400).height(250).url()}
-                          alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                        />
-                      </div>
-                    )}
-                    <div className="flex-1">
-                      <div className="flex gap-2 mb-2">
-                        {post.categories?.map((cat: string) => (
-                          <span
-                            key={cat}
-                            className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded"
-                          >
-                            {cat}
-                          </span>
-                        ))}
-                      </div>
-                      <h2 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                        {post.title}
-                      </h2>
-                      <p className="text-gray-600 text-sm mb-2">
-                        {post.excerpt}
-                      </p>
-                      <time className="text-xs text-gray-400">
-                        {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric'
-                        })}
-                      </time>
-                    </div>
-                  </article>
-                </Link>
-              ))}
-            </div>
-          </div>
+        <div class="grid gap-8">
+          {sortedPosts.map((post) => (
+            <a href={`/blog/${post.slug}`} class="group">
+              <article class="flex flex-col md:flex-row gap-6 p-6 rounded-2xl border border-gray-200 hover:border-primary transition-colors">
+                {post.entry.featuredImage && (
+                  <div class="md:w-48 md:h-32 rounded-lg overflow-hidden flex-shrink-0">
+                    <img
+                      src={post.entry.featuredImage}
+                      alt={post.entry.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                    />
+                  </div>
+                )}
+                <div class="flex-1">
+                  <div class="flex gap-2 mb-2">
+                    {post.entry.categories?.map((cat) => (
+                      <span class="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded">
+                        {cat}
+                      </span>
+                    ))}
+                  </div>
+                  <h2 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                    {post.entry.title}
+                  </h2>
+                  <p class="text-gray-600 text-sm mb-2">
+                    {post.entry.excerpt}
+                  </p>
+                  <time class="text-xs text-gray-400">
+                    {new Date(post.entry.publishedDate!).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </time>
+                </div>
+              </article>
+            </a>
+          ))}
         </div>
-      </main>
 
-      <Footer />
-    </>
-  )
-}
-
-export default Blog
-```
-
-### Step 3.2: Create Blog Post Detail Page
-
-**File: `src/pages/BlogPost.tsx`**
-
-```tsx
-import { useParams } from 'react-router-dom'
-import { useBlogPost } from '@/hooks/useSanityData'
-import { urlFor } from '@/lib/sanity'
-import { PortableText } from '@portabletext/react'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import { Helmet } from 'react-helmet-async'
-
-// Custom components for Portable Text rendering
-const portableTextComponents = {
-  types: {
-    image: ({ value }: any) => (
-      <figure className="my-8">
-        <img
-          src={urlFor(value).width(800).url()}
-          alt={value.alt || ''}
-          className="rounded-lg w-full"
-        />
-        {value.caption && (
-          <figcaption className="text-center text-sm text-gray-500 mt-2">
-            {value.caption}
-          </figcaption>
+        {sortedPosts.length === 0 && (
+          <p class="text-center text-gray-500 py-12">
+            No blog posts yet. Check back soon!
+          </p>
         )}
-      </figure>
-    ),
-  },
-  block: {
-    h2: ({ children }: any) => (
-      <h2 className="text-2xl font-bold mt-8 mb-4">{children}</h2>
-    ),
-    h3: ({ children }: any) => (
-      <h3 className="text-xl font-semibold mt-6 mb-3">{children}</h3>
-    ),
-    blockquote: ({ children }: any) => (
-      <blockquote className="border-l-4 border-primary pl-4 italic my-6 text-gray-600">
-        {children}
-      </blockquote>
-    ),
-  },
-  marks: {
-    link: ({ value, children }: any) => (
-      <a
-        href={value.href}
-        className="text-primary hover:underline"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {children}
-      </a>
-    ),
-  },
-}
-
-const BlogPost = () => {
-  const { slug } = useParams()
-  const { data: post, isLoading } = useBlogPost(slug || '')
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
       </div>
-    )
-  }
+    </div>
+  </section>
+</BaseLayout>
+```
 
-  if (!post) {
-    return <div>Post not found</div>
-  }
+### Step 3.2: Individual Blog Post Page
 
-  const seoTitle = post.seo?.metaTitle || post.title
-  const seoDescription = post.seo?.metaDescription || post.excerpt
-  const ogImage = post.seo?.ogImage
-    ? urlFor(post.seo.ogImage).width(1200).height(630).url()
-    : post.featuredImage
-      ? urlFor(post.featuredImage).width(1200).height(630).url()
-      : null
+**File: `src/pages/blog/[slug].astro`**
 
-  return (
-    <>
-      <Helmet>
-        <title>{seoTitle} | BedaBeda Growth Blog</title>
-        <meta name="description" content={seoDescription} />
-        <meta property="og:title" content={seoTitle} />
-        <meta property="og:description" content={seoDescription} />
-        {ogImage && <meta property="og:image" content={ogImage} />}
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
+```astro
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../../keystatic.config';
 
-      <Header />
+export async function getStaticPaths() {
+  const reader = createReader(process.cwd(), keystaticConfig);
+  const posts = await reader.collections.blog.all();
 
-      <article className="pt-24 pb-16">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto">
-            {/* Breadcrumb */}
-            <nav className="text-sm mb-8">
-              <a href="/blog" className="text-gray-500 hover:text-primary">Blog</a>
-              <span className="mx-2 text-gray-300">/</span>
-              <span className="text-gray-700">{post.title}</span>
-            </nav>
-
-            {/* Header */}
-            <header className="mb-8">
-              <div className="flex gap-2 mb-4">
-                {post.categories?.map((cat: string) => (
-                  <span
-                    key={cat}
-                    className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded"
-                  >
-                    {cat}
-                  </span>
-                ))}
-              </div>
-              <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-                {post.title}
-              </h1>
-              <div className="flex items-center gap-4 text-gray-500">
-                <span>{post.author}</span>
-                <span>•</span>
-                <time>
-                  {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </time>
-              </div>
-            </header>
-
-            {/* Featured Image */}
-            {post.featuredImage && (
-              <div className="mb-8 rounded-2xl overflow-hidden">
-                <img
-                  src={urlFor(post.featuredImage).width(1200).url()}
-                  alt={post.title}
-                  className="w-full"
-                />
-              </div>
-            )}
-
-            {/* Content */}
-            <div className="prose prose-lg max-w-none">
-              <PortableText
-                value={post.body}
-                components={portableTextComponents}
-              />
-            </div>
-
-            {/* CTA */}
-            <div className="mt-12 p-8 bg-gray-100 rounded-2xl text-center">
-              <h3 className="text-2xl font-bold mb-2">Ready to grow your conversions?</h3>
-              <p className="text-gray-600 mb-4">Let's talk about how we can help.</p>
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors"
-              >
-                Get in Touch
-              </a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <Footer />
-    </>
-  )
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
 }
 
-export default BlogPost
-```
+const { post } = Astro.props;
+const { Content } = await post.entry.content();
 
-### Step 3.3: Add Routes and Navigation
+const seoTitle = post.entry.seoTitle || post.entry.title;
+const seoDescription = post.entry.seoDescription || post.entry.excerpt;
+---
 
-**Update `src/App.tsx`** - Add new routes:
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  ogImage={post.entry.featuredImage}
+>
+  <article class="pt-24 pb-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="text-sm mb-8">
+          <a href="/blog" class="text-gray-500 hover:text-primary">Blog</a>
+          <span class="mx-2 text-gray-300">/</span>
+          <span class="text-gray-700">{post.entry.title}</span>
+        </nav>
 
-```tsx
-import Blog from './pages/Blog'
-import BlogPost from './pages/BlogPost'
+        <!-- Header -->
+        <header class="mb-8">
+          <div class="flex gap-2 mb-4">
+            {post.entry.categories?.map((cat) => (
+              <span class="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded">
+                {cat}
+              </span>
+            ))}
+          </div>
+          <h1 class="text-4xl lg:text-5xl font-bold mb-4">
+            {post.entry.title}
+          </h1>
+          <div class="flex items-center gap-4 text-gray-500">
+            <span>{post.entry.author}</span>
+            <span>•</span>
+            <time>
+              {new Date(post.entry.publishedDate!).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </time>
+          </div>
+        </header>
 
-// Add to routes:
-<Route path="/blog" element={<Blog />} />
-<Route path="/blog/:slug" element={<BlogPost />} />
-```
+        <!-- Featured Image -->
+        {post.entry.featuredImage && (
+          <div class="mb-8 rounded-2xl overflow-hidden">
+            <img
+              src={post.entry.featuredImage}
+              alt={post.entry.title}
+              class="w-full"
+            />
+          </div>
+        )}
 
-**Update `src/components/Header.tsx`** - Add Blog link to navigation:
+        <!-- Content -->
+        <div class="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-primary">
+          <Content />
+        </div>
 
-```tsx
-// Add to the navigation items:
-{ name: 'Blog', path: '/blog' }
-```
+        <!-- CTA -->
+        <div class="mt-12 p-8 bg-gray-100 rounded-2xl text-center">
+          <h3 class="text-2xl font-bold mb-2">Ready to grow your conversions?</h3>
+          <p class="text-gray-600 mb-4">Let's talk about how we can help.</p>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors"
+          >
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
 
-### Step 3.4: Install SEO Dependencies
-
-```bash
-npm install react-helmet-async
-```
-
-**Wrap app in HelmetProvider** in `src/main.tsx`:
-
-```tsx
-import { HelmetProvider } from 'react-helmet-async'
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <HelmetProvider>
-      <App />
-    </HelmetProvider>
-  </React.StrictMode>
-)
+  <!-- JSON-LD Structured Data for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.entry.title,
+    "description": post.entry.excerpt,
+    "author": {
+      "@type": "Organization",
+      "name": post.entry.author || "BedaBeda Growth"
+    },
+    "datePublished": post.entry.publishedDate,
+    "image": post.entry.featuredImage,
+    "publisher": {
+      "@type": "Organization",
+      "name": "BedaBeda Growth",
+      "url": "https://bedabedagrowth.com"
+    }
+  })} />
+</BaseLayout>
 ```
 
 ---
 
-## Phase 4: Update Case Studies to Use CMS
+## Phase 4: Update Case Study Gallery
 
-### Step 4.1: Refactor CaseStudyGallery Component
+### Step 4.1: Refactor to Accept Props
 
-**Replace `src/components/CaseStudyGallery.tsx`** with dynamic version:
+**Update `src/components/CaseStudyGallery.tsx`:**
 
 ```tsx
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import { useCaseStudies } from "@/hooks/useSanityData"
-import { urlFor } from "@/lib/sanity"
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
-const CaseStudyGallery = () => {
-  const { data: caseStudies, isLoading } = useCaseStudies()
+interface CaseStudy {
+  slug: string;
+  entry: {
+    title: string;
+    metric: string;
+    description?: string;
+    category: string;
+    cardImage?: string;
+    clientLogo?: string;
+    modalImage?: string;
+    challenge: string;
+    solution: string;
+    order: number;
+    isActive: boolean;
+  };
+}
 
-  if (isLoading) {
-    return (
-      <section className="py-20 bg-gray-900 text-white">
-        <div className="container mx-auto px-6">
-          <div className="flex justify-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-          </div>
-        </div>
-      </section>
-    )
-  }
+interface Props {
+  caseStudies: CaseStudy[];
+}
+
+const CaseStudyGallery = ({ caseStudies }: Props) => {
+  // Filter active and sort by order
+  const activeCaseStudies = caseStudies
+    .filter(cs => cs.entry.isActive)
+    .sort((a, b) => (a.entry.order || 99) - (b.entry.order || 99));
 
   return (
     <section id="case-studies" className="py-20 bg-gray-900 text-white scroll-mt-16">
@@ -779,30 +677,30 @@ const CaseStudyGallery = () => {
 
           <Carousel className="w-full">
             <CarouselContent className="-ml-4">
-              {caseStudies?.map((study: any) => (
-                <CarouselItem key={study._id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+              {activeCaseStudies.map((study) => (
+                <CarouselItem key={study.slug} className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <Dialog>
                     <DialogTrigger asChild>
                       <div className="bg-gray-800 rounded-2xl overflow-hidden cursor-pointer hover:bg-gray-750 transition-colors group">
                         <div className="aspect-[4/3] bg-gray-700 relative overflow-hidden">
-                          {study.cardBackgroundImage && (
+                          {study.entry.cardImage && (
                             <>
                               <img
-                                src={urlFor(study.cardBackgroundImage).width(600).height(450).url()}
-                                alt={study.title}
+                                src={study.entry.cardImage}
+                                alt={study.entry.title}
                                 className="absolute inset-0 w-full h-full object-cover"
                               />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20" />
                             </>
                           )}
                           <div className="absolute bottom-4 left-4 right-4">
                             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 relative">
-                              <p className="text-xs text-gray-300 mb-1">{study.category}</p>
-                              <p className="font-semibold text-lg">{study.metric}</p>
-                              {study.clientLogo && (
+                              <p className="text-xs text-gray-300 mb-1">{study.entry.category}</p>
+                              <p className="font-semibold text-lg">{study.entry.metric}</p>
+                              {study.entry.clientLogo && (
                                 <img
-                                  src={urlFor(study.clientLogo).height(24).url()}
+                                  src={study.entry.clientLogo}
                                   alt="Client logo"
                                   className="absolute top-2 right-2 h-6 w-auto"
                                 />
@@ -812,38 +710,38 @@ const CaseStudyGallery = () => {
                         </div>
                         <div className="p-6">
                           <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                            {study.title}
+                            {study.entry.title}
                           </h3>
                           <p className="text-gray-400 text-sm">
-                            {study.description}
+                            {study.entry.description}
                           </p>
                         </div>
                       </div>
                     </DialogTrigger>
                     <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
                       <div className="p-6">
-                        {study.modalImage && (
+                        {study.entry.modalImage && (
                           <div className="bg-gray-100 rounded-lg mb-6 overflow-hidden">
                             <img
-                              src={urlFor(study.modalImage).width(1200).url()}
-                              alt={study.title}
+                              src={study.entry.modalImage}
+                              alt={study.entry.title}
                               className="w-full h-auto object-contain"
                             />
                           </div>
                         )}
-                        <h2 className="text-2xl font-bold mb-4">{study.title}</h2>
+                        <h2 className="text-2xl font-bold mb-4">{study.entry.title}</h2>
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
                             <h3 className="font-semibold mb-2">Challenge</h3>
-                            <p className="text-gray-600 mb-4">{study.challenge}</p>
+                            <p className="text-gray-600 mb-4">{study.entry.challenge}</p>
                             <h3 className="font-semibold mb-2">Solution</h3>
-                            <p className="text-gray-600">{study.solution}</p>
+                            <p className="text-gray-600">{study.entry.solution}</p>
                           </div>
                           <div>
                             <h3 className="font-semibold mb-2">Results</h3>
                             <div className="bg-gray-50 rounded-lg p-4">
-                              <div className="text-3xl font-bold text-primary mb-2">{study.metric}</div>
-                              <p className="text-gray-600 text-sm">{study.description}</p>
+                              <div className="text-3xl font-bold text-primary mb-2">{study.entry.metric}</div>
+                              <p className="text-gray-600 text-sm">{study.entry.description}</p>
                             </div>
                           </div>
                         </div>
@@ -873,224 +771,219 @@ const CaseStudyGallery = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default CaseStudyGallery
+export default CaseStudyGallery;
 ```
-
-### Step 4.2: Migrate Existing Case Studies to Sanity
-
-After Sanity is set up, manually enter the 5 existing case studies via the Sanity Studio interface. Upload the images from `/public/lovable-uploads/` directory.
 
 ---
 
-## Phase 5: SEO Optimizations
+## Phase 5: Migrate Existing Content
 
-### Step 5.1: Add Sitemap Generation
-
-Create a build script to generate sitemap. Install dependencies:
+### Step 5.1: Create Content Directories
 
 ```bash
-npm install -D sitemap
+mkdir -p src/content/blog
+mkdir -p src/content/case-studies
+mkdir -p public/images/blog
+mkdir -p public/images/case-studies
 ```
 
-**File: `scripts/generate-sitemap.js`**
+### Step 5.2: Migrate Case Studies
+
+Create JSON files for each existing case study. Example:
+
+**File: `src/content/case-studies/product-page-optimization.json`**
+
+```json
+{
+  "title": "Product Page Optimization",
+  "order": 1,
+  "isActive": true,
+  "metric": "+15.8% Revenue Per Session",
+  "description": "Data-driven PDP overhaul for niche home goods",
+  "category": "E-commerce",
+  "cardImage": "/images/case-studies/allegiance-card.png",
+  "clientLogo": "/images/case-studies/allegiance-logo.png",
+  "modalImage": "/images/case-studies/allegiance-modal.png",
+  "challenge": "Allegiance Flag Supply was growing quickly and wanted to ensure efficiency as they scaled, especially knowing their product was more expensive than others in the market.",
+  "solution": "We used a combination of user research, custom conversion & behavioral reports, and an updated page journey to showcase the right information at the right time to build trust & perceived value."
+}
+```
+
+### Step 5.3: Move Images
+
+```bash
+# Move existing case study images to new location
+cp public/lovable-uploads/cee89299-*.png public/images/case-studies/allegiance-card.png
+cp public/lovable-uploads/84c87a09-*.png public/images/case-studies/allegiance-logo.png
+cp public/lovable-uploads/073035e6-*.png public/images/case-studies/allegiance-modal.png
+# ... repeat for other case studies
+```
+
+---
+
+## Phase 6: SEO & Final Setup
+
+### Step 6.1: Generate Sitemap
+
+Astro can auto-generate sitemaps. Add to config:
+
+```bash
+npm install @astrojs/sitemap
+```
+
+**Update `astro.config.mjs`:**
 
 ```javascript
-const { SitemapStream, streamToPromise } = require('sitemap')
-const { createWriteStream } = require('fs')
-const { createClient } = require('@sanity/client')
+import sitemap from '@astrojs/sitemap';
 
-const client = createClient({
-  projectId: 'YOUR_PROJECT_ID',
-  dataset: 'production',
-  useCdn: true,
-  apiVersion: '2024-01-01',
-})
-
-async function generateSitemap() {
-  const sitemap = new SitemapStream({ hostname: 'https://bedabedagrowth.com' })
-  const writeStream = createWriteStream('./dist/sitemap.xml')
-  sitemap.pipe(writeStream)
-
-  // Static pages
-  sitemap.write({ url: '/', changefreq: 'weekly', priority: 1.0 })
-  sitemap.write({ url: '/services', changefreq: 'monthly', priority: 0.8 })
-  sitemap.write({ url: '/contact', changefreq: 'monthly', priority: 0.7 })
-  sitemap.write({ url: '/blog', changefreq: 'daily', priority: 0.9 })
-
-  // Blog posts
-  const posts = await client.fetch(`*[_type == "blogPost"]{ slug, publishedAt }`)
-  for (const post of posts) {
-    sitemap.write({
-      url: `/blog/${post.slug.current}`,
-      lastmod: post.publishedAt,
-      changefreq: 'monthly',
-      priority: 0.7,
-    })
-  }
-
-  sitemap.end()
-  await streamToPromise(sitemap)
-  console.log('Sitemap generated!')
-}
-
-generateSitemap()
+export default defineConfig({
+  site: 'https://bedabedagrowth.com',
+  integrations: [
+    // ... other integrations
+    sitemap(),
+  ],
+});
 ```
 
-### Step 5.2: Update robots.txt
+### Step 6.2: Update robots.txt
 
-**Update `public/robots.txt`**:
+**File: `public/robots.txt`**
 
 ```
 User-agent: *
 Allow: /
 
-Sitemap: https://bedabedagrowth.com/sitemap.xml
+Sitemap: https://bedabedagrowth.com/sitemap-index.xml
 ```
 
-### Step 5.3: Add JSON-LD Structured Data
+### Step 6.3: Configure Vercel
 
-Add to blog posts for better search appearance:
+**File: `vercel.json`**
 
-```tsx
-// In BlogPost.tsx, add this JSON-LD script in <Helmet>:
-<script type="application/ld+json">
-  {JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": post.title,
-    "description": post.excerpt,
-    "author": {
-      "@type": "Organization",
-      "name": "BedaBeda Growth"
-    },
-    "datePublished": post.publishedAt,
-    "image": ogImage,
-    "publisher": {
-      "@type": "Organization",
-      "name": "BedaBeda Growth",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://bedabedagrowth.com/logo.png"
-      }
-    }
-  })}
-</script>
+```json
+{
+  "framework": "astro",
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
+}
 ```
 
 ---
 
 ## Implementation Checklist
 
-### Phase 1: Sanity Setup (Do First)
-- [ ] Install Sanity CLI
-- [ ] Create Sanity project
-- [ ] Define blog post schema
-- [ ] Define case study schema
-- [ ] Deploy Sanity Studio
-- [ ] Note down project ID and dataset name
+### Phase 1: Astro Migration
+- [ ] Install Astro and required packages
+- [ ] Create `astro.config.mjs`
+- [ ] Create `BaseLayout.astro`
+- [ ] Convert `Index.tsx` → `index.astro`
+- [ ] Convert `Services.tsx` → `services.astro`
+- [ ] Convert `Contact.tsx` → `contact.astro`
+- [ ] Convert other pages
+- [ ] Test all pages render correctly
 
-### Phase 2: React Integration
-- [ ] Install Sanity client packages
-- [ ] Create `src/lib/sanity.ts` with client config
-- [ ] Create `src/hooks/useSanityData.ts`
-- [ ] Test connection with a simple query
+### Phase 2: Keystatic Setup
+- [ ] Install Keystatic packages
+- [ ] Create `keystatic.config.ts` with blog + case study schemas
+- [ ] Create `/keystatic/[...params].astro` route
+- [ ] Create `/api/keystatic/[...params].ts` API route
+- [ ] Test Keystatic admin UI locally
 
 ### Phase 3: Blog Feature
-- [ ] Install react-helmet-async
-- [ ] Create Blog list page (`src/pages/Blog.tsx`)
-- [ ] Create Blog post page (`src/pages/BlogPost.tsx`)
-- [ ] Add routes to App.tsx
-- [ ] Add Blog link to header navigation
-- [ ] Add HelmetProvider to main.tsx
-- [ ] Test with sample blog post
+- [ ] Create `src/pages/blog/index.astro`
+- [ ] Create `src/pages/blog/[slug].astro`
+- [ ] Add blog link to Header navigation
+- [ ] Create first test blog post
+- [ ] Verify SEO meta tags work
 
-### Phase 4: Case Studies CMS
-- [ ] Refactor CaseStudyGallery to use Sanity data
-- [ ] Migrate existing 5 case studies to Sanity
-- [ ] Upload all images to Sanity
-- [ ] Test carousel and modals work correctly
-- [ ] Remove hardcoded data
+### Phase 4: Case Studies
+- [ ] Update `CaseStudyGallery.tsx` to accept props
+- [ ] Update homepage to pass case studies as props
+- [ ] Test carousel and modals work
 
-### Phase 5: SEO & Polish
-- [ ] Set up sitemap generation
-- [ ] Update robots.txt
-- [ ] Add JSON-LD structured data
-- [ ] Test meta tags with social preview tools
+### Phase 5: Content Migration
+- [ ] Create content directories
+- [ ] Create JSON files for all 5 case studies
+- [ ] Move/rename images to new locations
+- [ ] Verify all case studies display correctly
+
+### Phase 6: Production Setup
+- [ ] Create GitHub OAuth App
+- [ ] Add environment variables to Vercel:
+  - `KEYSTATIC_GITHUB_CLIENT_ID`
+  - `KEYSTATIC_GITHUB_CLIENT_SECRET`
+  - `KEYSTATIC_SECRET`
+- [ ] Deploy to Vercel
+- [ ] Test Keystatic login in production
+- [ ] Test content editing workflow
 - [ ] Submit sitemap to Google Search Console
 
 ---
 
-## Alternative Approaches
-
-### Option B: MDX-Based Blog (Simpler, More Technical)
-
-If the team is comfortable with Git/GitHub, MDX offers a simpler approach:
+## Final Architecture
 
 ```
-src/
-  content/
-    blog/
-      my-first-post.mdx
-      another-post.mdx
+┌─────────────────────────────────────────────────────────────┐
+│                         VERCEL                               │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│   ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    │
+│   │   Astro     │    │  Keystatic  │    │   GitHub    │    │
+│   │   Pages     │◄───│  Admin UI   │───►│    Repo     │    │
+│   │  (static)   │    │ /keystatic  │    │  (content)  │    │
+│   └─────────────┘    └─────────────┘    └─────────────┘    │
+│         │                                      │            │
+│         │         ┌─────────────────┐          │            │
+│         └────────►│ src/content/    │◄─────────┘            │
+│                   │   blog/*.mdx    │                       │
+│                   │   case-studies/ │                       │
+│                   └─────────────────┘                       │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+
+Your wife's workflow:
+1. bedabedagrowth.com/keystatic
+2. Login with GitHub
+3. Edit content visually
+4. Save → commits to repo → Vercel rebuilds → live!
 ```
-
-**Pros:**
-- No external service needed
-- Content lives in the repo
-- Version controlled
-
-**Cons:**
-- Requires Git knowledge to publish
-- No visual editor
-- Need to redeploy for new content
-
-### Option C: Contentful (Alternative CMS)
-
-Similar to Sanity but with a different interface:
-
-**Pros:**
-- Very polished admin interface
-- Good documentation
-
-**Cons:**
-- Pricing can scale up quickly
-- Less flexible than Sanity
 
 ---
 
-## Questions to Decide Before Starting
+## Estimated Migration Effort
 
-1. **Domain for Sanity Studio?**
-   - Default: `bedabeda-cms.sanity.studio`
-   - Or custom subdomain like `admin.bedabedagrowth.com`
+| Task | Files |
+|------|-------|
+| Astro setup & config | 3 new |
+| Layout & page conversions | 6-8 modified |
+| Keystatic config | 2 new |
+| Blog pages | 2 new |
+| Case study refactor | 1 modified |
+| Content files | 5+ new (JSON for case studies) |
+| API routes | 1 new |
 
-2. **Who will be writing blog posts?**
-   - Just your wife? Add her email as admin
-   - Multiple authors? Set up team permissions
+**Total:** ~15-20 files to create/modify
 
-3. **Blog URL structure preference?**
+---
+
+## Questions Before Starting
+
+1. **GitHub access for your wife?**
+   - She'll need a GitHub account to log into Keystatic
+   - Just needs to be added as collaborator on the repo
+
+2. **Blog URL preference?**
    - `/blog/post-title` (recommended)
-   - `/insights/post-title`
-   - `/resources/post-title`
+   - Something else?
 
-4. **Categories for blog posts?**
-   - Current suggestions: CRO, E-commerce, Landing Pages, A/B Testing, Case Study
-   - Any others to add?
+3. **Keep Lovable integration?**
+   - The `lovable-tagger` can be removed if not needed
+   - Or kept for visual editing of non-content stuff
 
----
-
-## Estimated Scope
-
-| Phase | Complexity | Files to Create/Modify |
-|-------|-----------|----------------------|
-| Phase 1: Sanity Setup | Medium | 4-5 new files (separate repo) |
-| Phase 2: React Integration | Low | 2 new files |
-| Phase 3: Blog Feature | Medium | 3 new files, 2 modified |
-| Phase 4: Case Studies | Low | 1 file refactored |
-| Phase 5: SEO | Low | 2 new files, 1 modified |
-
-**Total new files:** ~10-12
-**Total modified files:** ~4-5
+4. **Domain confirmed?**
+   - Plan assumes `bedabedagrowth.com`
+   - Need to know for OAuth callback URLs
