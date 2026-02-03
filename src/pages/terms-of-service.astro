@@ -1,0 +1,99 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+---
+
+<BaseLayout
+  title="Terms of Service"
+  description="BedaBeda Growth Terms of Service - Terms and conditions for using our website and services."
+>
+  <Header client:load />
+
+  <main class="pt-24 pb-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+        <h1 class="text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-4">
+          Terms of Service
+        </h1>
+        <p class="text-gray-500 mb-12">Last Updated: January 2025</p>
+
+        <div class="prose prose-gray max-w-none space-y-8">
+          <p class="text-gray-600 leading-relaxed">
+            These Terms of Use ("<strong>Terms</strong>") govern your access to and use of the BedaBeda Growth website (the "<strong>Site</strong>"), which is owned and operated by BedaBeda Growth ("<strong>we</strong>," "<strong>us</strong>," "<strong>our</strong>," or the "<strong>Company</strong>").
+          </p>
+
+          <section>
+            <h2 class="text-2xl font-bold text-foreground mb-4">Use of the Site</h2>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              You must be at least 13 years of age to use this Site. <strong>By using this Site, you agree to these Terms and our <a href="/privacy-policy" class="text-primary hover:underline">Privacy Policy</a>. Please read them carefully before using this Site. If you do not want to agree, your only option is to not access or use the Site.</strong>
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+              You may only use the Site for lawful purposes and in accordance with these Terms of use. You are responsible for ensuring your access to and use of this Site or any parts of the Site are at all times in compliance with these Terms. We may suspend, terminate, or block your access if we suspect you may have acted in violation of these Terms or applicable laws.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-foreground mb-4">Prohibited Uses</h2>
+            <p class="text-gray-600 leading-relaxed mb-4">You agree not to use the Site:</p>
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+              <li>In any way that violates any applicable federal, state, local or international law or regulation.</li>
+              <li>For the purpose of exploiting, harming or attempting to exploit or harm minors in any way.</li>
+              <li>To send, knowingly receive, upload, download, use or re-use any material which does not comply with our Content Standards.</li>
+              <li>To transmit, or procure the sending of, any advertising or promotional material without our prior written consent.</li>
+              <li>To impersonate or attempt to impersonate the Company, a Company employee, another user, or any other person or entity.</li>
+              <li>In any manner that could disable, overburden, damage, or impair the site or interfere with any other party's use of the Site.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-foreground mb-4">Intellectual Property</h2>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              The Site and its entire contents, features and functionality are owned by the Company, its licensors, or other providers of such material, and are protected by United States and international copyright, trademark, patent, trade secret and other intellectual property or proprietary rights laws.
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+              These Terms grant you a limited, revocable, non-transferable, and non-exclusive license to use the Site for your personal, non-commercial use only.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-foreground mb-4">Disclaimer of Warranties</h2>
+            <p class="text-gray-600 leading-relaxed">
+              YOUR USE OF THE SITE, ITS CONTENT AND ANY SERVICES OR ITEMS OBTAINED THROUGH THE SITE IS AT YOUR OWN RISK. THE SITE, ITS CONTENT AND ANY SERVICES OR ITEMS OBTAINED THROUGH THE SITE ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT ANY WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. THE COMPANY HEREBY DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, STATUTORY OR OTHERWISE.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-foreground mb-4">Limitation on Liability</h2>
+            <p class="text-gray-600 leading-relaxed">
+              IN NO EVENT WILL THE COMPANY, ITS AFFILIATES OR THEIR LICENSORS, SERVICE PROVIDERS, EMPLOYEES, AGENTS, OFFICERS OR DIRECTORS BE LIABLE FOR DAMAGES OF ANY KIND, UNDER ANY LEGAL THEORY, ARISING OUT OF OR IN CONNECTION WITH YOUR USE, OR INABILITY TO USE, THE SITE.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-foreground mb-4">Governing Law and Jurisdiction</h2>
+            <p class="text-gray-600 leading-relaxed">
+              All matters relating to the Site, these Terms, and any dispute or claim arising therefrom shall be governed by and construed in accordance with the internal laws of the State of Wyoming without giving effect to any choice or conflict of law provision.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-foreground mb-4">Contact Information</h2>
+            <p class="text-gray-600 leading-relaxed">
+              For questions about these Terms, please contact us at: <a href="mailto:hello@bedabedagrowth.com" class="text-primary hover:underline">hello@bedabedagrowth.com</a>
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-foreground mb-4">Changes to these Terms</h2>
+            <p class="text-gray-600 leading-relaxed">
+              We may update these Terms from time to time. If we change these Terms, we will post the updated Terms here. <strong>We will assume your continued use of the Site following the posting of any revised Terms to mean you accept and agree to any changes.</strong>
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

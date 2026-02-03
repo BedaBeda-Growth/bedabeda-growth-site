@@ -1,0 +1,94 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../../keystatic.config';
+
+let posts: any[] = [];
+try {
+  const reader = createReader(process.cwd(), keystaticConfig);
+  const allPosts = await reader.collections.blog.all();
+
+  // Sort by date, newest first
+  posts = allPosts
+    .filter(post => post.entry.publishedDate)
+    .sort((a, b) =>
+      new Date(b.entry.publishedDate!).getTime() - new Date(a.entry.publishedDate!).getTime()
+    );
+} catch (e) {
+  // If no posts exist yet, use empty array
+  console.log('No blog posts found');
+}
+---
+
+<BaseLayout
+  title="Blog"
+  description="Expert insights on conversion rate optimization, A/B testing, and e-commerce growth strategies from the BedaBeda Growth team."
+>
+  <Header client:load />
+
+  <main class="pt-24 pb-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl lg:text-5xl font-bold mb-4">The Growth Blog</h1>
+        <p class="text-xl text-gray-600 mb-12">
+          Insights on CRO, A/B testing, and conversion optimization
+        </p>
+
+        {posts.length > 0 ? (
+          <div class="grid gap-8">
+            {posts.map((post) => (
+              <a href={`/blog/${post.slug}`} class="group">
+                <article class="flex flex-col md:flex-row gap-6 p-6 rounded-2xl border border-gray-200 hover:border-primary transition-colors">
+                  {post.entry.featuredImage && (
+                    <div class="md:w-48 md:h-32 rounded-lg overflow-hidden flex-shrink-0">
+                      <img
+                        src={post.entry.featuredImage}
+                        alt={post.entry.title}
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                      />
+                    </div>
+                  )}
+                  <div class="flex-1">
+                    {post.entry.categories && post.entry.categories.length > 0 && (
+                      <div class="flex gap-2 mb-2">
+                        {post.entry.categories.map((cat: string) => (
+                          <span class="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded">
+                            {cat}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    <h2 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                      {post.entry.title}
+                    </h2>
+                    <p class="text-gray-600 text-sm mb-2">
+                      {post.entry.excerpt}
+                    </p>
+                    <time class="text-xs text-gray-400">
+                      {new Date(post.entry.publishedDate!).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </time>
+                  </div>
+                </article>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div class="text-center py-16 bg-gray-50 rounded-2xl">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Coming Soon</h2>
+            <p class="text-gray-500 max-w-md mx-auto">
+              We're working on some great content for you. Check back soon for insights on CRO, A/B testing, and e-commerce growth strategies.
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

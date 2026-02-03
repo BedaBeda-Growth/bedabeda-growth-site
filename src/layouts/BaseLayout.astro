@@ -1,0 +1,47 @@
+---
+import '@/index.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description, ogImage } = Astro.props;
+const siteUrl = 'https://bedabedagrowth.com';
+const defaultDescription = 'CRO for High-Growth, Performance-Obsessed Teams - BedaBeda Growth';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | BedaBeda Growth</title>
+    <meta name="description" content={description || defaultDescription} />
+    <meta name="author" content="BedaBeda Growth" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description || defaultDescription} />
+    <meta property="og:image" content={ogImage || `${siteUrl}/og-default.png`} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bedabedagrowth" />
+    <meta name="twitter:image" content={ogImage || `${siteUrl}/og-default.png`} />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen bg-background text-foreground font-sans antialiased overflow-x-hidden">
+    <slot />
+  </body>
+</html>

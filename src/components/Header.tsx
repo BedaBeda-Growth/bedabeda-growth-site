@@ -1,13 +1,17 @@
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, Menu } from "lucide-react";
-import { useNavigate, useLocation } from "react-router-dom";
 const bedabedaLogo = "/lovable-uploads/bc61751b-5167-4161-823e-43052fe14ff9.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [currentPath, setCurrentPath] = useState("/");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentPath(window.location.pathname);
+    }
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -19,12 +23,8 @@ const Header = () => {
 
   const scrollToSection = (sectionId: string) => {
     closeMenu();
-    if (location.pathname !== "/") {
-      navigate("/");
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        element?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+    if (currentPath !== "/") {
+      window.location.href = `/#${sectionId}`;
     } else {
       const element = document.getElementById(sectionId);
       element?.scrollIntoView({ behavior: "smooth" });
@@ -54,6 +54,9 @@ const Header = () => {
             <button onClick={() => scrollToSection("case-studies")} className="text-gray-600 hover:text-primary transition-smooth font-medium">
               Case Studies
             </button>
+            <a href="/blog" className="text-gray-600 hover:text-primary transition-smooth font-medium">
+              Blog
+            </a>
             <a href="https://conversioncurrent.beehiiv.com/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary transition-smooth font-medium">
               Newsletter
             </a>
@@ -100,15 +103,22 @@ const Header = () => {
                 >
                   Services
                 </a>
-                <button 
+                <button
                   onClick={() => scrollToSection("case-studies")}
                   className="text-gray-600 hover:text-primary transition-smooth font-medium py-2 text-left"
                 >
                   Case Studies
                 </button>
-                <a 
-                  href="https://conversioncurrent.beehiiv.com/" 
-                  target="_blank" 
+                <a
+                  href="/blog"
+                  className="text-gray-600 hover:text-primary transition-smooth font-medium py-2"
+                  onClick={closeMenu}
+                >
+                  Blog
+                </a>
+                <a
+                  href="https://conversioncurrent.beehiiv.com/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-primary transition-smooth font-medium py-2"
                   onClick={closeMenu}

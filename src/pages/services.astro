@@ -1,0 +1,365 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import ConversionBlock from '@/components/ConversionBlock';
+import ClientLogos from '@/components/ClientLogos';
+import { Button } from '@/components/ui/button';
+import { Check, ArrowRight } from 'lucide-react';
+
+const consultingBenefits = [
+  "Conversion & growth strategy advisorship",
+  "Acquisition-informed CRO guidance",
+  "Offer, positioning, and funnel strategy",
+  "Experimentation frameworks & test prioritization",
+  "Ongoing strategic support for complex setups",
+  "Strategic clarity without long-term lock-ins"
+];
+
+const fullServiceItems = [
+  "Custom high-performance pages built for conversion",
+  "Sitewide testing: copywriting, UX design, and build",
+  "Full-funnel optimization to improve conversions, revenue, AOV, LTV, and more",
+  "Custom reporting & in-depth analysis to share insights, learnings, and recommendations",
+  "Continuous testing programs with statistically-backed methods"
+];
+
+const auditItems = [
+  "Comprehensive analytics audit",
+  "Heuristic reviews of key pages and flows",
+  "Review mining and customer research",
+  "Heatmap and session recording analysis",
+  "60+ page full report with findings",
+  "15-20 prioritized test recommendations",
+  "1-hour video call review of findings"
+];
+---
+
+<BaseLayout
+  title="Services"
+  description="CRO Solutions That Turn Data Into Growth Roadmaps. From deep audits to full-service optimization, we offer flexible engagement models."
+>
+  <Header client:load />
+  <main class="pt-16">
+    <!-- Hero Section -->
+    <section class="py-20 lg:py-28 bg-background">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+          <h1 class="text-4xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight">
+            CRO Solutions That Turn Data Into{" "}
+            <span class="text-primary">Growth Roadmaps</span>
+          </h1>
+          <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            From deep audits to full-service optimization, we offer flexible engagement models designed to meet you where you are and take you where you need to go. We take a growth marketing approach to traditional CRO.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <a
+              href="https://calendly.com/kanika-misra"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-4 rounded-lg transition-all"
+            >
+              Book a Discovery Call
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full Service Disruptive CRO -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <div class="space-y-6">
+              <span class="inline-block px-4 py-1.5 rounded-full text-sm font-medium" style="background-color: #EEFAF8; color: #2E3242;">
+                Our Flagship Service
+              </span>
+              <h2 class="text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
+                Full Service Disruptive&trade; CRO
+              </h2>
+              <p class="text-lg text-gray-600 leading-relaxed">
+                We partner with 8-9 figure brands and Series A+ companies to predict, achieve, and accelerate growth. This isn't about changing button colors. It's about full-funnel optimization across your entire customer journey.
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                Dropping acquisition costs and increasing conversion rates equals sustainable scaling. We take a growth marketing approach to traditional CRO, integrating emotion mapping, user psychology, and data-backed experimentation to create a compound effect over time.
+              </p>
+              <div class="pt-4">
+                <h3 class="font-bold text-foreground mb-4">What's Included:</h3>
+                <ul class="space-y-3">
+                  {fullServiceItems.map((item) => (
+                    <li class="flex items-start gap-3 text-gray-700">
+                      <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div class="rounded-2xl p-8 lg:p-10 h-full" style="background-color: #181B21;">
+              <h3 class="text-xl font-bold text-white mb-6">
+                2X to 3X Your Revenue From the Same Clicks
+              </h3>
+              <p class="text-gray-300 leading-relaxed mb-6">
+                Imagine if you could double or triple your revenue without spending a cent more on traffic. Through our data-driven process, we identify exactly where your conversion leaks are and how to fix them.
+              </p>
+              <p class="text-gray-300 leading-relaxed mb-8">
+                As you get more traffic, the ROI you generate is amplified. We eliminate false positives with statistically-backed methods to accurately assess every test.
+              </p>
+              <div class="border-t border-gray-700 pt-6">
+                <p class="text-gray-400 text-sm italic mb-6">
+                  We identify your highest-impact growth opportunities and apply a data-driven methodology that compounds over time, turning insights into sustainable revenue gains.
+                </p>
+                <a
+                  href="https://calendly.com/kanika-misra"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-md transition-all"
+                >
+                  Start Scaling <ArrowRight className="w-4 h-4 ml-2" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Landing Page Optimization -->
+    <section class="py-20 bg-background">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <div class="rounded-2xl p-8 lg:p-10 order-2 lg:order-1" style="background-color: #EEFAF8;">
+              <h3 class="text-xl font-bold text-foreground mb-6">
+                You Drive Traffic, We Drive Conversions
+              </h3>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                Need research-backed dedicated pages with strategic UX design and custom development? We create customer-focused landing pages, strategizing, writing, designing, building, and testing to ensure they deliver results.
+              </p>
+              <div class="space-y-4 mb-8">
+                <div class="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span class="text-gray-700">Data-backed UX design principles</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span class="text-gray-700">Message-match optimization for ad campaigns</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span class="text-gray-700">Rigorous A/B testing and iteration</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span class="text-gray-700">Regular reporting with actionable insights</span>
+                </div>
+              </div>
+              <p class="text-gray-600 text-sm italic mb-6">
+                The insights we uncover can be used across your entire organization, not just your landing pages.
+              </p>
+              <a
+                href="https://calendly.com/kanika-misra"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md transition-all"
+              >
+                Book a Discovery Call
+              </a>
+            </div>
+            <div class="space-y-6 order-1 lg:order-2">
+              <span class="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-gray-200 text-gray-700">
+                Maximize Campaign ROI
+              </span>
+              <h2 class="text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
+                Landing Page Optimization
+              </h2>
+              <p class="text-lg text-gray-600 leading-relaxed">
+                High-impact, conversion-focused landing pages designed to maximize your campaign performance and acquisition efficiency. Every page is built on research, psychology, and proven conversion principles.
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                Looking to boost marketing efficiency and conversion rates? We take the guesswork out of landing page performance and replace it with systematic optimization based on real user behavior and data.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deep Data Audits -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <div class="space-y-6">
+              <span class="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-gray-200 text-gray-700">
+                Beyond Best Practices
+              </span>
+              <h2 class="text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
+                Deep Data Audits & Testing Roadmaps
+              </h2>
+              <p class="text-lg text-gray-600 leading-relaxed">
+                This isn't about copying what others are doing or following the mythical "playbook." It's about driving real results that work for your actual customers. Every successful optimization campaign begins with a comprehensive, in-depth audit that covers every facet of your business and user experience.
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                We go beyond surface-level issues to address user experience barriers and the underlying motivations that drive (or prevent) conversions. We scrutinize quantitative and qualitative data to eliminate what doesn't work and double down on what does.
+              </p>
+            </div>
+            <div class="rounded-2xl p-8 lg:p-10" style="background-color: #181B21;">
+              <h3 class="text-xl font-bold text-white mb-6">
+                What You Get:
+              </h3>
+              <ul class="space-y-4 mb-8">
+                {auditItems.map((item) => (
+                  <li class="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span class="text-gray-300">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="https://calendly.com/kanika-misra"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-md transition-all"
+              >
+                Get Your Audit <ArrowRight className="w-4 h-4 ml-2" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Consulting & Advisorship -->
+    <section class="py-20 bg-background">
+      <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto">
+          <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <div class="space-y-8">
+              <div>
+                <span class="inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-4" style="background-color: #EEFAF8; color: #2E3242;">
+                  Strategic Partnership
+                </span>
+                <h2 class="text-3xl lg:text-4xl font-bold tracking-tight text-foreground mb-6">
+                  Consulting & Advisorship
+                </h2>
+                <div class="space-y-4 text-gray-600 leading-relaxed">
+                  <p>
+                    Gone are the days of fragmented advice, surface-level audits, and strategy that looks good on slides but falls apart in execution. You don't need more opinions. You need clear judgment, decisive direction, and an experienced partner who understands growth, acquisition, and conversion as a connected system.
+                  </p>
+                  <p>
+                    Our senior team works alongside founders and internal teams to bring clarity, momentum, and confidence to high-stakes decisions.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl p-8 lg:p-10" style="background-color: #181B21;">
+              <h3 class="text-xl font-bold text-white mb-6">
+                What's Included
+              </h3>
+              <ul class="space-y-4">
+                {consultingBenefits.map((benefit) => (
+                  <li class="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span class="text-gray-300 leading-relaxed">{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+              <div class="mt-8 pt-6 border-t border-gray-700">
+                <p class="text-gray-400 text-sm italic mb-6">
+                  No generic playbooks. No performative deliverables. Just thoughtful, hands-on guidance rooted in real execution and accountability.
+                </p>
+                <a
+                  href="https://calendly.com/kanika-misra"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-md transition-all"
+                >
+                  Book a Consulting Call
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertise Areas -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl lg:text-4xl font-bold tracking-tight text-foreground mb-4">
+              Our Expertise
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+              Three pillars that power every engagement we take on.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-2xl p-8 text-center border border-gray-200">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6" style="background-color: #EEFAF8; color: #2E3242;">
+                <svg class="w-8 h-8" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="12" y="40" width="8" height="16" fill="currentColor"/>
+                  <rect x="28" y="28" width="8" height="28" fill="currentColor"/>
+                  <rect x="44" y="16" width="8" height="40" fill="currentColor"/>
+                  <path d="M16 36L32 24L48 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-foreground mb-3">Data & Analytics</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                We scrutinize your heatmaps, scroll maps, and behavioral data to identify problems, opportunities, and successes. Every decision is informed, every prioritization is efficient.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 text-center border border-gray-200">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6" style="background-color: #EEFAF8; color: #2E3242;">
+                <svg class="w-8 h-8" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="24" r="12" stroke="currentColor" stroke-width="3" fill="none"/>
+                  <path d="M18 52C18 44.268 24.268 38 32 38C39.732 38 46 44.268 46 52" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                  <circle cx="28" cy="22" r="2" fill="currentColor"/>
+                  <circle cx="36" cy="22" r="2" fill="currentColor"/>
+                  <path d="M27 28C27 28 29 31 32 31C35 31 37 28 37 28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-foreground mb-3">UX & Psychology</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Understanding user behavior and human psychology is at the heart of what we do. We design experiences that resonate, are value-based, and easy to follow.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 text-center border border-gray-200">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6" style="background-color: #EEFAF8; color: #2E3242;">
+                <svg class="w-8 h-8" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="32" r="8" fill="currentColor"/>
+                  <circle cx="16" cy="16" r="6" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <circle cx="48" cy="16" r="6" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <circle cx="16" cy="48" r="6" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <circle cx="48" cy="48" r="6" stroke="currentColor" stroke-width="2" fill="none"/>
+                  <line x1="26" y1="26" x2="20" y2="20" stroke="currentColor" stroke-width="2"/>
+                  <line x1="38" y1="26" x2="44" y2="20" stroke="currentColor" stroke-width="2"/>
+                  <line x1="26" y1="38" x2="20" y2="44" stroke="currentColor" stroke-width="2"/>
+                  <line x1="38" y1="38" x2="44" y2="44" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-foreground mb-3">Holistic Understanding</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                We understand what works for the business and what matters to the customer. We connect acquisition, conversion, and retention into growth systems that compound.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <ClientLogos client:visible />
+
+    <!-- CTA Section -->
+    <ConversionBlock client:visible />
+  </main>
+  <Footer />
+</BaseLayout>

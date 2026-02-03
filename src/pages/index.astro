@@ -1,0 +1,49 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import ClientLogos from '@/components/ClientLogos';
+import AntiCookieCutter from '@/components/AntiCookieCutter';
+import DisruptiveCROSection from '@/components/DisruptiveCROSection';
+import WhoWeWorkWith from '@/components/WhoWeWorkWith';
+import CaseStudyTeasers from '@/components/CaseStudyTeasers';
+import CaseStudyGallery from '@/components/CaseStudyGallery';
+import WhoYoullWorkWith from '@/components/WhoYoullWorkWith';
+import ConversionBlock from '@/components/ConversionBlock';
+import Footer from '@/components/Footer';
+
+// Fetch case studies from Keystatic
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../keystatic.config';
+
+let caseStudies: any[] = [];
+try {
+  const reader = createReader(process.cwd(), keystaticConfig);
+  const allCaseStudies = await reader.collections.caseStudies.all();
+  caseStudies = allCaseStudies
+    .filter(cs => cs.entry.isActive)
+    .sort((a, b) => (a.entry.order || 99) - (b.entry.order || 99));
+} catch (e) {
+  // If no case studies exist yet, use empty array
+  console.log('No case studies found, using empty array');
+}
+---
+
+<BaseLayout
+  title="CRO for High-Growth Teams"
+  description="CRO for High-Growth, Performance-Obsessed Teams. We help e-commerce brands increase revenue through data-driven conversion rate optimization."
+>
+  <Header client:load />
+  <main>
+    <Hero client:load />
+    <ClientLogos client:visible />
+    <AntiCookieCutter client:visible />
+    <DisruptiveCROSection client:visible />
+    <WhoWeWorkWith client:visible />
+    <CaseStudyTeasers client:visible />
+    <CaseStudyGallery caseStudies={caseStudies} client:load />
+    <WhoYoullWorkWith client:visible />
+    <ConversionBlock client:visible />
+  </main>
+  <Footer />
+</BaseLayout>

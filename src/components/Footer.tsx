@@ -1,17 +1,18 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [currentPath, setCurrentPath] = useState("/");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentPath(window.location.pathname);
+    }
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
-    if (location.pathname !== "/") {
-      navigate("/");
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        element?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+    if (currentPath !== "/") {
+      window.location.href = `/#${sectionId}`;
     } else {
       const element = document.getElementById(sectionId);
       element?.scrollIntoView({ behavior: "smooth" });
@@ -54,6 +55,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li><a href="/services" className="text-gray-300 hover:text-primary transition-smooth">Services</a></li>
               <li><button onClick={() => scrollToSection("case-studies")} className="text-gray-300 hover:text-primary transition-smooth">Case Studies</button></li>
+              <li><a href="/blog" className="text-gray-300 hover:text-primary transition-smooth">Blog</a></li>
               <li><a href="https://conversioncurrent.beehiiv.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-primary transition-smooth">Newsletter</a></li>
               <li><a href="/contact" className="text-gray-300 hover:text-primary transition-smooth">Contact</a></li>
             </ul>
