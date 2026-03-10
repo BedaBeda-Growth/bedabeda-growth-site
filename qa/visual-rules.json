@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "pages": {
+    "all": ["/"],
+    "home": ["/"],
+    "services": ["/services"],
+    "contact": ["/contact"],
+    "blog": ["/blog"]
+  },
+  "viewports": {
+    "desktop": { "width": 1440, "height": 900 },
+    "mobile": { "width": 390, "height": 844 }
+  },
+  "rules": [
+    {
+      "id": "no-horizontal-scroll",
+      "severity": "hard",
+      "pages": "all",
+      "viewports": ["mobile"],
+      "type": "layout-expression",
+      "expression": "document.documentElement.scrollWidth <= window.innerWidth"
+    },
+    {
+      "id": "header-visible",
+      "severity": "hard",
+      "pages": "all",
+      "viewports": ["desktop", "mobile"],
+      "type": "dom-expression",
+      "expression": "(() => { const h = document.querySelector('header'); return h !== null && h.offsetHeight > 0; })()"
+    },
+    {
+      "id": "footer-exists",
+      "severity": "hard",
+      "pages": "all",
+      "viewports": ["desktop", "mobile"],
+      "type": "dom-expression",
+      "expression": "(() => { const f = document.querySelector('footer'); return f !== null && f.offsetHeight > 0; })()"
+    },
+    {
+      "id": "hero-h1-visible",
+      "severity": "hard",
+      "pages": "home",
+      "viewports": ["desktop", "mobile"],
+      "type": "dom-expression",
+      "expression": "(() => { const h1 = document.querySelector('h1'); return h1 !== null && h1.offsetHeight > 0 && h1.textContent.trim().length > 0; })()"
+    },
+    {
+      "id": "cta-button-reachable",
+      "severity": "hard",
+      "pages": "home",
+      "viewports": ["desktop", "mobile"],
+      "type": "dom-expression",
+      "expression": "(() => { const btns = [...document.querySelectorAll('a, button')].filter(el => /book.*call|discovery/i.test(el.textContent)); return btns.length > 0; })()"
+    },
+    {
+      "id": "no-broken-images",
+      "severity": "hard",
+      "pages": "all",
+      "viewports": ["desktop"],
+      "type": "dom-expression",
+      "expression": "(() => { const imgs = document.querySelectorAll('img[src]'); return [...imgs].every(img => img.naturalWidth > 0 || img.complete === false); })()"
+    },
+    {
+      "id": "body-min-height",
+      "severity": "hard",
+      "pages": "all",
+      "viewports": ["desktop", "mobile"],
+      "type": "layout-expression",
+      "expression": "document.body.scrollHeight >= window.innerHeight"
+    },
+    {
+      "id": "text-not-clipped-mobile",
+      "severity": "advisory",
+      "pages": "home",
+      "viewports": ["mobile"],
+      "type": "dom-expression",
+      "expression": "(() => { const els = document.querySelectorAll('h1, h2, h3, p'); return [...els].every(el => el.scrollWidth <= el.clientWidth + 2); })()"
+    }
+  ]
+}
