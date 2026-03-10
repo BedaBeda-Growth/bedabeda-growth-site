@@ -1,8 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const DisruptiveCROSection = () => {
   const [activePage, setActivePage] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [svgDimensions, setSvgDimensions] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (containerRef.current) {
+        setSvgDimensions({
+          width: containerRef.current.offsetWidth,
+          height: containerRef.current.offsetHeight
+        });
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
 
   const wePoints = [
     {
@@ -76,7 +93,70 @@ const DisruptiveCROSection = () => {
 
           {/* Desktop Layout - Only on lg and above */}
           <div className="hidden lg:block">
-            <div className="relative min-h-[600px]">
+            <div className="relative min-h-[600px]" ref={containerRef}>
+              {/* Connection Lines rendered dynamically over container */}
+              {svgDimensions.width > 0 && (
+                <svg className="absolute inset-0 pointer-events-none" style={{ width: '100%', height: '100%', zIndex: 0 }}>
+                  {/* WE lines */}
+                  {wePoints.map((_, index) => {
+                    const boxTop = parseInt(weBoxPositions[index].top) * 16;
+                    const boxLeft = parseInt(weBoxPositions[index].left || '0');
+                    const boxRightEdge = 375 + boxLeft;
+                    const boxCenterY = boxTop + 90;
+
+                    const containerWidth = svgDimensions.width;
+                    const weCircleLeftEdge = (containerWidth / 2) - 8 - 180;
+                    const weCircleCenterY = 300;
+
+                    const midX = (boxRightEdge + weCircleLeftEdge) / 2;
+                    const d = `M ${boxRightEdge} ${boxCenterY} C ${midX} ${boxCenterY}, ${midX} ${weCircleCenterY}, ${weCircleLeftEdge} ${weCircleCenterY}`;
+
+                    return (
+                      <g key={`we-${index}`}>
+                        <path 
+                          d={d}
+                          stroke="#92B5AF" 
+                          strokeWidth="2" 
+                          fill="none"
+                          strokeDasharray="5,5"
+                        />
+                        <circle cx={boxRightEdge} cy={boxCenterY} r="4" fill="#92B5AF" />
+                        <circle cx={weCircleLeftEdge} cy={weCircleCenterY} r="4" fill="#92B5AF" />
+                      </g>
+                    );
+                  })}
+
+                  {/* THEY lines */}
+                  {theyPoints.map((_, index) => {
+                    const boxTop = parseInt(theyBoxPositions[index].top) * 16;
+                    const boxRight = parseInt(theyBoxPositions[index].right || '0');
+                    const containerWidth = svgDimensions.width;
+                    const boxLeftEdge = containerWidth - 375 - boxRight;
+                    const boxCenterY = boxTop + 90;
+
+                    const theyCircleRightEdge = (containerWidth / 2) + 8 + 180;
+                    const theyCircleCenterY = 300;
+
+                    const midX = (boxLeftEdge + theyCircleRightEdge) / 2;
+                    const d = `M ${boxLeftEdge} ${boxCenterY} C ${midX} ${boxCenterY}, ${midX} ${theyCircleCenterY}, ${theyCircleRightEdge} ${theyCircleCenterY}`;
+
+                    return (
+                      <g key={`they-${index}`}>
+                        <path 
+                          d={d}
+                          stroke="#666" 
+                          strokeWidth="2" 
+                          fill="none"
+                          strokeDasharray="5,5"
+                        />
+                        <circle cx={boxLeftEdge} cy={boxCenterY} r="4" fill="#666" />
+                        <circle cx={theyCircleRightEdge} cy={theyCircleCenterY} r="4" fill="#666" />
+                      </g>
+                    );
+                  })}
+                </svg>
+              )}
+
               {/* WE Section - 3 separate boxes */}
               <div className="absolute left-0 w-[400px]">
                 {wePoints.map((point, index) => (
@@ -115,38 +195,6 @@ const DisruptiveCROSection = () => {
                   }}
                 >
                   <span className="text-2xl font-bold" style={{ color: '#92B5AF' }}>WE</span>
-                  
-                  {/* Connection lines from left edge of WE circle to WE boxes */}
-                  {wePoints.map((_, index) => {
-                    const boxTop = parseInt(weBoxPositions[index].top) * 16; // Convert rem to px (16px per rem)
-                    const boxLeft = parseInt(weBoxPositions[index].left || '0');
-                    const boxCenterY = boxTop + 90; // Middle of 180px tall box
-                    const circleCenterY = 300; // Center of 600px container
-                    const circleLeftEdge = 90; // Left edge of circle (180px diameter / 2)
-                    const boxRightEdge = 375 + boxLeft; // Right edge of box to connect to
-                    
-                    return (
-                      <svg 
-                        key={index}
-                        width="400" 
-                        height="600" 
-                        className="absolute overflow-visible"
-                        style={{
-                          left: '-200px',
-                          top: '-300px'
-                        }}
-                      >
-                        <path 
-                          d={`M ${circleLeftEdge} ${circleCenterY} Q ${(circleLeftEdge + boxRightEdge) / 2} ${(circleCenterY + boxCenterY) / 2} ${boxRightEdge} ${boxCenterY}`}
-                          stroke="#666" 
-                          strokeWidth="2" 
-                          fill="none"
-                          strokeDasharray="5,5"
-                        />
-                        <circle cx={boxRightEdge} cy={boxCenterY} r="4" fill="#666" />
-                      </svg>
-                    );
-                  })}
                 </div>
                 
                 {/* THEY Circle */}
@@ -159,38 +207,6 @@ const DisruptiveCROSection = () => {
                   }}
                 >
                   <span className="text-2xl font-bold text-white">THEY</span>
-                  
-                  {/* Connection lines from right edge of THEY circle to THEY boxes */}
-                  {theyPoints.map((_, index) => {
-                    const boxTop = parseInt(theyBoxPositions[index].top) * 16; // Convert rem to px (16px per rem)
-                    const boxRight = parseInt(theyBoxPositions[index].right || '0');
-                    const boxCenterY = boxTop + 90; // Middle of 180px tall box
-                    const circleCenterY = 300; // Center of 600px container
-                    const circleRightEdge = 90; // Right edge of circle (from center - 180px diameter / 2)
-                    const boxLeftEdge = 0 - boxRight; // Left edge of box to connect to
-                    
-                    return (
-                      <svg 
-                        key={index}
-                        width="400" 
-                        height="600" 
-                        className="absolute overflow-visible"
-                        style={{
-                          left: '90px',
-                          top: '-300px'
-                        }}
-                      >
-                        <path 
-                          d={`M ${circleRightEdge} ${circleCenterY} Q ${(circleRightEdge + boxLeftEdge) / 2} ${(circleCenterY + boxCenterY) / 2} ${boxLeftEdge} ${boxCenterY}`}
-                          stroke="#666" 
-                          strokeWidth="2" 
-                          fill="none"
-                          strokeDasharray="5,5"
-                        />
-                        <circle cx={boxLeftEdge} cy={boxCenterY} r="4" fill="#666" />
-                      </svg>
-                    );
-                  })}
                 </div>
               </div>
 
