@@ -75,6 +75,22 @@
       "viewports": ["mobile"],
       "type": "dom-expression",
       "expression": "(() => { const els = document.querySelectorAll('h1, h2, h3, p'); return [...els].every(el => el.scrollWidth <= el.clientWidth + 2); })()"
+    },
+    {
+      "id": "favicon-is-bbg-not-lovable",
+      "severity": "hard",
+      "pages": "all",
+      "viewports": ["desktop", "mobile"],
+      "type": "dom-expression",
+      "expression": "(() => { const icons = document.querySelectorAll('link[rel*=\"icon\"]'); if (icons.length === 0) return false; return Array.from(icons).every(icon => !icon.href.toLowerCase().includes('lovable')); })()"
+    },
+    {
+      "id": "no-lovable-references-in-dom",
+      "severity": "hard",
+      "pages": "all",
+      "viewports": ["desktop", "mobile"],
+      "type": "dom-expression",
+      "expression": "(() => { return !document.documentElement.innerHTML.toLowerCase().includes('lovable'); })()"
     }
   ]
 }

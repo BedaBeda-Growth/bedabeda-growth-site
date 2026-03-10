@@ -2,35 +2,35 @@ const ClientLogos = () => {
   const logos = [
     {
       name: "Every Man Jack",
-      image: "/lovable-uploads/76859cc7-b48c-4e32-93c3-3afb347b4517.png",
+      image: "/uploads/76859cc7-b48c-4e32-93c3-3afb347b4517.png",
       backgroundColor: "#000000",
       metric: "+92.91%",
       description: "increase in revenue per session"
     },
     {
       name: "Schneiders",
-      image: "/lovable-uploads/223773ad-b16d-49c9-a23c-124e8902361b.png",
+      image: "/uploads/223773ad-b16d-49c9-a23c-124e8902361b.png",
       backgroundColor: "#FFFFFF",
       metric: "+$497,710",
       description: "added monthly revenue"
     },
     {
       name: "Allegiance",
-      image: "/lovable-uploads/971ca3d7-4554-4f81-90d4-2636758c0e03.png",
+      image: "/uploads/971ca3d7-4554-4f81-90d4-2636758c0e03.png",
       backgroundColor: "#FFFFFF",
       metric: "+50.04%",
       description: "increase in revenue per visitor"
     },
     {
       name: "The Earthling Co.",
-      image: "/lovable-uploads/598c47df-1223-41ea-9a54-7d682d54e442.png",
+      image: "/uploads/598c47df-1223-41ea-9a54-7d682d54e442.png",
       backgroundColor: "#EBEEE9",
       metric: "+46.01%",
       description: "increase in revenue per visitor"
     },
     {
       name: "Aday",
-      image: "/lovable-uploads/32829b25-fbc7-42dd-9a85-91fe8b92fdbd.png",
+      image: "/uploads/32829b25-fbc7-42dd-9a85-91fe8b92fdbd.png",
       backgroundColor: "#DEE2D8",
       metric: "+$199,960",
       description: "added annual revenue"

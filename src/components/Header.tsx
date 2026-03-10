@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { X, Menu } from "lucide-react";
-const bedabedaLogo = "/lovable-uploads/bc61751b-5167-4161-823e-43052fe14ff9.png";
+const bedabedaLogo = "/uploads/bc61751b-5167-4161-823e-43052fe14ff9.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -47,55 +47,55 @@ const WhoWeWorkWith = () => {
                     >
                       {index === 2 && logoIndex === 1 ? (
                         <img 
-                          src="/lovable-uploads/0fd97cf8-629d-4ab3-a445-94b71b5117c7.png" 
+                          src="/uploads/0fd97cf8-629d-4ab3-a445-94b71b5117c7.png" 
                           alt="Inspired Logo" 
                           className="w-full h-full object-cover rounded-full"
                         />
                       ) : index === 0 && logoIndex === 1 ? (
                         <img 
-                          src="/lovable-uploads/5e63431b-7188-49a5-9743-83d62299c3c7.png" 
+                          src="/uploads/5e63431b-7188-49a5-9743-83d62299c3c7.png" 
                           alt="Logo" 
                           className="w-full h-full object-contain rounded-full p-1"
                         />
                       ) : index === 0 && logoIndex === 2 ? (
                         <img 
-                          src="/lovable-uploads/ad14011f-b94a-4411-a169-04cb1e19dac5.png" 
+                          src="/uploads/ad14011f-b94a-4411-a169-04cb1e19dac5.png" 
                           alt="Hush Logo" 
                           className="w-full h-full object-contain rounded-full p-1"
                         />
                       ) : index === 0 && logoIndex === 3 ? (
                         <img 
-                          src="/lovable-uploads/5551cc33-4b99-400c-af3d-a9edc2da688b.png" 
+                          src="/uploads/5551cc33-4b99-400c-af3d-a9edc2da688b.png" 
                           alt="Logo" 
                           className="w-full h-full object-contain rounded-full p-1"
                         />
                       ) : index === 1 && logoIndex === 1 ? (
                         <img 
-                          src="/lovable-uploads/539f99f7-e4aa-4a6b-a440-8292d128ab0f.png" 
+                          src="/uploads/539f99f7-e4aa-4a6b-a440-8292d128ab0f.png" 
                           alt="Roda Logo" 
                           className="w-full h-full object-contain rounded-full p-1"
                         />
                       ) : index === 1 && logoIndex === 2 ? (
                         <img 
-                          src="/lovable-uploads/8b38bd27-22c6-4a08-a969-52d6e6e18a5c.png" 
+                          src="/uploads/8b38bd27-22c6-4a08-a969-52d6e6e18a5c.png" 
                           alt="Logo" 
                           className="w-full h-full object-contain rounded-full p-1"
                         />
                       ) : index === 1 && logoIndex === 3 ? (
                         <img 
-                          src="/lovable-uploads/55e2678b-21da-4195-b9a1-edcf54f1ccd4.png" 
+                          src="/uploads/55e2678b-21da-4195-b9a1-edcf54f1ccd4.png" 
                           alt="Logo" 
                           className="w-full h-full object-contain rounded-full p-1"
                         />
                       ) : index === 2 && logoIndex === 2 ? (
                         <img 
-                          src="/lovable-uploads/f94c354e-f540-4220-8e15-a296078bb8a1.png" 
+                          src="/uploads/f94c354e-f540-4220-8e15-a296078bb8a1.png" 
                           alt="RallyPoint Logo" 
                           className="w-full h-full object-cover rounded-full"
                         />
                       ) : index === 2 && logoIndex === 3 ? (
                         <img 
-                          src="/lovable-uploads/c55d7685-d838-4e6c-888f-02e7e8361e76.png" 
+                          src="/uploads/c55d7685-d838-4e6c-888f-02e7e8361e76.png" 
                           alt="Logo" 
                           className="w-full h-full object-cover rounded-full"
                         />
