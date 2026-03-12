@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
@@ -214,14 +214,17 @@ const CaseStudyGallery = ({ caseStudies }: Props) => {
           </Carousel>
 
           <div className="text-center mt-12">
-            <a href="/services">
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-4 rounded-xl transition-smooth"
-              >
-                Get Results Like These
-              </Button>
+            <a 
+              href="https://calendly.com/kanika-misra" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={buttonVariants({
+                variant: "outline",
+                size: "lg",
+                className: "border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-4 rounded-xl transition-smooth"
+              })}
+            >
+              Get Results Like These
             </a>
           </div>
         </div>

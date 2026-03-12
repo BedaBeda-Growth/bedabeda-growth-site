@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import SlackMessages from "./SlackMessages";
 
 const AntiCookieCutter = () => {
@@ -26,16 +26,16 @@ const AntiCookieCutter = () => {
           </div>
 
           <div className="pt-4">
-            <Button 
-              variant="outline"
-              size="lg"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-4 rounded-xl transition-smooth"
-              asChild
+            <a 
+              href="/services"
+              className={buttonVariants({ 
+                variant: "outline", 
+                size: "lg", 
+                className: "border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-4 rounded-xl transition-smooth" 
+              })}
             >
-              <a href="/services">
-                Check Out Our Services
-              </a>
-            </Button>
+              Check Out Our Services
+            </a>
           </div>
         </div>
       </div>

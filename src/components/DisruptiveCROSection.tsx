@@ -51,17 +51,17 @@ const DisruptiveCROSection = () => {
     }
   ];
 
-  // Staggered positioning for boxes (in rem units for responsiveness)
+  // Staggered positioning for boxes (pure pixel units for absolute precision)
   const weBoxPositions = [
-    { top: '0rem', left: '0px' },      // First box - highest, aligned left
-    { top: '12rem', left: '-50px' },   // Second box - middle, staggered left
-    { top: '24rem', left: '0px' }      // Third box - lowest, aligned left
+    { top: 0, left: 0 },      // First box - highest, aligned left
+    { top: 192, left: -50 },  // Second box - middle, staggered left
+    { top: 384, left: 0 }     // Third box - lowest, aligned left
   ];
 
   const theyBoxPositions = [
-    { top: '0rem', right: '0px' },     // First box - same height as WE top, aligned right  
-    { top: '12rem', right: '-50px' },  // Second box - same height as WE middle, staggered right
-    { top: '24rem', right: '0px' }     // Third box - same height as WE bottom, aligned right
+    { top: 0, right: 0 },     // First box - same height as WE top, aligned right  
+    { top: 192, right: -50 }, // Second box - same height as WE middle, staggered right
+    { top: 384, right: 0 }    // Third box - same height as WE bottom, aligned right
   ];
 
   const nextPage = () => {
@@ -99,14 +99,14 @@ const DisruptiveCROSection = () => {
                 <svg className="absolute inset-0 pointer-events-none" style={{ width: '100%', height: '100%', zIndex: 0 }}>
                   {/* WE lines */}
                   {wePoints.map((_, index) => {
-                    const boxTop = parseInt(weBoxPositions[index].top) * 16;
-                    const boxLeft = parseInt(weBoxPositions[index].left || '0');
+                    const boxTop = weBoxPositions[index].top;
+                    const boxLeft = weBoxPositions[index].left;
                     const boxRightEdge = 375 + boxLeft;
                     const boxCenterY = boxTop + 90;
 
                     const containerWidth = svgDimensions.width;
                     const weCircleLeftEdge = (containerWidth / 2) - 8 - 180;
-                    const weCircleCenterY = 300;
+                    const weCircleCenterY = svgDimensions.height > 0 ? svgDimensions.height / 2 : 300;
 
                     const midX = (boxRightEdge + weCircleLeftEdge) / 2;
                     const d = `M ${boxRightEdge} ${boxCenterY} C ${midX} ${boxCenterY}, ${midX} ${weCircleCenterY}, ${weCircleLeftEdge} ${weCircleCenterY}`;
@@ -128,14 +128,14 @@ const DisruptiveCROSection = () => {
 
                   {/* THEY lines */}
                   {theyPoints.map((_, index) => {
-                    const boxTop = parseInt(theyBoxPositions[index].top) * 16;
-                    const boxRight = parseInt(theyBoxPositions[index].right || '0');
+                    const boxTop = theyBoxPositions[index].top;
+                    const boxRight = theyBoxPositions[index].right;
                     const containerWidth = svgDimensions.width;
                     const boxLeftEdge = containerWidth - 375 - boxRight;
                     const boxCenterY = boxTop + 90;
 
                     const theyCircleRightEdge = (containerWidth / 2) + 8 + 180;
-                    const theyCircleCenterY = 300;
+                    const theyCircleCenterY = svgDimensions.height > 0 ? svgDimensions.height / 2 : 300;
 
                     const midX = (boxLeftEdge + theyCircleRightEdge) / 2;
                     const d = `M ${boxLeftEdge} ${boxCenterY} C ${midX} ${boxCenterY}, ${midX} ${theyCircleCenterY}, ${theyCircleRightEdge} ${theyCircleCenterY}`;
