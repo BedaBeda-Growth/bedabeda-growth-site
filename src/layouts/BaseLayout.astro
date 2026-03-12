@@ -40,6 +40,23 @@ const defaultDescription = 'CRO for High-Growth, Performance-Obsessed Teams - Be
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- reb2b Tracking Script -->
+    <script is:inline>
+      !function(key) {
+        if (window.reb2b) return;
+        window.reb2b = {loaded: true};
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://b2bjsstore.s3.us-west-2.amazonaws.com/b/" + key + "/" + key + ".js.gz";
+        var firstScript = document.getElementsByTagName("script")[0];
+        if (firstScript && firstScript.parentNode) {
+          firstScript.parentNode.insertBefore(s, firstScript);
+        } else {
+          document.head.appendChild(s);
+        }
+      }("R6G5YHY0R365");
+    </script>
   </head>
   <body class="min-h-screen bg-background text-foreground font-sans antialiased overflow-x-hidden">
     <slot />
