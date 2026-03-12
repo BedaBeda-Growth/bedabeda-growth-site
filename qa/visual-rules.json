@@ -1,7 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "pages": {
-    "all": ["/"],
+    "all": ["/", "/services", "/contact", "/blog"],
     "home": ["/"],
     "services": ["/services"],
     "contact": ["/contact"],
@@ -91,6 +91,98 @@
       "viewports": ["desktop", "mobile"],
       "type": "dom-expression",
       "expression": "(() => { return !document.documentElement.innerHTML.toLowerCase().includes('lovable'); })()"
+    },
+
+    {
+      "id": "nav-services-link",
+      "severity": "hard",
+      "pages": "all",
+      "viewports": ["desktop"],
+      "type": "dom-expression",
+      "expression": "(() => { const nav = document.querySelector('header nav, header'); if (!nav) return false; const links = nav.querySelectorAll('a[href]'); return [...links].some(a => a.getAttribute('href') === '/services' || a.getAttribute('href').endsWith('/services')); })()"
+    },
+    {
+      "id": "nav-contact-link",
+      "severity": "hard",
+      "pages": "all",
+      "viewports": ["desktop"],
+      "type": "dom-expression",
+      "expression": "(() => { const nav = document.querySelector('header nav, header'); if (!nav) return false; const links = nav.querySelectorAll('a[href]'); return [...links].some(a => a.getAttribute('href') === '/contact' || a.getAttribute('href').endsWith('/contact')); })()"
+    },
+
+    {
+      "id": "footer-services-link",
+      "severity": "hard",
+      "pages": "all",
+      "viewports": ["desktop", "mobile"],
+      "type": "dom-expression",
+      "expression": "(() => { const f = document.querySelector('footer'); if (!f) return false; const links = f.querySelectorAll('a[href]'); return [...links].some(a => { const h = a.getAttribute('href'); return h === '/services' || h.endsWith('/services'); }); })()"
+    },
+    {
+      "id": "footer-contact-link",
+      "severity": "hard",
+      "pages": "all",
+      "viewports": ["desktop", "mobile"],
+      "type": "dom-expression",
+      "expression": "(() => { const f = document.querySelector('footer'); if (!f) return false; const links = f.querySelectorAll('a[href]'); return [...links].some(a => { const h = a.getAttribute('href'); return h === '/contact' || h.endsWith('/contact'); }); })()"
+    },
+    {
+      "id": "footer-terms-link",
+      "severity": "hard",
+      "pages": "all",
+      "viewports": ["desktop", "mobile"],
+      "type": "dom-expression",
+      "expression": "(() => { const f = document.querySelector('footer'); if (!f) return false; const links = f.querySelectorAll('a[href]'); return [...links].some(a => /terms/i.test(a.textContent) && a.getAttribute('href') && a.getAttribute('href') !== '#'); })()"
+    },
+    {
+      "id": "footer-privacy-link",
+      "severity": "hard",
+      "pages": "all",
+      "viewports": ["desktop", "mobile"],
+      "type": "dom-expression",
+      "expression": "(() => { const f = document.querySelector('footer'); if (!f) return false; const links = f.querySelectorAll('a[href]'); return [...links].some(a => /privacy/i.test(a.textContent) && a.getAttribute('href') && a.getAttribute('href') !== '#'); })()"
+    },
+    {
+      "id": "footer-twitter-link",
+      "severity": "hard",
+      "pages": "all",
+      "viewports": ["desktop", "mobile"],
+      "type": "dom-expression",
+      "expression": "(() => { const f = document.querySelector('footer'); if (!f) return false; const links = f.querySelectorAll('a[href]'); return [...links].some(a => { const h = a.getAttribute('href'); return h && (h.includes('x.com/bedabedagrowth') || h.includes('twitter.com/bedabedagrowth')); }); })()"
+    },
+    {
+      "id": "footer-linkedin-link",
+      "severity": "hard",
+      "pages": "all",
+      "viewports": ["desktop", "mobile"],
+      "type": "dom-expression",
+      "expression": "(() => { const f = document.querySelector('footer'); if (!f) return false; const links = f.querySelectorAll('a[href]'); return [...links].some(a => { const h = a.getAttribute('href'); return h && h.includes('linkedin.com/company/bedabedagrowth'); }); })()"
+    },
+
+    {
+      "id": "cro-section-cta-links-services",
+      "severity": "hard",
+      "pages": "home",
+      "viewports": ["desktop", "mobile"],
+      "type": "dom-expression",
+      "expression": "(() => { const sections = document.querySelectorAll('section'); for (const s of sections) { if (/traditional.*cro.*broken|cro.*broken/i.test(s.textContent)) { const ctas = s.querySelectorAll('a[href]'); const linked = [...ctas].some(a => { const h = a.getAttribute('href'); return h === '/services' || h.endsWith('/services'); }); return linked; } } return false; })()"
+    },
+    {
+      "id": "case-studies-cta-links-calendly",
+      "severity": "hard",
+      "pages": "home",
+      "viewports": ["desktop", "mobile"],
+      "type": "dom-expression",
+      "expression": "(() => { const sections = document.querySelectorAll('section'); for (const s of sections) { if (/case stud/i.test(s.textContent)) { const ctas = s.querySelectorAll('a[href]'); const linked = [...ctas].some(a => { const h = a.getAttribute('href'); return h && h.includes('calendly.com/kanika-misra'); }); return linked; } } return false; })()"
+    },
+
+    {
+      "id": "our-difference-arrows-exist",
+      "severity": "advisory",
+      "pages": "home",
+      "viewports": ["desktop"],
+      "type": "dom-expression",
+      "expression": "(() => { const sections = document.querySelectorAll('section'); for (const s of sections) { if (/our difference/i.test(s.textContent)) { const arrows = s.querySelectorAll('svg, [class*=\"arrow\"], [class*=\"line\"], path'); return arrows.length > 0; } } return false; })()"
     }
   ]
 }
