@@ -1,0 +1,84 @@
+{
+  "$schema": "https://pinchforth.com/schemas/qa-rules/v1.json",
+  "_comment": "QA Rules for BedaBeda Growth Site. Read by the run-qa-loop skill to drive Midscene semantic assertions and Playwright VRT checks.",
+
+  "project": {
+    "name": "BedaBeda Growth Site",
+    "repo": "bedabeda-growth-site",
+    "framework": "astro",
+    "base_url": "http://localhost:4321",
+    "brand": "Premium, High-Growth — modern, clean, and premium with bold contrast"
+  },
+
+  "viewports": [
+    { "name": "desktop",  "device": "Desktop Chrome",  "width": 1280, "height": 720  },
+    { "name": "mobile",   "device": "Pixel 5",          "width": 393,  "height": 851  }
+  ],
+
+  "semantic_rules": [
+    {
+      "id": "hero-headline",
+      "description": "The main H1 headline is prominent, easily readable, and has high contrast against its background.",
+      "severity": "critical"
+    },
+    {
+      "id": "no-broken-images",
+      "description": "No images appear broken, and all placeholders or generic boxes are fully loaded.",
+      "severity": "critical"
+    },
+    {
+      "id": "nav-visibility",
+      "description": "The sticky header/navigation is clearly visible at the top of the viewport.",
+      "severity": "critical"
+    },
+    {
+      "id": "spacing-premium",
+      "description": "Overall spacing and padding look consistent and premium, without bleeding or overlapping elements.",
+      "severity": "high"
+    },
+    {
+      "id": "cta-contrast",
+      "description": "Primary call-to-action buttons have high contrast text and are clearly distinguishable from the background.",
+      "severity": "critical"
+    },
+    {
+      "id": "mobile-no-horizontal-scroll",
+      "description": "On mobile viewport, no horizontal scrollbar appears and content does not overflow the screen edge.",
+      "severity": "critical",
+      "viewports": ["mobile"]
+    },
+    {
+      "id": "footer-complete",
+      "description": "The page footer is fully rendered with visible links and no clipped content.",
+      "severity": "high"
+    }
+  ],
+
+  "visual_routes": [
+    {
+      "name": "homepage",
+      "path": "/",
+      "snapshot": "homepage.png",
+      "full_page": true,
+      "viewports": ["desktop", "mobile"],
+      "pre_actions": [
+        { "action": "scroll_to_bottom" },
+        { "action": "wait_ms", "ms": 1000 },
+        { "action": "scroll_to_top" },
+        { "action": "wait_ms", "ms": 1000 }
+      ]
+    }
+  ],
+
+  "dev_server": {
+    "command": "npm run dev",
+    "url": "http://localhost:4321",
+    "ready_timeout_ms": 30000
+  },
+
+  "playwright": {
+    "test_dir": "./tests",
+    "config_file": "playwright.config.ts",
+    "midscene_cache": true
+  }
+}
