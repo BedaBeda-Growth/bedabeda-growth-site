@@ -1,0 +1,1 @@
+See ~/.agents/skills/trim-ag/SKILL.md — triple published locally

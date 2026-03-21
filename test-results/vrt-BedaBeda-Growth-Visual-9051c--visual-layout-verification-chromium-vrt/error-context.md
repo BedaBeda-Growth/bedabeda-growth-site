@@ -1,0 +1,389 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e3]:
+    - generic [ref=e5]:
+      - link "BedaBeda Growth" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - img "BedaBeda Growth" [ref=e8]
+      - navigation [ref=e9]:
+        - link "Services" [ref=e10] [cursor=pointer]:
+          - /url: /services
+        - button "Case Studies" [ref=e11] [cursor=pointer]
+        - link "Blog" [ref=e12] [cursor=pointer]:
+          - /url: /blog
+        - link "Newsletter" [ref=e13] [cursor=pointer]:
+          - /url: https://conversioncurrent.beehiiv.com/
+        - link "Contact" [ref=e14] [cursor=pointer]:
+          - /url: /contact
+      - link "Book a Call" [ref=e16] [cursor=pointer]:
+        - /url: https://calendly.com/kanika-misra
+  - main [ref=e17]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - heading "CRO for High-Growth, Performance-Obsessed Teams" [level=1] [ref=e24]
+          - generic [ref=e25]:
+            - paragraph [ref=e26]: We don't run shallow tests just to say we tested.
+            - paragraph [ref=e27]:
+              - text: We design
+              - strong [ref=e28]: high-leverage, hybrid experiments that combine deep strategic insight with standout execution
+              - text: – so you get conversion lifts that actually last.
+            - paragraph [ref=e29]: Our approach blends data-backed analysis, creative experimentation, and a sharp eye on long-term upside.
+            - paragraph [ref=e30]: No fluff. No wasted traffic. Just smarter testing that compounds.
+        - link "Book a Discovery Call" [ref=e32] [cursor=pointer]:
+          - /url: https://calendly.com/kanika-misra
+        - iframe [ref=e35]:
+          - generic [ref=f5e2]:
+            - link "BedaBeda Growth on Clutch" [ref=f5e3] [cursor=pointer]:
+              - /url: https://clutch.co/profile/bedabeda-growth?utm_source=widget&utm_medium=14&utm_campaign=widget&utm_content=logo&utm_term=localhost
+            - generic [ref=f5e4]:
+              - generic [ref=f5e5]:
+                - paragraph [ref=f5e6]: "4.9"
+                - link "4.900000" [ref=f5e7] [cursor=pointer]:
+                  - /url: https://clutch.co/profile/bedabeda-growth?utm_source=widget&utm_medium=14&utm_campaign=widget&utm_content=stars&utm_term=localhost#reviews
+                  - generic [ref=f5e10]: "4.900000"
+              - link "Based on 19 Clutch reviews" [ref=f5e19] [cursor=pointer]:
+                - /url: https://clutch.co/profile/bedabeda-growth?utm_source=widget&utm_medium=14&utm_campaign=widget&utm_content=num_reviews&utm_term=localhost#reviews
+      - generic [ref=e37]:
+        - img [ref=e40]
+        - img [ref=e43]
+        - generic [ref=e51] [cursor=pointer]:
+          - img [ref=e53]
+          - generic [ref=e55]: Advanced Analytics
+        - generic [ref=e58] [cursor=pointer]:
+          - img [ref=e60]
+          - generic [ref=e66]: UI/UX Design
+        - generic [ref=e69] [cursor=pointer]:
+          - img [ref=e71]
+          - generic [ref=e81]: User Psychology
+        - generic [ref=e84] [cursor=pointer]:
+          - img [ref=e86]
+          - generic [ref=e91]: A/B Testing
+        - generic [ref=e94] [cursor=pointer]:
+          - img [ref=e96]
+          - generic [ref=e101]: Persuasive Copy
+        - generic [ref=e104] [cursor=pointer]:
+          - img [ref=e106]
+          - generic [ref=e108]: Heat Mapping
+        - generic [ref=e111] [cursor=pointer]:
+          - img [ref=e113]
+          - generic [ref=e115]: Brand Positioning
+        - generic [ref=e118] [cursor=pointer]:
+          - img [ref=e120]
+          - generic [ref=e122]: Session Recordings
+    - generic [ref=e128]:
+      - paragraph [ref=e130]: "Trusted by:"
+      - generic [ref=e131]:
+        - generic [ref=e132]:
+          - img "Every Man Jack" [ref=e134]
+          - generic [ref=e135]:
+            - generic [ref=e136]: +92.91%
+            - generic [ref=e137]: increase in revenue per session
+        - generic [ref=e138]:
+          - img "Schneiders" [ref=e140]
+          - generic [ref=e141]:
+            - generic [ref=e142]: +$497,710
+            - generic [ref=e143]: added monthly revenue
+        - generic [ref=e144]:
+          - img "Allegiance" [ref=e146]
+          - generic [ref=e147]:
+            - generic [ref=e148]: +50.04%
+            - generic [ref=e149]: increase in revenue per visitor
+        - generic [ref=e150]:
+          - img "The Earthling Co." [ref=e152]
+          - generic [ref=e153]:
+            - generic [ref=e154]: +46.01%
+            - generic [ref=e155]: increase in revenue per visitor
+        - generic [ref=e156]:
+          - img "Aday" [ref=e158]
+          - generic [ref=e159]:
+            - generic [ref=e160]: +$199,960
+            - generic [ref=e161]: added annual revenue
+    - generic [ref=e165]:
+      - heading "Traditional CRO is broken. We're rebuilding it." [level=2] [ref=e166]:
+        - text: Traditional CRO is broken.
+        - text: We're rebuilding it.
+      - generic [ref=e168]:
+        - generic [ref=e170]:
+          - generic [ref=e171]: VP of Growth
+          - paragraph [ref=e172]: "\"My site feels like it's taped together with random widgets.\""
+        - generic [ref=e174]:
+          - generic [ref=e175]: Head of eCommerce
+          - paragraph [ref=e176]: "\"We don't have a cohesive story throughout our site.\""
+        - generic [ref=e178]:
+          - generic [ref=e179]: Director of Marketing
+          - paragraph [ref=e180]: "\"My designers & devs don't think like performance marketers.\""
+        - generic [ref=e182]:
+          - generic [ref=e183]: CEO & Co-Founder
+          - paragraph [ref=e184]: "\"The testing ideas feel uncreative.\""
+      - generic [ref=e185]:
+        - paragraph [ref=e186]: Most CRO agencies focus on running fast tests for the sake of volume. The problem? That rarely compounds into meaningful growth.
+        - paragraph [ref=e187]: "At BedaBeda Growth, we take a hybrid approach: blending the best of traditional CRO, deep strategic insight, and \"big swing\" psychological & storytelling experimentation. The result? Bigger wins, clearer signals, and long-term upside you can actually build on."
+        - paragraph [ref=e188]: We're not chasing dashboard dollars. We're chasing real dollars.
+      - link "Check Out Our Services" [ref=e190] [cursor=pointer]:
+        - /url: /services
+    - generic [ref=e194]:
+      - generic [ref=e195]:
+        - heading "Our Difference?" [level=2] [ref=e196]
+        - heading "Data Deep-Dives + Bespoke Conversion Strategy" [level=3] [ref=e197]
+        - paragraph [ref=e199]: "We believe: to optimize behavior, you must optimize perception."
+      - generic [ref=e201]:
+        - generic:
+          - generic [ref=e203]:
+            - heading "Craft a completely custom user journey" [level=4] [ref=e204]
+            - paragraph [ref=e205]: Every design choice is intentional and based on your specific user data and business goals.
+          - generic [ref=e207]:
+            - heading "Test, analyze, iterate & win" [level=4] [ref=e208]
+            - paragraph [ref=e209]: We use a systematic approach to continuously improve your conversion rates through data-driven testing.
+          - generic [ref=e211]:
+            - heading "Build site perception & value" [level=4] [ref=e212]
+            - paragraph [ref=e213]: Our process strengthens your site value, while driving real performance results.
+        - generic [ref=e214]:
+          - generic [ref=e216]: WE
+          - generic [ref=e218]: THEY
+        - generic:
+          - generic [ref=e220]:
+            - heading "Give your site a once-over" [level=4] [ref=e221]
+            - paragraph [ref=e222]: Generic advice that doesn't account for your unique audience, industry, or business model.
+          - generic [ref=e224]:
+            - heading "Quickly exhaust their list of best practices" [level=4] [ref=e225]
+            - paragraph [ref=e226]: Test ideas feel stale quickly, risky tests are rolled out, and important data-based considerations are missed.
+          - generic [ref=e228]:
+            - heading "Provide no long-term growth planning" [level=4] [ref=e229]
+            - paragraph [ref=e230]: Lack of innovation and strategy means no long-term competitive thinking - just short-term tactics that create a patchwork site decreasing in value.
+    - generic [ref=e234]:
+      - generic [ref=e235]:
+        - heading "Ecommerce & High-Volume B2C = Our Sweet Spot" [level=2] [ref=e236]:
+          - text: Ecommerce & High-Volume B2C =
+          - text: Our Sweet Spot
+        - paragraph [ref=e237]: "We've driven powerful, measurable lifts for:"
+      - generic [ref=e238]:
+        - generic [ref=e239]:
+          - generic [ref=e240]:
+            - img "Logo" [ref=e242]
+            - img "Hush Logo" [ref=e244]
+            - img "Logo" [ref=e246]
+          - heading "E-commerce brands between $10M–$150M" [level=3] [ref=e247]
+          - paragraph [ref=e248]: Scaling beyond basic DTC playbooks
+        - generic [ref=e249]:
+          - generic [ref=e250]:
+            - img "Roda Logo" [ref=e252]
+            - img "Logo" [ref=e254]
+            - img "Logo" [ref=e256]
+          - heading "High-volume B2C services" [level=3] [ref=e257]
+          - paragraph [ref=e258]: Security, education, health sectors
+        - generic [ref=e259]:
+          - generic [ref=e260]:
+            - img "Inspired Logo" [ref=e262]
+            - img "RallyPoint Logo" [ref=e264]
+            - img "Logo" [ref=e266]
+          - heading "Subscription & B2C SaaS businesses" [level=3] [ref=e267]
+          - paragraph [ref=e268]: With growth bottlenecks to unlock
+      - generic [ref=e270]:
+        - generic [ref=e271]:
+          - heading "The decision to work with this team has provided an exponential ROI." [level=3] [ref=e272]
+          - paragraph [ref=e273]: "\"Working with BedaBeda Growth has brought immeasurable value to our business. Their copywriting and conversion rate optimization services significantly lowered our CPA in a very competitive market. Although BedaBeda Growth isn't cheap, they are extremely efficient and the decision to work with this team has provided an exponential ROI.\""
+        - generic [ref=e274]:
+          - paragraph [ref=e275]: Jon Klein
+          - paragraph [ref=e276]: CEO
+          - paragraph [ref=e277]: Neutralyze
+        - generic [ref=e278]:
+          - button [ref=e279] [cursor=pointer]
+          - button [ref=e280] [cursor=pointer]
+          - button [ref=e281] [cursor=pointer]
+      - paragraph [ref=e283]:
+        - strong [ref=e284]: What's their common thread?
+        - text: They're past the "best practices" playbook stage. They're ready for depth, not fluff. And they're tired of CRO that doesn't move the needle or leaves their site looking like Frankenstein's love child.
+    - generic [ref=e288]:
+      - heading "When You Mix Psychology & Data, Great Things Happen" [level=2] [ref=e290]
+      - generic [ref=e291]:
+        - generic [ref=e293]:
+          - img [ref=e295]:
+            - generic [ref=e299]: $
+          - heading "Average of 23% Increase in Revenue Per Visitor in First 5 Months" [level=3] [ref=e300]
+          - paragraph [ref=e301]: Huge increases in conversion rates and AOV (ultimately RPV) mean huge boosts in overall performance, making your acquisition spend way more efficient and impacting your top & bottom line quickly.
+        - generic [ref=e303]:
+          - img [ref=e305]
+          - heading "Better Customer Retention + More New Customers" [level=3] [ref=e311]
+          - paragraph [ref=e312]: With customized user journeys for your specific customers, you'll learn which levers actually move the needle + expand your new customer sales while doubling down on returning customers.
+        - generic [ref=e314]:
+          - img [ref=e316]:
+            - generic [ref=e322]: $
+            - generic [ref=e323]: $
+            - generic [ref=e324]: $
+          - heading "Pave The Way For Profitable Future Growth" [level=3] [ref=e325]
+          - paragraph [ref=e326]: Not only are you receiving critical insights to optimize your entire customer journey, but high performance pages allow you to drop your acquisition costs, giving you more budget to keep growing & protecting your margins.
+    - generic [ref=e330]:
+      - generic [ref=e332]:
+        - paragraph [ref=e333]: Case Studies & Portfolio
+        - heading "Browse Some of Our Wins" [level=2] [ref=e334]
+      - region [ref=e335]:
+        - generic [ref=e337]:
+          - group [ref=e338]:
+            - generic [ref=e339] [cursor=pointer]:
+              - generic [ref=e340]:
+                - img "Product Page Optimization" [ref=e341]
+                - generic [ref=e345]:
+                  - paragraph [ref=e346]: E-commerce
+                  - paragraph [ref=e347]: +15.8% Revenue Per Session
+                  - img "Client logo" [ref=e348]
+              - generic [ref=e349]:
+                - heading "Product Page Optimization" [level=3] [ref=e350]
+                - paragraph [ref=e351]: Data-driven PDP overhaul for niche home goods
+          - group [ref=e352]:
+            - generic [ref=e353] [cursor=pointer]:
+              - generic [ref=e354]:
+                - img "Landing Page Optimization" [ref=e355]
+                - generic [ref=e359]:
+                  - paragraph [ref=e360]: Landing Page
+                  - paragraph [ref=e361]: +57.4% Conversion Rate Increase
+                  - img "Client logo" [ref=e362]
+              - generic [ref=e363]:
+                - heading "Landing Page Optimization" [level=3] [ref=e364]
+                - paragraph [ref=e365]: Ad-focused dedicated landing page
+          - group [ref=e366]:
+            - generic [ref=e367] [cursor=pointer]:
+              - generic [ref=e368]:
+                - img "Homepage Optimization" [ref=e369]
+                - generic [ref=e373]:
+                  - paragraph [ref=e374]: Online B2C Community
+                  - paragraph [ref=e375]: +36.3% Revenue Per Session
+                  - img "Client logo" [ref=e376]
+              - generic [ref=e377]:
+                - heading "Homepage Optimization" [level=3] [ref=e378]
+                - paragraph [ref=e379]: Homepage optimization for high-volume B2C online community
+          - group [ref=e380]:
+            - generic [ref=e381] [cursor=pointer]:
+              - generic [ref=e382]:
+                - img "Catalog Page Optimization" [ref=e383]
+                - generic [ref=e387]:
+                  - paragraph [ref=e388]: High SKU E-Commerce
+                  - paragraph [ref=e389]: +$1.8MM New Annual Revenue
+                  - img "Client logo" [ref=e390]
+              - generic [ref=e391]:
+                - heading "Catalog Page Optimization" [level=3] [ref=e392]
+                - paragraph [ref=e393]: Catalog/Collections page optimization for 9-figure brand
+          - group [ref=e394]:
+            - generic [ref=e395] [cursor=pointer]:
+              - generic [ref=e396]:
+                - img "Offer Optimization" [ref=e397]
+                - generic [ref=e401]:
+                  - paragraph [ref=e402]: Landing Page
+                  - paragraph [ref=e403]: +95.6% ROAS Increase
+              - generic [ref=e404]:
+                - heading "Offer Optimization" [level=3] [ref=e405]
+                - paragraph [ref=e406]: Landing page offer optimization for men's care brand
+        - button "Previous slide" [disabled]:
+          - img
+          - generic: Previous slide
+        - button "Next slide" [ref=e407] [cursor=pointer]:
+          - img
+          - generic [ref=e408]: Next slide
+      - link "Get Results Like These" [ref=e410] [cursor=pointer]:
+        - /url: https://calendly.com/kanika-misra
+    - generic [ref=e414]:
+      - generic [ref=e415]:
+        - heading "Not an intern. Not a middleman. Real experts." [level=2] [ref=e416]:
+          - text: Not an intern. Not a middleman.
+          - text: Real experts.
+        - paragraph [ref=e418]: We're small by design. You'll work directly with the people who think critically, synthesize qualitative and quantitative insights, and design experiments that actually teach you something.
+      - generic [ref=e419]:
+        - generic [ref=e420]:
+          - generic [ref=e421]: 🧠
+          - heading "Strategic Thinking" [level=3] [ref=e422]
+          - paragraph [ref=e423]: Deep analysis that uncovers the real conversion barriers hidden in your customer journey.
+        - generic [ref=e424]:
+          - generic [ref=e425]: ⚡
+          - heading "Flawless Execution" [level=3] [ref=e426]
+          - paragraph [ref=e427]: End-to-end test implementation that maintains your brand integrity while maximizing impact.
+    - generic [ref=e431]:
+      - generic [ref=e432]:
+        - heading "Ready to Scale Beyond Cookie-Cutter CRO?" [level=2] [ref=e433]:
+          - text: Ready to Scale Beyond
+          - text: Cookie-Cutter CRO?
+        - paragraph [ref=e434]: Let's discuss your growth bottlenecks and design experiments that actually move the needle.
+      - generic [ref=e436]:
+        - generic [ref=e437]:
+          - heading "Book Your Discovery Call" [level=3] [ref=e438]
+          - paragraph [ref=e439]: 30-minute strategic session to identify your biggest conversion opportunities.
+        - generic [ref=e440]:
+          - link "Schedule Discovery Call" [ref=e441] [cursor=pointer]:
+            - /url: https://calendly.com/kanika-misra
+            - button "Schedule Discovery Call" [ref=e442]
+          - paragraph [ref=e443]: No commitment. No pitch. Just strategic insights.
+      - iframe [ref=e445]:
+        - generic [ref=f1e3]:
+          - generic [ref=f1e4]:
+            - generic [ref=f1e5]:
+              - heading "Discover the psychological hacks we have used to generate $55.7M+ for our clients" [level=2] [ref=f1e6]
+              - paragraph [ref=f1e7]: Grab your free copy of “5 Psychological Hacks for Creating High-Converting Landing Pages” to boost all of your growth efforts!
+            - generic [ref=f1e8]:
+              - generic [ref=f1e9]:
+                - generic [ref=f1e10]: Email
+                - textbox "Enter your email" [ref=f1e11]
+              - button "Submit" [ref=f1e13] [cursor=pointer]
+          - link:
+            - /url: https://beehiiv.com?utm_source=external_embed&utm_content=9cfbbe46-9ae1-495b-a2ef-d8b15e1af9c1&publication_id=f032a140-3449-4cd4-b2cb-a9672d3bdcee
+            - img [ref=f1e14] [cursor=pointer]
+  - contentinfo [ref=e446]:
+    - generic [ref=e447]:
+      - generic [ref=e448]:
+        - generic [ref=e449]:
+          - generic [ref=e451]: BedaBeda Growth
+          - paragraph [ref=e452]: Strategic CRO for high-growth teams who are tired of shallow tests and ready for experiments that actually compound.
+          - generic [ref=e453]:
+            - link "Twitter" [ref=e454] [cursor=pointer]:
+              - /url: https://x.com/bedabedagrowth
+              - generic [ref=e455]: Twitter
+              - img [ref=e456]
+            - link "LinkedIn" [ref=e458] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/bedabedagrowth
+              - generic [ref=e459]: LinkedIn
+              - img [ref=e460]
+        - generic [ref=e462]:
+          - heading "Navigation" [level=4] [ref=e463]
+          - list [ref=e464]:
+            - listitem [ref=e465]:
+              - link "Services" [ref=e466] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e467]:
+              - button "Case Studies" [ref=e468] [cursor=pointer]
+            - listitem [ref=e469]:
+              - link "Blog" [ref=e470] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e471]:
+              - link "Newsletter" [ref=e472] [cursor=pointer]:
+                - /url: https://conversioncurrent.beehiiv.com/
+            - listitem [ref=e473]:
+              - link "Contact" [ref=e474] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e475]:
+          - heading "Legal" [level=4] [ref=e476]
+          - list [ref=e477]:
+            - listitem [ref=e478]:
+              - link "Privacy Policy" [ref=e479] [cursor=pointer]:
+                - /url: /privacy-policy
+            - listitem [ref=e480]:
+              - link "Terms of Service" [ref=e481] [cursor=pointer]:
+                - /url: /terms-of-service
+      - generic [ref=e483]:
+        - paragraph [ref=e484]: Copyright © BedaBeda Growth 2019-2026. All rights reserved.
+        - paragraph [ref=e485]: Strategic CRO that actually moves the needle.
+  - generic [ref=e488]:
+    - button "Menu" [ref=e489]:
+      - img [ref=e491]
+      - generic: Menu
+    - button "Inspect" [ref=e495]:
+      - img [ref=e497]
+      - generic: Inspect
+    - button "Audit" [ref=e499]:
+      - generic [ref=e500]:
+        - img [ref=e501]
+        - img [ref=e504]
+      - generic: Audit
+    - button "Settings" [ref=e507]:
+      - img [ref=e509]
+      - generic: Settings
+```

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://pinchforth.com/schemas/qa-rules/v1.json",
+  "_comment": "Universal QA Rules Schema template. Copy this, fill in, and commit into any repo root as qa-rules.json for run-qa-loop to pick up.",
+
+  "project": {
+    "name": "YOUR_PROJECT_NAME",
+    "repo": "YOUR_REPO_SLUG",
+    "framework": "next|astro|vite|react|other",
+    "base_url": "http://localhost:3000",
+    "brand": "One-sentence description of the visual brand standard. The AI uses this to anchor all judgments."
+  },
+
+  "viewports": [
+    { "name": "desktop", "device": "Desktop Chrome", "width": 1280, "height": 720 },
+    { "name": "mobile",  "device": "Pixel 5",        "width": 393,  "height": 851 }
+  ],
+
+  "semantic_rules": [
+    {
+      "id": "UNIQUE_RULE_ID",
+      "description": "Natural language assertion passed to Midscene aiAssert(). Write in plain English what must be true visually on the page.",
+      "severity": "critical|high|medium",
+      "_comment_severity": "critical = run blocks if fails, high = warns + logs, medium = logs only",
+      "viewports": ["desktop", "mobile"],
+      "_comment_viewports": "Optional. Omit to run on all viewports. Use viewport names from viewports[] above."
+    }
+  ],
+
+  "visual_routes": [
+    {
+      "name": "ROUTE_NAME",
+      "path": "/",
+      "snapshot": "ROUTE_NAME.png",
+      "full_page": true,
+      "viewports": ["desktop", "mobile"],
+      "pre_actions": [
+        { "action": "scroll_to_bottom" },
+        { "action": "wait_ms", "ms": 1000 },
+        { "action": "scroll_to_top" },
+        { "action": "wait_ms", "ms": 1000 }
+      ],
+      "_comment_pre_actions": "Actions run before snapshot to ensure lazy content is loaded. Available: scroll_to_bottom, scroll_to_top, wait_ms, click (selector), fill (selector, text)"
+    }
+  ],
+
+  "dev_server": {
+    "command": "npm run dev",
+    "url": "http://localhost:3000",
+    "ready_timeout_ms": 30000
+  },
+
+  "playwright": {
+    "test_dir": "./tests",
+    "config_file": "playwright.config.ts",
+    "midscene_cache": true
+  }
+}
